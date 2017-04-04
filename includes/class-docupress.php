@@ -9,8 +9,8 @@
  * @link       http://www.robertdevore.com/
  * @since      1.0.0
  *
- * @package    Docupress
- * @subpackage Docupress/includes
+ * @package    DocuPress
+ * @subpackage DocuPress/includes
  */
 
 /**
@@ -23,8 +23,8 @@
  * version of the plugin.
  *
  * @since      1.0.0
- * @package    Docupress
- * @subpackage Docupress/includes
+ * @package    DocuPress
+ * @subpackage DocuPress/includes
  * @author     Robert DeVore <deviodigital@gmail.com>
  */
 class Docupress {

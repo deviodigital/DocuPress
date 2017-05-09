@@ -119,6 +119,16 @@ class Docupress {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/docupress-cpt.php';
 
 		/**
+		 * The function responsible for creating the custom taxonomies.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/docupress-taxonomies.php';
+
+		/**
+		 * The function responsible for creating the custom widgets.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/docupress-widgets.php';
+
+		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */

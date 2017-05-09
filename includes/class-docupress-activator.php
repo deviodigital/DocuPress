@@ -30,7 +30,22 @@ class Docupress_Activator {
 	 * @since    1.0.0
 	 */
 	public static function activate() {
+		/**
+		 * Custom Post Type
+		 */
+		DocuPress();
 
+		/**
+		 * Custom Categories
+		 */
+		DocuPress_Collections();
+
+		/**
+		 * Flush Rewrite Rules
+		 */
+		 global $wp_rewrite;
+		 $wp_rewrite->init();
+		 $wp_rewrite->flush_rules();
 	}
 
 }

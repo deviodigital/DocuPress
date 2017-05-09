@@ -8,15 +8,14 @@
  *
  * @package    DocuPress
  * @subpackage DocuPress/admin
- */
-
-/**
- * The admin-specific functionality of the plugin.
- *
- * @package    DocuPress
- * @subpackage DocuPress/admin
  * @author     Robert DeVore <deviodigital@gmail.com>
  */
+
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 if ( ! function_exists('DocuPress') ) {
 
 // Register Custom Post Type
@@ -61,13 +60,13 @@ function DocuPress() {
 		'label'                 => __( 'Article', 'docupress' ),
 		'description'           => __( 'Documentation Articles', 'docupress' ),
 		'labels'                => $labels,
-		'supports'              => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'trackbacks', 'revisions', 'custom-fields', 'page-attributes', 'post-formats', ),
+		'supports'              => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'page-attributes', 'post-formats', ),
 		'hierarchical'          => false,
 		'public'                => true,
 		'show_ui'               => true,
 		'show_in_menu'          => true,
 		'menu_position'         => 15,
-		'menu_icon'             => 'dashicons-admin-page',
+		'menu_icon'             => 'dashicons-media-text',
 		'show_in_admin_bar'     => true,
 		'show_in_nav_menus'     => true,
 		'can_export'            => true,

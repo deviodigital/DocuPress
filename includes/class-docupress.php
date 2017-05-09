@@ -27,7 +27,7 @@
  * @subpackage DocuPress/includes
  * @author     Robert DeVore <deviodigital@gmail.com>
  */
-class Docupress {
+class DocuPress {
 
 	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power
@@ -35,7 +35,7 @@ class Docupress {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      Docupress_Loader    $loader    Maintains and registers all hooks for the plugin.
+	 * @var      DocuPress_Loader    $loader    Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
 
@@ -68,7 +68,7 @@ class Docupress {
 	 */
 	public function __construct() {
 
-		$this->plugin_name = 'docupress';
+		$this->plugin_name = 'DocuPress';
 		$this->version = '1.0.0';
 
 		$this->load_dependencies();
@@ -83,10 +83,10 @@ class Docupress {
 	 *
 	 * Include the following files that make up the plugin:
 	 *
-	 * - Docupress_Loader. Orchestrates the hooks of the plugin.
-	 * - Docupress_i18n. Defines internationalization functionality.
-	 * - Docupress_Admin. Defines all hooks for the admin area.
-	 * - Docupress_Public. Defines all hooks for the public side of the site.
+	 * - DocuPress_Loader. Orchestrates the hooks of the plugin.
+	 * - DocuPress_i18n. Defines internationalization functionality.
+	 * - DocuPress_Admin. Defines all hooks for the admin area.
+	 * - DocuPress_Public. Defines all hooks for the public side of the site.
 	 *
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
@@ -134,14 +134,14 @@ class Docupress {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-docupress-public.php';
 
-		$this->loader = new Docupress_Loader();
+		$this->loader = new DocuPress_Loader();
 
 	}
 
 	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
-	 * Uses the Docupress_i18n class in order to set the domain and to register the hook
+	 * Uses the DocuPress_i18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
 	 * @since    1.0.0
@@ -149,7 +149,7 @@ class Docupress {
 	 */
 	private function set_locale() {
 
-		$plugin_i18n = new Docupress_i18n();
+		$plugin_i18n = new DocuPress_i18n();
 
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 
@@ -164,7 +164,7 @@ class Docupress {
 	 */
 	private function define_admin_hooks() {
 
-		$plugin_admin = new Docupress_Admin( $this->get_plugin_name(), $this->get_version() );
+		$plugin_admin = new DocuPress_Admin( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
@@ -180,7 +180,7 @@ class Docupress {
 	 */
 	private function define_public_hooks() {
 
-		$plugin_public = new Docupress_Public( $this->get_plugin_name(), $this->get_version() );
+		$plugin_public = new DocuPress_Public( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
@@ -211,7 +211,7 @@ class Docupress {
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
 	 * @since     1.0.0
-	 * @return    Docupress_Loader    Orchestrates the hooks of the plugin.
+	 * @return    DocuPress_Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
 		return $this->loader;

@@ -8,8 +8,8 @@
  * @link       http://www.robertdevore.com/
  * @since      1.0.0
  *
- * @package    Docupress
- * @subpackage Docupress/admin/partials
+ * @package    DocuPress
+ * @subpackage DocuPress/admin/partials
  */
 ?>
 

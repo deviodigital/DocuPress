@@ -6,8 +6,8 @@
  * @link       http://www.robertdevore.com/
  * @since      1.0.0
  *
- * @package    Docupress
- * @subpackage Docupress/includes
+ * @package    DocuPress
+ * @subpackage DocuPress/includes
  */
 
 /**
@@ -17,11 +17,11 @@
  * the plugin, and register them with the WordPress API. Call the
  * run function to execute the list of actions and filters.
  *
- * @package    Docupress
- * @subpackage Docupress/includes
+ * @package    DocuPress
+ * @subpackage DocuPress/includes
  * @author     Robert DeVore <deviodigital@gmail.com>
  */
-class Docupress_Loader {
+class DocuPress_Loader {
 
 	/**
 	 * The array of actions registered with WordPress.

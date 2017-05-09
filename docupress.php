@@ -5,7 +5,7 @@
  *
  * @link              http://www.robertdevore.com/
  * @since             1.0.0
- * @package           Docupress
+ * @package           DocuPress
  *
  * @wordpress-plugin
  * Plugin Name:       DocuPress
@@ -63,7 +63,7 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-docupress.php';
  */
 function run_docupress() {
 
-	$plugin = new Docupress();
+	$plugin = new DocuPress();
 	$plugin->run();
 
 }

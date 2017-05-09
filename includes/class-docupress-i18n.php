@@ -9,8 +9,8 @@
  * @link       http://www.robertdevore.com/
  * @since      1.0.0
  *
- * @package    Docupress
- * @subpackage Docupress/includes
+ * @package    DocuPress
+ * @subpackage DocuPress/includes
  */
 
 /**
@@ -20,11 +20,11 @@
  * so that it is ready for translation.
  *
  * @since      1.0.0
- * @package    Docupress
- * @subpackage Docupress/includes
+ * @package    DocuPress
+ * @subpackage DocuPress/includes
  * @author     Robert DeVore <deviodigital@gmail.com>
  */
-class Docupress_i18n {
+class DocuPress_i18n {
 
 
 	/**

@@ -37,7 +37,7 @@ function DocuPress() {
 		'update_item'           => __( 'Update Article', 'docupress' ),
 		'view_item'             => __( 'View Article', 'docupress' ),
 		'view_items'            => __( 'View Articles', 'docupress' ),
-		'search_items'          => __( 'Search Article', 'docupress' ),
+		'search_items'          => __( 'Search Articles', 'docupress' ),
 		'not_found'             => __( 'Not found', 'docupress' ),
 		'not_found_in_trash'    => __( 'Not found in Trash', 'docupress' ),
 		'featured_image'        => __( 'Featured Image', 'docupress' ),

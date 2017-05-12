@@ -60,7 +60,7 @@ function DocuPress() {
 		'label'                 => __( 'Article', 'docupress' ),
 		'description'           => __( 'Documentation Articles', 'docupress' ),
 		'labels'                => $labels,
-		'supports'              => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'page-attributes', 'post-formats', ),
+		'supports'              => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'revisions', 'page-attributes', 'post-formats', ),
 		'hierarchical'          => false,
 		'public'                => true,
 		'show_ui'               => true,

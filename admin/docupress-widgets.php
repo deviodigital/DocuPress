@@ -111,7 +111,7 @@ class docupress_widget extends WP_Widget {
 
 		endwhile; // End loop.
 		
-		$websitelink = get_bloginfo('home');
+		$websitelink = get_bloginfo( 'url' );
 
 		if ( 'all' === $collections ) { } else {
 			if ( 'on' === $instance['viewall'] ) {

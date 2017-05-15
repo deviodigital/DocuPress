@@ -73,6 +73,8 @@ class docupress_widget extends WP_Widget {
 		}
 
 		$collections = $instance['collections'];
+
+		global $post;
 		
 		if ( 'all' === $collections ) {
 			$docupress_widget = new WP_Query(
@@ -110,6 +112,8 @@ class docupress_widget extends WP_Widget {
 			echo '</li>';
 
 		endwhile; // End loop.
+
+		wp_reset_postdata();
 		
 		$websitelink = get_bloginfo( 'url' );
 

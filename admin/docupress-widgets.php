@@ -30,14 +30,17 @@ class docupress_widget extends WP_Widget {
 	 * @since       1.0.0
 	 * @return      void
 	 */
-	public function docupress_widget() {
-	    parent::WP_Widget(
-	        false,
-	        __( 'DocuPress Articles', 'docupress' ),
-	        array(
-	            'description'  => __( 'Your most recent documentation articles', 'docupress' ),
-	        )
-	    );
+	public function __construct() {
+
+		parent::__construct(
+			'docupress_widget',
+			__( 'DocuPress Articles', 'docupress' ),
+			array(
+				'description' => __( 'Your most recent documentation articles', 'docupress' ),
+				'classname'   => 'docupress-widget',
+			)
+		);
+
 	}
 
 	/**

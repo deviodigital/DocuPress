@@ -1,6 +1,3 @@
-# DocuPress
-documentation simplified.
-
 ![DocuPress - Documentation Simplified.](http://www.robertdevore.com/wp-content/uploads/2017/05/docupress-logo-transparent.png)
 
 *this plugin is under active development*

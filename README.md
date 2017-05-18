@@ -1,6 +1,8 @@
 # DocuPress
 documentation simplified.
 
+![DocuPress - Documentation Simplified.](http://www.robertdevore.com/wp-content/uploads/2017/05/docupress-logo-transparent.png)
+
 *this plugin is under active development*
 
 This is a WordPress plugin I am working on building for myself and others. More details will be added to this readme file as I continue building out the plugin.

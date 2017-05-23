@@ -11,7 +11,7 @@
  * Plugin Name:       DocuPress
  * Plugin URI:        http://www.robertdevore.com/docupress
  * Description:       Documentation simplified.
- * Version:           1.0.0
+ * Version:           1.1.0
  * Author:            Robert DeVore
  * Author URI:        http://www.robertdevore.com/
  * License:           GPL-2.0+

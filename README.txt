@@ -3,8 +3,8 @@ Contributors: deviodigital
 Donate link: http://www.robertdevore.com/
 Tags: documentation
 Requires at least: 3.0.1
-Tested up to: 4.7.4
-Stable tag: 1.0.0
+Tested up to: 4.7.5
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,6 +30,12 @@ DocuPress also comes with a custom widget that lets you display your recent docu
 2. Here is the DocuPress widget, available via `Appearance - Widgets`
 
 == Changelog ==
+
+= 1.1.0 =
+* Removed comment capabilities
+* Updated call constructor method for the DocuPress widget
+* Updated `get_bloginfo()` instance to URL instead of HOME
+* Added `global $post;` and `wp_reset_postdata();` to the widget query
 
 = 1.0 =
 * Initial release

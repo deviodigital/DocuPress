@@ -124,6 +124,13 @@ class DocuPress {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/docupress-taxonomies.php';
 
 		/**
+		 * The function responsible for creating the custom taxonomies.
+		 *
+		 * @since 1.2.0
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/docupress-metaboxes.php';
+
+		/**
 		 * The function responsible for creating the custom widgets.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/docupress-widgets.php';

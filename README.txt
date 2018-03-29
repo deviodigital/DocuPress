@@ -3,16 +3,16 @@ Contributors: deviodigital
 Donate link: http://www.robertdevore.com/
 Tags: documentation, document, help, support, notes
 Requires at least: 3.0.1
-Tested up to: 4.8.1
 Stable tag: 1.1.0
+Tested up to: 4.9.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Documentation simplified.
+Documentation Simplified.
 
 == Description ==
 
-With DocuPress, you can easily create your own online help documents directly on your WordPress site.
+Create your own online help documents from your WordPress dashboard with DocuPress.
 
 Separate your documentation into collections, making it easy to give users the ability to browse only the content they're looking for.
 

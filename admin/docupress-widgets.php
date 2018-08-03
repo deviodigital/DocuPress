@@ -36,7 +36,7 @@ class docupress_widget extends WP_Widget {
 			'docupress_widget',
 			__( 'DocuPress Articles', 'docupress' ),
 			array(
-				'description' => __( 'Your most recent documentation articles', 'docupress' ),
+				'description' => __( 'Display documentation articles', 'docupress' ),
 				'classname'   => 'docupress-widget',
 			)
 		);
@@ -144,11 +144,11 @@ class docupress_widget extends WP_Widget {
 	public function update( $new_instance, $old_instance ) {
 	    $instance = $old_instance;
 
-	    $instance['title']              = strip_tags( $new_instance['title'] );
-	    $instance['limit']              = strip_tags( $new_instance['limit'] );
-	    $instance['collections']        = $new_instance['collections'];
-	    $instance['order']              = $new_instance['order'];
-	    $instance['viewall']            = $new_instance['viewall'];
+	    $instance['title']       = strip_tags( $new_instance['title'] );
+	    $instance['limit']       = strip_tags( $new_instance['limit'] );
+	    $instance['collections'] = $new_instance['collections'];
+	    $instance['order']       = $new_instance['order'];
+	    $instance['viewall']     = $new_instance['viewall'];
 
 	    return $instance;
 	}
@@ -165,11 +165,11 @@ class docupress_widget extends WP_Widget {
 	 */
 	public function form( $instance ) {
 	    $defaults = array(
-	        'title'    			=> 'Recent Articles',
-	        'limit'  			=> '5',
-			'collections'       => '',
-	        'order'  			=> '',
-			'viewall'           => '',
+	        'title'       => 'Documentation',
+	        'limit'       => '5',
+			'collections' => '',
+	        'order'       => '',
+			'viewall'     => '',
 	    );
 
 			$instance = wp_parse_args( (array) $instance, $defaults );

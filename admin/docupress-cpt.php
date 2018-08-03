@@ -51,10 +51,10 @@ function DocuPress() {
 		'filter_items_list'     => __( 'Filter articles list', 'docupress' ),
 	);
 	$rewrite = array(
-		'slug'                  => 'article',
-		'with_front'            => true,
-		'pages'                 => true,
-		'feeds'                 => true,
+		'slug'       => 'article',
+		'with_front' => true,
+		'pages'      => true,
+		'feeds'      => true,
 	);
 	$args = array(
 		'label'                 => __( 'Article', 'docupress' ),

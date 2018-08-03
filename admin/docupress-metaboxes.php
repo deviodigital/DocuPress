@@ -48,8 +48,8 @@ function docupress_document_details() {
 	wp_create_nonce( plugin_basename( __FILE__ ) ) . '" />';
 
 	/** Get the thccbd data if its already been entered */
-	$path        = get_post_meta( $post->ID, '_docupress_path', true );
-	$githuburl   = get_post_meta( $post->ID, '_docupress_github_url', true );
+	$path      = get_post_meta( $post->ID, '_docupress_path', true );
+	$githuburl = get_post_meta( $post->ID, '_docupress_github_url', true );
 
 	/** Echo out the fields */
 	echo '<div class="docupress details">';
@@ -86,8 +86,8 @@ function docupress_save_documentdetails_meta( $post_id, $post ) {
 	 * We'll put it into an array to make it easier to loop though.
 	 */
 
-	$docupress_details['_docupress_path']         = $_POST['_docupress_path'];
-	$docupress_details['_docupress_github_url']   = $_POST['_docupress_github_url'];
+	$docupress_details['_docupress_path']       = $_POST['_docupress_path'];
+	$docupress_details['_docupress_github_url'] = $_POST['_docupress_github_url'];
 
 	/** Add values of $documentdetails_meta as custom fields */
 
@@ -98,7 +98,7 @@ function docupress_save_documentdetails_meta( $post_id, $post ) {
 		$value = implode( ',', (array) $value ); // If $value is an array, make it a CSV (unlikely)
 		if ( get_post_meta( $post->ID, $key, false ) ) { // If the custom field already has a value
 			update_post_meta( $post->ID, $key, $value );
-		} else { // If the custom field doesn't have a value
+		} else { // If the custom field doesn't have a value.
 			add_post_meta( $post->ID, $key, $value );
 		}
 		if ( ! $value ) { /** Delete if blank */
@@ -108,6 +108,6 @@ function docupress_save_documentdetails_meta( $post_id, $post ) {
 
 }
 
-add_action( 'save_post', 'docupress_save_documentdetails_meta', 1, 2 ); // save the custom fields
+add_action( 'save_post', 'docupress_save_documentdetails_meta', 1, 2 ); // save the custom fields.
 
 ?>

@@ -3,7 +3,7 @@
 /**
  * Fired during plugin activation
  *
- * @link       http://www.robertdevore.com/
+ * @link       https://www.robertdevore.com/
  * @since      1.0.0
  *
  * @package    DocuPress

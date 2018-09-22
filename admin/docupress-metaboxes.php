@@ -3,7 +3,7 @@
 /**
  * The admin-specific functionality of the plugin.
  *
- * @link       http://www.robertdevore.com/
+ * @link       https://www.robertdevore.com/
  * @since      1.2.0
  *
  * @package    DocuPress

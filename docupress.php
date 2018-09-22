@@ -3,17 +3,17 @@
 /**
  * The plugin bootstrap file
  *
- * @link              http://www.robertdevore.com/
+ * @link              https://www.robertdevore.com/
  * @since             1.0.0
  * @package           DocuPress
  *
  * @wordpress-plugin
  * Plugin Name:       DocuPress
- * Plugin URI:        http://www.robertdevore.com/docupress
+ * Plugin URI:        https://www.robertdevore.com/docupress
  * Description:       Documentation simplified.
  * Version:           1.1.0
  * Author:            Robert DeVore
- * Author URI:        http://www.robertdevore.com/
+ * Author URI:        https://www.robertdevore.com/
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       docupress

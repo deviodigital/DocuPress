@@ -1,7 +1,7 @@
 === DocuPress ===
 Contributors: deviodigital
-Donate link: http://www.robertdevore.com/
-Tags: documentation, document, help, support, notes
+Donate link: https://www.robertdevore.com/
+Tags: documentation, document, knowledgebase, help, support, notes
 Requires at least: 3.0.1
 Stable tag: 1.1.0
 Tested up to: 4.9.8

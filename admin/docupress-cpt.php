@@ -16,10 +16,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! function_exists('DocuPress') ) {
+if ( ! function_exists( 'DocuPress' ) ) {
 
 // Register Custom Post Type
 function DocuPress() {
+
+	$docupress_article_slug = get_option( 'docupress_article_slug' );
+
+	if ( '' == $docupress_article_slug ) {
+		$docupress_article_slug = 'article';
+	}
 
 	$labels = array(
 		'name'                  => _x( 'Articles', 'Post Type General Name', 'docupress' ),
@@ -51,7 +57,7 @@ function DocuPress() {
 		'filter_items_list'     => __( 'Filter articles list', 'docupress' ),
 	);
 	$rewrite = array(
-		'slug'       => 'article',
+		'slug'       => $docupress_article_slug,
 		'with_front' => true,
 		'pages'      => true,
 		'feeds'      => true,

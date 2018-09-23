@@ -4,7 +4,7 @@
  * The admin-specific functionality of the plugin.
  *
  * @link       https://www.robertdevore.com/
- * @since      1.2.0
+ * @since      1.2
  *
  * @package    DocuPress
  * @subpackage DocuPress/admin
@@ -28,7 +28,7 @@ function add_documentdetails_metaboxes() {
 			__( 'Additional Details', 'docupress' ),
 			'docupress_document_details',
 			$screen,
-			'normal',
+			'side',
 			'default'
 		);
 	}
@@ -47,18 +47,18 @@ function docupress_document_details() {
 	echo '<input type="hidden" name="documentdetailsmeta_noncename" id="documentdetailsdmeta_noncename" value="' .
 	wp_create_nonce( plugin_basename( __FILE__ ) ) . '" />';
 
-	/** Get the thccbd data if its already been entered */
-	$path      = get_post_meta( $post->ID, '_docupress_path', true );
-	$githuburl = get_post_meta( $post->ID, '_docupress_github_url', true );
+	/** Get the metabox data if its already been entered */
+	$docupress_path = get_post_meta( $post->ID, 'docupress_path', true );
+	$docupress_url  = get_post_meta( $post->ID, 'docupress_url', true );
 
 	/** Echo out the fields */
 	echo '<div class="docupress details">';
 	echo '<p>Path <span>(ex: path/to/file.php)</span>:</p>';
-	echo '<input type="text" name="_docupress_path" value="' . $thc  . '" class="widefat" />';
+	echo '<input type="text" name="docupress_path" value="' . $docupress_path  . '" class="widefat" />';
 	echo '</div>';
 	echo '<div class="docupress details">';
-	echo '<p>Link <span>(ex: www.github.com/username/link/...)</span>:</p>';
-	echo '<input type="text" name="_docupress_github_url" value="' . $githuburl  . '" class="widefat" />';
+	echo '<p>Link <span>(ex: https://github.com/...)</span>:</p>';
+	echo '<input type="text" name="docupress_url" value="' . $docupress_url  . '" class="widefat" />';
 	echo '</div>';
 
 }
@@ -86,8 +86,8 @@ function docupress_save_documentdetails_meta( $post_id, $post ) {
 	 * We'll put it into an array to make it easier to loop though.
 	 */
 
-	$docupress_details['_docupress_path']       = $_POST['_docupress_path'];
-	$docupress_details['_docupress_github_url'] = $_POST['_docupress_github_url'];
+	$docupress_details['docupress_path'] = $_POST['docupress_path'];
+	$docupress_details['docupress_url']  = $_POST['docupress_url'];
 
 	/** Add values of $documentdetails_meta as custom fields */
 

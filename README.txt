@@ -3,7 +3,7 @@ Contributors: deviodigital
 Donate link: https://www.robertdevore.com/
 Tags: documentation, document, knowledgebase, help, support, notes
 Requires at least: 3.0.1
-Stable tag: 1.1.0
+Stable tag: 1.2
 Tested up to: 4.9.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -16,7 +16,10 @@ Create your own online help documents from your WordPress dashboard with DocuPre
 
 Separate your documentation into collections, making it easy to give users the ability to browse only the content they're looking for.
 
-DocuPress also comes with a custom widget that lets you display your recent documentation articles, randomize the output order and also choose which collection you'd like to display, making it easy to have widgets display recent article links for each collection type.
+DocuPress also comes with 2 custom widgets:
+
+* Collections - output's a list of every collection you create with DocuPress.
+* Recent Articles - select how many articles to display, randomize the output order and also choose which collection you'd like to display articles from.
 
 == Installation ==
 
@@ -30,6 +33,11 @@ DocuPress also comes with a custom widget that lets you display your recent docu
 2. Here is the DocuPress widget, available via `Appearance - Widgets`
 
 == Changelog ==
+
+= 1.2 =
+* Added new Collections widget
+* Added new Additional Details metabox for articles
+* Added custom permalink settings to change article base
 
 = 1.1.0 =
 * Removed comment capabilities

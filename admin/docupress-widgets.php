@@ -224,14 +224,126 @@ class DocuPress_Articles_Widget extends WP_Widget {
 }
 
 /**
- * Register the new widget
+ * DocuPress Collections Widget
+ *
+ * @since       1.0.0
+ */
+class DocuPress_Collections_Widget extends WP_Widget {
+
+	/**
+	 * Constructor
+	 *
+	 * @access      public
+	 * @since       1.0.0
+	 * @return      void
+	 */
+	public function __construct() {
+
+		parent::__construct(
+			'docupress_collections_widget',
+			__( 'DocuPress Collections', 'docupress' ),
+			array(
+				'description' => __( 'Display a list of collections', 'docupress' ),
+				'classname'   => 'docupress-collections-widget',
+			)
+		);
+
+	}
+
+	/**
+	 * Widget definition
+	 *
+	 * @access      public
+	 * @since       1.0.0
+	 * @see         WP_Widget::widget
+	 * @param       array $args Arguments to pass to the widget.
+	 * @param       array $instance A given widget instance.
+	 * @return      void
+	 */
+	public function widget( $args, $instance ) {
+		if ( ! isset( $args['id'] ) ) {
+		    $args['id'] = 'docupress_collections_widget';
+		}
+
+		$title = apply_filters( 'widget_title', $instance['title'], $instance, $args['id'] );
+
+		echo $args['before_widget'];
+
+		if ( $title ) {
+		    echo $args['before_title'] . $title . $args['after_title'];
+		}
+
+		// Get all collections.
+		$terms = get_terms( 'docupress_collections' );
+
+		// Display collections in unordered list.
+		if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
+			echo "<ul class='docupress-widget-list'>";
+			foreach ( $terms as $term ) {
+				echo '<li><a href="' . esc_url( get_term_link( $term ) ) . '" alt="' . esc_attr( sprintf( __( 'View all post filed under %s', 'my_localization_domain' ), $term->name ) ) . '">' . $term->name . '</li></a>';
+			}
+			echo '</ul>';
+		}
+
+		echo $args['after_widget'];
+	}
+
+
+	/**
+	 * Update widget options
+	 *
+	 * @access      public
+	 * @since       1.0.0
+	 * @see         WP_Widget::update
+	 * @param       array $new_instance The updated options.
+	 * @param       array $old_instance The old options.
+	 * @return      array $instance The updated instance options
+	 */
+	public function update( $new_instance, $old_instance ) {
+	    $instance = $old_instance;
+
+	    $instance['title'] = strip_tags( $new_instance['title'] );
+	    $instance['limit'] = strip_tags( $new_instance['limit'] );
+
+	    return $instance;
+	}
+
+	/**
+	 * Display widget form on dashboard
+	 *
+	 * @access      public
+	 * @since       1.0.0
+	 * @see         WP_Widget::form
+	 * @param       array $instance A given widget instance.
+	 * @return      void
+	 */
+	public function form( $instance ) {
+	    $defaults = array(
+	        'title'       => 'Collections',
+	        'limit'       => '5',
+	    );
+
+		$instance = wp_parse_args( (array) $instance, $defaults );
+	?>
+	<p>
+		<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Widget Title:', 'docupress' ); ?></label>
+		<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_html( $instance['title'] ); ?>" />
+	</p>
+
+	<?php
+	}
+}
+
+/**
+ * Register the new widgets
  *
  * @since       1.0.0
  * @return      void
  */
-function docupress_register_widget() {
+function docupress_register_widgets() {
 	register_widget( 'docupress_articles_widget' );
+	register_widget( 'docupress_collections_widget' );
 }
-add_action( 'widgets_init', 'docupress_register_widget' );
+add_action( 'widgets_init', 'docupress_register_widgets' );
 
 ?>

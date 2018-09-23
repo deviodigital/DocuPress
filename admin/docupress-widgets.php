@@ -17,11 +17,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * DocuPress Widget
+ * DocuPress Articles Widget
  *
  * @since       1.0.0
  */
-class docupress_widget extends WP_Widget {
+class DocuPress_Articles_Widget extends WP_Widget {
 
 	/**
 	 * Constructor
@@ -33,7 +33,7 @@ class docupress_widget extends WP_Widget {
 	public function __construct() {
 
 		parent::__construct(
-			'docupress_widget',
+			'docupress_articles_widget',
 			__( 'DocuPress Articles', 'docupress' ),
 			array(
 				'description' => __( 'Display documentation articles', 'docupress' ),
@@ -55,7 +55,7 @@ class docupress_widget extends WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 		if ( ! isset( $args['id'] ) ) {
-		    $args['id'] = 'docupress_widget';
+		    $args['id'] = 'docupress_articles_widget';
 		}
 
 		$title = apply_filters( 'widget_title', $instance['title'], $instance, $args['id'] );
@@ -77,7 +77,7 @@ class docupress_widget extends WP_Widget {
 		global $post;
 		
 		if ( 'all' === $collections ) {
-			$docupress_widget = new WP_Query(
+			$docupress_articles_widget = new WP_Query(
 				array(
 					'post_type' => 'docupress',
 					'showposts' => $instance['limit'],
@@ -85,7 +85,7 @@ class docupress_widget extends WP_Widget {
 				)
 			);
 		} else {
-			$docupress_widget = new WP_Query(
+			$docupress_articles_widget = new WP_Query(
 				array(
 					'post_type' => 'docupress',
 					'showposts' => $instance['limit'],
@@ -103,7 +103,7 @@ class docupress_widget extends WP_Widget {
 
 		echo "<ul class='docupress-widget-list'>";
 
-		while ( $docupress_widget->have_posts() ) : $docupress_widget->the_post();
+		while ( $docupress_articles_widget->have_posts() ) : $docupress_articles_widget->the_post();
 
 			$do_not_duplicate = $post->ID;
 
@@ -229,9 +229,9 @@ class docupress_widget extends WP_Widget {
  * @since       1.0.0
  * @return      void
  */
-function DocuPress_register_widget() {
-	register_widget( 'docupress_widget' );
+function docupress_register_widget() {
+	register_widget( 'docupress_articles_widget' );
 }
-add_action( 'widgets_init', 'DocuPress_register_widget' );
+add_action( 'widgets_init', 'docupress_register_widget' );
 
 ?>

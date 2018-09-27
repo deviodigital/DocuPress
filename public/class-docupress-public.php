@@ -2,19 +2,12 @@
 
 /**
  * The public-facing functionality of the plugin.
+ * 
+ * Defines the plugin name, version, and two examples hooks for how to
+ * enqueue the admin-specific stylesheet and JavaScript.
  *
  * @link       https://www.robertdevore.com/
  * @since      1.0.0
- *
- * @package    DocuPress
- * @subpackage DocuPress/public
- */
-
-/**
- * The public-facing functionality of the plugin.
- *
- * Defines the plugin name, version, and two examples hooks for how to
- * enqueue the admin-specific stylesheet and JavaScript.
  *
  * @package    DocuPress
  * @subpackage DocuPress/public

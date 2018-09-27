@@ -1,0 +1,259 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: DocuPress\n"
+"POT-Creation-Date: 2018-09-26 23:58-0400\n"
+"PO-Revision-Date: 2018-09-26 23:58-0400\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.1\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: docupress.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: admin/class-docupress-settings.php:33
+msgid "DocuPress Base"
+msgstr ""
+
+#: admin/docupress-cpt.php:31
+msgctxt "Post Type General Name"
+msgid "Articles"
+msgstr ""
+
+#: admin/docupress-cpt.php:32
+msgctxt "Post Type Singular Name"
+msgid "Article"
+msgstr ""
+
+#: admin/docupress-cpt.php:33 admin/docupress-cpt.php:34
+msgid "Documentation"
+msgstr ""
+
+#: admin/docupress-cpt.php:35
+msgid "Article Archives"
+msgstr ""
+
+#: admin/docupress-cpt.php:36
+msgid "Article Attributes"
+msgstr ""
+
+#: admin/docupress-cpt.php:37
+msgid "Parent Article:"
+msgstr ""
+
+#: admin/docupress-cpt.php:38
+msgid "All Articles"
+msgstr ""
+
+#: admin/docupress-cpt.php:39
+msgid "Add New Article"
+msgstr ""
+
+#: admin/docupress-cpt.php:40
+msgid "Add New"
+msgstr ""
+
+#: admin/docupress-cpt.php:41
+msgid "New Article"
+msgstr ""
+
+#: admin/docupress-cpt.php:42
+msgid "Edit Article"
+msgstr ""
+
+#: admin/docupress-cpt.php:43
+msgid "Update Article"
+msgstr ""
+
+#: admin/docupress-cpt.php:44
+msgid "View Article"
+msgstr ""
+
+#: admin/docupress-cpt.php:45
+msgid "View Articles"
+msgstr ""
+
+#: admin/docupress-cpt.php:46
+msgid "Search Articles"
+msgstr ""
+
+#: admin/docupress-cpt.php:47
+msgid "Not found"
+msgstr ""
+
+#: admin/docupress-cpt.php:48
+msgid "Not found in Trash"
+msgstr ""
+
+#: admin/docupress-cpt.php:49
+msgid "Featured Image"
+msgstr ""
+
+#: admin/docupress-cpt.php:50
+msgid "Set featured image"
+msgstr ""
+
+#: admin/docupress-cpt.php:51
+msgid "Remove featured image"
+msgstr ""
+
+#: admin/docupress-cpt.php:52
+msgid "Use as featured image"
+msgstr ""
+
+#: admin/docupress-cpt.php:53
+msgid "Insert into article"
+msgstr ""
+
+#: admin/docupress-cpt.php:54
+msgid "Uploaded to this article"
+msgstr ""
+
+#: admin/docupress-cpt.php:55
+msgid "Articles list"
+msgstr ""
+
+#: admin/docupress-cpt.php:56
+msgid "Articles list navigation"
+msgstr ""
+
+#: admin/docupress-cpt.php:57
+msgid "Filter articles list"
+msgstr ""
+
+#: admin/docupress-cpt.php:66
+msgid "Article"
+msgstr ""
+
+#: admin/docupress-cpt.php:67
+msgid "Documentation Articles"
+msgstr ""
+
+#: admin/docupress-metaboxes.php:28
+msgid "Additional Details"
+msgstr ""
+
+#: admin/docupress-metaboxes.php:56
+msgid "Path"
+msgstr ""
+
+#: admin/docupress-metaboxes.php:60
+msgid "Link"
+msgstr ""
+
+#: admin/docupress-taxonomies.php:27
+msgctxt "taxonomy general name"
+msgid "Collections"
+msgstr ""
+
+#: admin/docupress-taxonomies.php:28
+msgctxt "taxonomy singular name"
+msgid "Collection"
+msgstr ""
+
+#: admin/docupress-taxonomies.php:29
+msgid "Search Collections"
+msgstr ""
+
+#: admin/docupress-taxonomies.php:30
+msgid "All Collections"
+msgstr ""
+
+#: admin/docupress-taxonomies.php:31
+msgid "Parent Collection"
+msgstr ""
+
+#: admin/docupress-taxonomies.php:32
+msgid "Parent Collection:"
+msgstr ""
+
+#: admin/docupress-taxonomies.php:33
+msgid "Edit Collection"
+msgstr ""
+
+#: admin/docupress-taxonomies.php:34
+msgid "Update Collection"
+msgstr ""
+
+#: admin/docupress-taxonomies.php:35
+msgid "Add New Collection"
+msgstr ""
+
+#: admin/docupress-taxonomies.php:36
+msgid "New Collection Name"
+msgstr ""
+
+#: admin/docupress-taxonomies.php:38
+msgid "Collections"
+msgstr ""
+
+#: admin/docupress-widgets.php:37
+msgid "DocuPress Articles"
+msgstr ""
+
+#: admin/docupress-widgets.php:39
+msgid "Display documentation articles"
+msgstr ""
+
+#: admin/docupress-widgets.php:178 admin/docupress-widgets.php:329
+msgid "Widget Title:"
+msgstr ""
+
+#: admin/docupress-widgets.php:183
+msgid "Amount of articles to show:"
+msgstr ""
+
+#: admin/docupress-widgets.php:188
+msgid "Collections:"
+msgstr ""
+
+#: admin/docupress-widgets.php:214
+msgid "Randomize output?"
+msgstr ""
+
+#: admin/docupress-widgets.php:219
+msgid "Display link to all articles in collection?"
+msgstr ""
+
+#: admin/docupress-widgets.php:244
+msgid "DocuPress Collections"
+msgstr ""
+
+#: admin/docupress-widgets.php:246
+msgid "Display a list of collections"
+msgstr ""
+
+#: admin/docupress-widgets.php:283
+#, php-format
+msgid "View all post filed under %s"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "DocuPress"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://www.robertdevore.com/docupress"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Documentation simplified."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Robert DeVore"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://www.robertdevore.com/"
+msgstr ""

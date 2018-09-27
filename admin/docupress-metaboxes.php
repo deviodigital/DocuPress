@@ -53,11 +53,11 @@ function docupress_document_details() {
 
 	/** Echo out the fields */
 	echo '<div class="docupress details">';
-	echo '<p>Path <span>(ex: path/to/file.php)</span>:</p>';
+	echo '<p>' . __( 'Path', 'docupress' ) . '<span>(ex: path/to/file.php)</span>:</p>';
 	echo '<input type="text" name="docupress_path" value="' . $docupress_path  . '" class="widefat" />';
 	echo '</div>';
 	echo '<div class="docupress details">';
-	echo '<p>Link <span>(ex: https://github.com/...)</span>:</p>';
+	echo '<p>' . __( 'Link', 'docupress' ) . '<span>(ex: https://github.com/...)</span>:</p>';
 	echo '<input type="text" name="docupress_url" value="' . $docupress_url  . '" class="widefat" />';
 	echo '</div>';
 

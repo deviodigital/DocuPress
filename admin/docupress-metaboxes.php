@@ -44,7 +44,7 @@ function docupress_document_details() {
 	global $post;
 
 	/** Noncename needed to verify where the data originated */
-	echo '<input type="hidden" name="documentdetailsmeta_noncename" id="documentdetailsdmeta_noncename" value="' .
+	echo '<input type="hidden" name="documentdetailsmeta_noncename" id="documentdetailsmeta_noncename" value="' .
 	wp_create_nonce( plugin_basename( __FILE__ ) ) . '" />';
 
 	/** Get the metabox data if its already been entered */

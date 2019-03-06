@@ -90,7 +90,7 @@ class DocuPress_Articles_Widget extends WP_Widget {
 					'post_type' => 'docupress',
 					'showposts' => $instance['limit'],
 					'orderby'	=> $randorder,
-					'tax_query'			=> array(
+					'tax_query' => array(
 						array(
 							'taxonomy'	=> 'docupress_collections',
 							'field'		=> 'slug',
@@ -172,7 +172,7 @@ class DocuPress_Articles_Widget extends WP_Widget {
 			'viewall'     => '',
 	    );
 
-			$instance = wp_parse_args( (array) $instance, $defaults );
+		$instance = wp_parse_args( (array) $instance, $defaults );
 	?>
 	<p>
 		<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Widget Title:', 'docupress' ); ?></label>
@@ -319,8 +319,8 @@ class DocuPress_Collections_Widget extends WP_Widget {
 	 */
 	public function form( $instance ) {
 	    $defaults = array(
-	        'title'       => 'Collections',
-	        'limit'       => '5',
+	        'title' => 'Collections',
+	        'limit' => '5',
 	    );
 
 		$instance = wp_parse_args( (array) $instance, $defaults );
@@ -345,5 +345,3 @@ function docupress_register_widgets() {
 	register_widget( 'docupress_collections_widget' );
 }
 add_action( 'widgets_init', 'docupress_register_widgets' );
-
-?>

@@ -109,5 +109,3 @@ function docupress_save_documentdetails_meta( $post_id, $post ) {
 }
 
 add_action( 'save_post', 'docupress_save_documentdetails_meta', 1, 2 ); // save the custom fields.
-
-?>

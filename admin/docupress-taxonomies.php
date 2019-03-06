@@ -16,12 +16,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-add_action( 'init', 'DocuPress_Collections', 0 );
-
 /**
  * DocuPress Collections
  */
-function DocuPress_Collections() {
+function docupress_collections_taxonomy() {
 
 	  $labels = array(
 		'name'              => _x( 'Collections', 'taxonomy general name' ),
@@ -53,5 +51,4 @@ function DocuPress_Collections() {
 	  ));
 
 }
-
-?>
+add_action( 'init', 'docupress_collections_taxonomy', 0 );

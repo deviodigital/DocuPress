@@ -16,10 +16,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! function_exists( 'DocuPress' ) ) {
+if ( ! function_exists( 'docupress_cpt' ) ) {
 
 // Register Custom Post Type
-function DocuPress() {
+function docupress_cpt() {
 
 	$docupress_article_slug = get_option( 'docupress_article_slug' );
 
@@ -88,6 +88,6 @@ function DocuPress() {
 	register_post_type( 'docupress', $args );
 
 }
-add_action( 'init', 'DocuPress', 0 );
+add_action( 'init', 'docupress_cpt', 0 );
 
 }

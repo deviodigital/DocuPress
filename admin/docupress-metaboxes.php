@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Metabox example
+ * DocuPress Additional Details Metabox
  */
 function add_documentdetails_metaboxes() {
 	$screens = apply_filters( 'docupress_details_screens', array( 'docupress' ) );

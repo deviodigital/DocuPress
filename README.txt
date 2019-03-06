@@ -3,8 +3,8 @@ Contributors: deviodigital
 Donate link: https://www.robertdevore.com/
 Tags: documentation, document, knowledgebase, help, support, notes
 Requires at least: 3.0.1
-Stable tag: 1.2
-Tested up to: 4.9.8
+Stable tag: 1.2.1
+Tested up to: 5.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,7 +14,7 @@ Documentation Simplified.
 
 Create your own online help documents from your WordPress dashboard with DocuPress.
 
-Separate your documentation into collections, making it easy to give users the ability to browse only the content they're looking for.
+Separate your documentation into collections, making it easy for users to browse only the content they're looking for.
 
 DocuPress also comes with 2 custom widgets:
 
@@ -33,6 +33,16 @@ DocuPress also comes with 2 custom widgets:
 2. Here is the DocuPress widget, available via `Appearance - Widgets`
 
 == Changelog ==
+
+= 1.2.1 =
+* Bugfix misspelled ID for noncename verification in `admin/docupress-metaboxes.php`
+* Updated function names with all lowercase letters in `admin/docupress-cpt.php`
+* Updated function names with all lowercase letters in `admin/docupress-taxonomies.php`
+* Updated cpt and tax function names in activator in `includes/class-docupress-activator.php`
+* Updated text strings for localization in `admin/docupress-metaboxes.php`
+* Updated text strings for localization in `admin/docupress-widgets.php`
+* Updated `.pot` file for translation in `languages/docupress.pot`
+* General doc clean up throughout various files
 
 = 1.2 =
 * Added new Collections widget

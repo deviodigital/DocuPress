@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: DocuPress\n"
-"POT-Creation-Date: 2018-09-26 23:58-0400\n"
-"PO-Revision-Date: 2018-09-26 23:58-0400\n"
+"POT-Creation-Date: 2019-03-06 10:47-0500\n"
+"PO-Revision-Date: 2019-03-06 10:46-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -151,49 +151,49 @@ msgstr ""
 msgid "Link"
 msgstr ""
 
-#: admin/docupress-taxonomies.php:27
+#: admin/docupress-taxonomies.php:25
 msgctxt "taxonomy general name"
 msgid "Collections"
 msgstr ""
 
-#: admin/docupress-taxonomies.php:28
+#: admin/docupress-taxonomies.php:26
 msgctxt "taxonomy singular name"
 msgid "Collection"
 msgstr ""
 
-#: admin/docupress-taxonomies.php:29
+#: admin/docupress-taxonomies.php:27
 msgid "Search Collections"
 msgstr ""
 
-#: admin/docupress-taxonomies.php:30
+#: admin/docupress-taxonomies.php:28
 msgid "All Collections"
 msgstr ""
 
-#: admin/docupress-taxonomies.php:31
+#: admin/docupress-taxonomies.php:29
 msgid "Parent Collection"
 msgstr ""
 
-#: admin/docupress-taxonomies.php:32
+#: admin/docupress-taxonomies.php:30
 msgid "Parent Collection:"
 msgstr ""
 
-#: admin/docupress-taxonomies.php:33
+#: admin/docupress-taxonomies.php:31
 msgid "Edit Collection"
 msgstr ""
 
-#: admin/docupress-taxonomies.php:34
+#: admin/docupress-taxonomies.php:32
 msgid "Update Collection"
 msgstr ""
 
-#: admin/docupress-taxonomies.php:35
+#: admin/docupress-taxonomies.php:33
 msgid "Add New Collection"
 msgstr ""
 
-#: admin/docupress-taxonomies.php:36
+#: admin/docupress-taxonomies.php:34
 msgid "New Collection Name"
 msgstr ""
 
-#: admin/docupress-taxonomies.php:38
+#: admin/docupress-taxonomies.php:36
 msgid "Collections"
 msgstr ""
 
@@ -203,6 +203,10 @@ msgstr ""
 
 #: admin/docupress-widgets.php:39
 msgid "Display documentation articles"
+msgstr ""
+
+#: admin/docupress-widgets.php:123
+msgid "view all"
 msgstr ""
 
 #: admin/docupress-widgets.php:178 admin/docupress-widgets.php:329

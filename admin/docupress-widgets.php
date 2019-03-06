@@ -120,7 +120,7 @@ class DocuPress_Articles_Widget extends WP_Widget {
 		if ( 'all' === $collections ) { } else {
 			if ( 'on' === $instance['viewall'] ) {
 				echo "<li>";
-				echo "<a href='" . $websitelink . "/collections/". $collections ."'>view all &rarr;</a>";
+				echo "<a href='" . $websitelink . "/collections/". $collections ."'>" . __( 'view all', 'docupress' ) . " &rarr;</a>";
 				echo "</li>";
 			}
 		}

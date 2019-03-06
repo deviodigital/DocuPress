@@ -33,12 +33,12 @@ class DocuPress_Activator {
 		/**
 		 * Custom Post Type
 		 */
-		DocuPress();
+		docupress_cpt();
 
 		/**
 		 * Custom Categories
 		 */
-		DocuPress_Collections();
+		docupress_collections_taxonomy();
 
 		/**
 		 * Flush Rewrite Rules

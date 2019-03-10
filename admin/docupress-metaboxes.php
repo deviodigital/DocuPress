@@ -86,8 +86,8 @@ function docupress_save_documentdetails_meta( $post_id, $post ) {
 	 * We'll put it into an array to make it easier to loop though.
 	 */
 
-	$docupress_details['docupress_path'] = $_POST['docupress_path'];
-	$docupress_details['docupress_url']  = $_POST['docupress_url'];
+	$docupress_details['docupress_path'] = esc_html( $_POST['docupress_path'] );
+	$docupress_details['docupress_url']  = esc_html( $_POST['docupress_url'] );
 
 	/** Add values of $documentdetails_meta as custom fields */
 

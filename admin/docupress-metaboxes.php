@@ -72,9 +72,13 @@ function docupress_save_documentdetails_meta( $post_id, $post ) {
 	 * Verify this came from the our screen and with proper authorization,
 	 * because save_post can be triggered at other times
 	 */
-	if ( ! wp_verify_nonce( $_POST['documentdetailsmeta_noncename'], plugin_basename( __FILE__ ) ) ) {
+	if (
+		! isset( $_POST['documentdetailsmeta_noncename' ] ) ||
+		! wp_verify_nonce( $_POST['documentdetailsmeta_noncename'], plugin_basename( __FILE__ ) )
+	) {
 		return $post->ID;
 	}
+
 
 	/** Is the user allowed to edit the post or page? */
 	if ( ! current_user_can( 'edit_post', $post->ID ) ) {

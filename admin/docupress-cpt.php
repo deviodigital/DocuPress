@@ -21,50 +21,55 @@ if ( ! function_exists( 'docupress_cpt' ) ) {
 // Register Custom Post Type
 function docupress_cpt() {
 
+	// Get permalink base for Articles.
 	$docupress_article_slug = get_option( 'docupress_article_slug' );
 
+	// If custom base is empty, set default.
 	if ( '' == $docupress_article_slug ) {
-		$docupress_article_slug = 'article';
+		$docupress_article_slug = 'articles';
 	}
 
+	// Capitalize first letter of new slug.
+	$docupress_article_slug_cap = ucfirst( $docupress_article_slug );
+
 	$labels = array(
-		'name'                  => _x( 'Articles', 'Post Type General Name', 'docupress' ),
-		'singular_name'         => _x( 'Article', 'Post Type Singular Name', 'docupress' ),
-		'menu_name'             => __( 'Documentation', 'docupress' ),
-		'name_admin_bar'        => __( 'Documentation', 'docupress' ),
-		'archives'              => __( 'Article Archives', 'docupress' ),
-		'attributes'            => __( 'Article Attributes', 'docupress' ),
-		'parent_item_colon'     => __( 'Parent Article:', 'docupress' ),
-		'all_items'             => __( 'All Articles', 'docupress' ),
-		'add_new_item'          => __( 'Add New Article', 'docupress' ),
+		'name'                  => sprintf( esc_html__( '%s', 'Post Type General Name', 'docupress' ), $docupress_article_slug_cap ),
+		'singular_name'         => sprintf( esc_html__( '%s', 'Post Type Singular Name', 'docupress' ), $docupress_article_slug_cap ),
+		'menu_name'             => esc_html__( 'Documentation', 'docupress' ),
+		'name_admin_bar'        => sprintf( esc_html__( '%s', 'docupress' ), $docupress_article_slug_cap ),
+		'archives'              => sprintf( esc_html__( '%s Archives', 'docupress' ), $docupress_article_slug_cap ),
+		'parent_item_colon'     => sprintf( esc_html__( 'Parent %s:', 'docupress' ), $docupress_article_slug_cap ),
+		'all_items'             => sprintf( esc_html__( 'All %s', 'docupress' ), $docupress_article_slug_cap ),
+		'add_new_item'          => sprintf( esc_html__( 'Add New %s', 'docupress' ), $docupress_article_slug_cap ),
 		'add_new'               => __( 'Add New', 'docupress' ),
-		'new_item'              => __( 'New Article', 'docupress' ),
-		'edit_item'             => __( 'Edit Article', 'docupress' ),
-		'update_item'           => __( 'Update Article', 'docupress' ),
-		'view_item'             => __( 'View Article', 'docupress' ),
-		'view_items'            => __( 'View Articles', 'docupress' ),
-		'search_items'          => __( 'Search Articles', 'docupress' ),
+		'new_item'              => sprintf( esc_html__( 'New %s', 'docupress' ), $docupress_article_slug_cap ),
+		'edit_item'             => sprintf( esc_html__( 'Edit %s', 'docupress' ), $docupress_article_slug_cap ),
+		'update_item'           => sprintf( esc_html__( 'Update %s', 'docupress' ), $docupress_article_slug_cap ),
+		'view_item'             => sprintf( esc_html__( 'View %s', 'docupress' ), $docupress_article_slug_cap ),
+		'search_items'          => sprintf( esc_html__( 'Search %s', 'docupress' ), $docupress_article_slug_cap ),
 		'not_found'             => __( 'Not found', 'docupress' ),
 		'not_found_in_trash'    => __( 'Not found in Trash', 'docupress' ),
 		'featured_image'        => __( 'Featured Image', 'docupress' ),
 		'set_featured_image'    => __( 'Set featured image', 'docupress' ),
 		'remove_featured_image' => __( 'Remove featured image', 'docupress' ),
 		'use_featured_image'    => __( 'Use as featured image', 'docupress' ),
-		'insert_into_item'      => __( 'Insert into article', 'docupress' ),
-		'uploaded_to_this_item' => __( 'Uploaded to this article', 'docupress' ),
-		'items_list'            => __( 'Articles list', 'docupress' ),
-		'items_list_navigation' => __( 'Articles list navigation', 'docupress' ),
-		'filter_items_list'     => __( 'Filter articles list', 'docupress' ),
+		'insert_into_item'      => sprintf( esc_html__( 'Insert into %s', 'docupress' ), $docupress_article_slug_cap ),
+		'uploaded_to_this_item' => sprintf( esc_html__( 'Uploaded to this %s', 'docupress' ), $docupress_article_slug_cap ),
+		'items_list'            => sprintf( esc_html__( '%s list', 'docupress' ), $docupress_article_slug_cap ),
+		'items_list_navigation' => sprintf( esc_html__( '%s list navigation', 'docupress' ), $docupress_article_slug_cap ),
+		'filter_items_list'     => sprintf( esc_html__( 'Filter %s list', 'docupress' ), $docupress_article_slug ),
 	);
+
 	$rewrite = array(
 		'slug'       => $docupress_article_slug,
 		'with_front' => true,
 		'pages'      => true,
 		'feeds'      => true,
 	);
+
 	$args = array(
-		'label'                 => __( 'Article', 'docupress' ),
 		'description'           => __( 'Documentation Articles', 'docupress' ),
+		'label'                 => sprintf( esc_html__( '%s', 'docupress' ), $docupress_article_slug_cap ),
 		'labels'                => $labels,
 		'supports'              => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'revisions', 'page-attributes', 'post-formats', ),
 		'hierarchical'          => false,

@@ -87,8 +87,6 @@ function docupress_cpt() {
 		'rewrite'               => $rewrite,
 		'capability_type'       => 'post',
 		'show_in_rest'          => true,
-		'rest_base'             => 'documentation',
-		'rest_controller_class' => 'WP_REST_Articles_Controller',
 	);
 	register_post_type( 'docupress', $args );
 

@@ -68,8 +68,8 @@ function docupress_cpt() {
 	);
 
 	$args = array(
-		'description'           => __( 'Documentation Articles', 'docupress' ),
 		'label'                 => sprintf( esc_html__( '%s', 'docupress' ), $docupress_article_slug_cap ),
+		'description'           => esc_html__( 'Documentation', 'docupress' ),
 		'labels'                => $labels,
 		'supports'              => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'revisions', 'page-attributes', 'post-formats', ),
 		'hierarchical'          => false,

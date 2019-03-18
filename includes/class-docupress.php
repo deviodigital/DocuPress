@@ -69,7 +69,7 @@ class DocuPress {
 	public function __construct() {
 
 		$this->plugin_name = 'DocuPress';
-		$this->version     = '1.2.1';
+		$this->version     = '1.2.2';
 
 		$this->load_dependencies();
 		$this->set_locale();

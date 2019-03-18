@@ -3,7 +3,7 @@ Contributors: deviodigital
 Donate link: https://www.robertdevore.com/
 Tags: documentation, document, knowledgebase, help, support, notes
 Requires at least: 3.0.1
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 Tested up to: 5.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -29,10 +29,17 @@ DocuPress also comes with 2 custom widgets:
 
 == Screenshots ==
 
-1. DocuPress adds a "Documentation" tab to your admin dashboard
-2. Here is the DocuPress widget, available via `Appearance - Widgets`
+1. DocuPress adds a `Documentation` tab to your admin dashboard
+2. DocuPress widget, available via `Appearance - Widgets`
 
 == Changelog ==
+
+= 1.2.2 =
+* Bugfix removed rest_base and rest_controller_class from custom post type in `admin/docupress-cpt.php`
+* Updated code to escape input data for path and url in `admin/docupress-metaboxes.php`
+* Updated check to hide undefined variable name notice in `admin/docupress-metaboxes.php`
+* Updated code to Change names based on custom permalink based in `admin/docupress-cpt.php`
+* General code cleanup in `public/class-docupress-public.php`
 
 = 1.2.1 =
 * Bugfix misspelled ID for noncename verification in `admin/docupress-metaboxes.php`

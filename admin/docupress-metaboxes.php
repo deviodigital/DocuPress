@@ -52,15 +52,16 @@ function docupress_document_details() {
 	$docupress_url  = get_post_meta( $post->ID, 'docupress_url', true );
 
 	/** Echo out the fields */
-	echo '<div class="docupress details">';
-	echo '<p>' . __( 'Path', 'docupress' ) . '<span>(ex: path/to/file.php)</span>:</p>';
-	echo '<input type="text" name="docupress_path" value="' . $docupress_path  . '" class="widefat" />';
-	echo '</div>';
-	echo '<div class="docupress details">';
-	echo '<p>' . __( 'Link', 'docupress' ) . '<span>(ex: https://github.com/...)</span>:</p>';
-	echo '<input type="text" name="docupress_url" value="' . $docupress_url  . '" class="widefat" />';
-	echo '</div>';
+	$details  = '<div class="docupress details">';
+	$details .= '<p>' . __( 'Path', 'docupress' ) . '<span>(ex: path/to/file.php)</span>:</p>';
+	$details .= '<input type="text" name="docupress_path" value="' . $docupress_path  . '" class="widefat" />';
+	$details .= '</div>';
+	$details .= '<div class="docupress details">';
+	$details .= '<p>' . __( 'Link', 'docupress' ) . '<span>(ex: https://github.com/...)</span>:</p>';
+	$details .= '<input type="text" name="docupress_url" value="' . $docupress_url  . '" class="widefat" />';
+	$details .= '</div>';
 
+	echo $details;
 }
 
 /**
@@ -111,5 +112,4 @@ function docupress_save_documentdetails_meta( $post_id, $post ) {
 	}
 
 }
-
 add_action( 'save_post', 'docupress_save_documentdetails_meta', 1, 2 ); // save the custom fields.

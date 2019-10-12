@@ -81,7 +81,7 @@ class DocuPress_Articles_Widget extends WP_Widget {
 				array(
 					'post_type' => 'docupress',
 					'showposts' => $instance['limit'],
-					'orderby'	=> $randorder,
+					'orderby'   => $randorder,
 				)
 			);
 		} else {
@@ -89,43 +89,42 @@ class DocuPress_Articles_Widget extends WP_Widget {
 				array(
 					'post_type' => 'docupress',
 					'showposts' => $instance['limit'],
-					'orderby'	=> $randorder,
+					'orderby'   => $randorder,
 					'tax_query' => array(
 						array(
-							'taxonomy'	=> 'docupress_collections',
-							'field'		=> 'slug',
-							'terms'		=> $collections
+							'taxonomy' => 'docupress_collections',
+							'field'    => 'slug',
+							'terms'    => $collections
 						),
 					),
 				)
 			);
 		}
 
-		echo "<ul class='docupress-widget-list'>";
+		$articles = '<ul class="docupress-widget-list">';
 
+		// Loop through articles.
 		while ( $docupress_articles_widget->have_posts() ) : $docupress_articles_widget->the_post();
-
-			$do_not_duplicate = $post->ID;
-
-			echo '<li>';
-			echo "<a href='" . esc_url( get_permalink( $post->ID ) ) . "' class='docupress-widget-link'>" . get_the_title( $post->ID ) . "</a>";
-			echo '</li>';
-
-		endwhile; // End loop.
+			$articles .= '<li>';
+			$articles .= "<a href='" . esc_url( get_permalink( $post->ID ) ) . "' class='docupress-widget-link'>" . get_the_title( $post->ID ) . "</a>";
+			$articles .= '</li>';
+		endwhile;
 
 		wp_reset_postdata();
 		
 		$websitelink = get_bloginfo( 'url' );
 
-		if ( 'all' === $collections ) { } else {
+		if ( 'all' !== $collections ) {
 			if ( 'on' === $instance['viewall'] ) {
-				echo "<li>";
-				echo "<a href='" . $websitelink . "/collections/". $collections ."'>" . __( 'view all', 'docupress' ) . " &rarr;</a>";
-				echo "</li>";
+				$articles .= '<li>';
+				$articles .= "<a href='" . $websitelink . "/collections/". $collections ."'>" . __( 'view all', 'docupress' ) . " &rarr;</a>";
+				$articles .= '</li>';
 			}
 		}
 
-		echo '</ul>';
+		$articles .= '</ul>';
+
+		echo $articles;
 
 		echo $args['after_widget'];
 	}
@@ -175,17 +174,17 @@ class DocuPress_Articles_Widget extends WP_Widget {
 		$instance = wp_parse_args( (array) $instance, $defaults );
 	?>
 	<p>
-		<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Widget Title:', 'docupress' ); ?></label>
-		<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_html( $instance['title'] ); ?>" />
+		<label for="<?php esc_attr_e( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Widget Title:', 'docupress' ); ?></label>
+		<input class="widefat" id="<?php esc_attr_e( $this->get_field_id( 'title' ) ); ?>" name="<?php esc_attr_e( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_html( $instance['title'] ); ?>" />
 	</p>
 
 	<p>
-		<label for="<?php echo esc_attr( $this->get_field_id( 'limit' ) ); ?>"><?php esc_html_e( 'Amount of articles to show:', 'docupress' ); ?></label>
-		<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'limit' ) ); ?>" type="number" name="<?php echo esc_attr( $this->get_field_name( 'limit' ) ); ?>" min="1" max="999" value="<?php echo esc_html( $instance['limit'] ); ?>" />
+		<label for="<?php esc_attr_e( $this->get_field_id( 'limit' ) ); ?>"><?php esc_html_e( 'Amount of articles to show:', 'docupress' ); ?></label>
+		<input class="widefat" id="<?php esc_attr_e( $this->get_field_id( 'limit' ) ); ?>" type="number" name="<?php esc_attr_e( $this->get_field_name( 'limit' ) ); ?>" min="1" max="999" value="<?php echo esc_html( $instance['limit'] ); ?>" />
 	</p>
 
 	<p>
-		<label for="<?php echo esc_attr( $this->get_field_id( 'collections' ) ); ?>"><?php _e( 'Collections:', 'docupress' ); ?></label>
+		<label for="<?php esc_attr_e( $this->get_field_id( 'collections' ) ); ?>"><?php _e( 'Collections:', 'docupress' ); ?></label>
 		<?php 
 			$terms = get_terms( 'docupress_collections' );
 			if ( $terms ) {
@@ -196,27 +195,27 @@ class DocuPress_Articles_Widget extends WP_Widget {
 						$collectionsinfo = 'selected="selected"';
 					}
 					printf( '<option value="%s" '. $collectionsinfo .'>%s</option>', 'all', 'All' );
-				foreach ( $terms as $term ) {
-					if ( esc_attr( $term->slug ) == $instance['collections'] ) {
-						$collectionsinfo = 'selected="selected"';
-					} else {
-						$collectionsinfo = '';
+					foreach ( $terms as $term ) {
+						if ( esc_attr( $term->slug ) == $instance['collections'] ) {
+							$collectionsinfo = 'selected="selected"';
+						} else {
+							$collectionsinfo = '';
+						}
+						printf( '<option value="%s" ' . $collectionsinfo . '>%s</option>', esc_attr( $term->slug ), esc_html( $term->name ) );
 					}
-					printf( '<option value="%s" '. $collectionsinfo .'>%s</option>', esc_attr( $term->slug ), esc_html( $term->name ) );
-				}
 				print( '</select>' );
 			}
 		?>
 	</p>
 
 	<p>
-		<input class="checkbox" type="checkbox" <?php checked( $instance['order'], 'on' ); ?> id="<?php echo esc_attr( $this->get_field_id( 'order' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'order' ) ); ?>" />
-		<label for="<?php echo esc_attr( $this->get_field_id( 'order' ) ); ?>"><?php esc_html_e( 'Randomize output?', 'docupress' ); ?></label>
+		<input class="checkbox" type="checkbox" <?php checked( $instance['order'], 'on' ); ?> id="<?php esc_attr_e( $this->get_field_id( 'order' ) ); ?>" name="<?php esc_attr_e( $this->get_field_name( 'order' ) ); ?>" />
+		<label for="<?php esc_attr_e( $this->get_field_id( 'order' ) ); ?>"><?php esc_html_e( 'Randomize output?', 'docupress' ); ?></label>
 	</p>
 
 	<p>
-		<input class="checkbox" type="checkbox" <?php checked( $instance['viewall'], 'on' ); ?> id="<?php echo esc_attr( $this->get_field_id( 'viewall' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'viewall' ) ); ?>" />
-		<label for="<?php echo esc_attr( $this->get_field_id( 'viewall' ) ); ?>"><?php esc_html_e( 'Display link to all articles in collection?', 'docupress' ); ?></label>
+		<input class="checkbox" type="checkbox" <?php checked( $instance['viewall'], 'on' ); ?> id="<?php esc_attr_e( $this->get_field_id( 'viewall' ) ); ?>" name="<?php esc_attr_e( $this->get_field_name( 'viewall' ) ); ?>" />
+		<label for="<?php esc_attr_e( $this->get_field_id( 'viewall' ) ); ?>"><?php esc_html_e( 'Display link to all articles in collection?', 'docupress' ); ?></label>
 	</p>
 
 	<?php
@@ -241,9 +240,9 @@ class DocuPress_Collections_Widget extends WP_Widget {
 
 		parent::__construct(
 			'docupress_collections_widget',
-			__( 'DocuPress Collections', 'docupress' ),
+			esc_html__( 'DocuPress Collections', 'docupress' ),
 			array(
-				'description' => __( 'Display a list of collections', 'docupress' ),
+				'description' => esc_html__( 'Display a list of collections', 'docupress' ),
 				'classname'   => 'docupress-collections-widget',
 			)
 		);
@@ -270,17 +269,17 @@ class DocuPress_Collections_Widget extends WP_Widget {
 		echo $args['before_widget'];
 
 		if ( $title ) {
-		    echo $args['before_title'] . $title . $args['after_title'];
+			echo $args['before_title'] . $title . $args['after_title'];
 		}
 
 		// Get all collections.
 		$terms = get_terms( 'docupress_collections' );
 
 		// Display collections in unordered list.
-		if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
-			echo "<ul class='docupress-widget-list'>";
+		if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
+			echo '<ul class="docupress-widget-list">';
 			foreach ( $terms as $term ) {
-				echo '<li><a href="' . esc_url( get_term_link( $term ) ) . '" alt="' . esc_attr( sprintf( __( 'View all post filed under %s', 'my_localization_domain' ), $term->name ) ) . '">' . $term->name . '</li></a>';
+				echo '<li><a href="' . esc_url( get_term_link( $term ) ) . '" alt="' . esc_attr( sprintf( esc_html__( 'View all articles filed under %s', 'docupress' ), $term->name ) ) . '">' . $term->name . '</li></a>';
 			}
 			echo '</ul>';
 		}
@@ -302,8 +301,8 @@ class DocuPress_Collections_Widget extends WP_Widget {
 	public function update( $new_instance, $old_instance ) {
 	    $instance = $old_instance;
 
-	    $instance['title'] = strip_tags( $new_instance['title'] );
-	    $instance['limit'] = strip_tags( $new_instance['limit'] );
+		$instance['title'] = strip_tags( $new_instance['title'] );
+		$instance['limit'] = strip_tags( $new_instance['limit'] );
 
 	    return $instance;
 	}
@@ -326,8 +325,8 @@ class DocuPress_Collections_Widget extends WP_Widget {
 		$instance = wp_parse_args( (array) $instance, $defaults );
 	?>
 	<p>
-		<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Widget Title:', 'docupress' ); ?></label>
-		<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_html( $instance['title'] ); ?>" />
+		<label for="<?php esc_attr_e( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Widget Title:', 'docupress' ); ?></label>
+		<input class="widefat" id="<?php esc_attr_e( $this->get_field_id( 'title' ) ); ?>" name="<?php esc_attr_e( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_html( $instance['title'] ); ?>" />
 	</p>
 
 	<?php

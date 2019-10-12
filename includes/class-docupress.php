@@ -131,6 +131,13 @@ class DocuPress {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/docupress-metaboxes.php';
 
 		/**
+		 * The function responsible for creating the custom shortcodes.
+		 *
+		 * @since 1.3.0
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/docupress-shortcodes.php';
+
+		/**
 		 * The function responsible for creating the custom widgets.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/docupress-widgets.php';

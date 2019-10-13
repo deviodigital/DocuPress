@@ -3,7 +3,7 @@
 /**
  * The plugin bootstrap file
  *
- * @link              https://www.robertdevore.com/
+ * @link              https://deviodigital.com
  * @since             1.0.0
  * @package           DocuPress
  *
@@ -11,9 +11,9 @@
  * Plugin Name:       DocuPress
  * Plugin URI:        https://www.robertdevore.com/docupress
  * Description:       Documentation simplified.
- * Version:           1.2.2
+ * Version:           1.3
  * Author:            Robert DeVore
- * Author URI:        https://www.robertdevore.com/
+ * Author URI:        https://deviodigital.com
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       docupress
@@ -62,9 +62,7 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-docupress.php';
  * @since    1.0.0
  */
 function run_docupress() {
-
 	$plugin = new DocuPress();
 	$plugin->run();
-
 }
 run_docupress();

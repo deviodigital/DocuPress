@@ -3,7 +3,7 @@
 /**
  * The Class responsible for defining the custom permalink settings.
  *
- * @link       https://www.robertdevore.com/
+ * @link       https://deviodigital.com
  * @since      1.2.0
  *
  * @package    DocuPress

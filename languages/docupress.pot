@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: DocuPress\n"
-"POT-Creation-Date: 2019-03-06 10:47-0500\n"
-"PO-Revision-Date: 2019-03-06 10:46-0500\n"
+"POT-Creation-Date: 2019-10-13 12:34-0400\n"
+"PO-Revision-Date: 2019-10-13 12:33-0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -25,118 +25,112 @@ msgstr ""
 msgid "DocuPress Base"
 msgstr ""
 
-#: admin/docupress-cpt.php:31
-msgctxt "Post Type General Name"
-msgid "Articles"
+#: admin/docupress-cpt.php:36 admin/docupress-cpt.php:37
+#: admin/docupress-cpt.php:39 admin/docupress-cpt.php:71
+#, php-format
+msgid "%s"
 msgstr ""
 
-#: admin/docupress-cpt.php:32
-msgctxt "Post Type Singular Name"
-msgid "Article"
-msgstr ""
-
-#: admin/docupress-cpt.php:33 admin/docupress-cpt.php:34
+#: admin/docupress-cpt.php:38 admin/docupress-cpt.php:72
 msgid "Documentation"
 msgstr ""
 
-#: admin/docupress-cpt.php:35
-msgid "Article Archives"
-msgstr ""
-
-#: admin/docupress-cpt.php:36
-msgid "Article Attributes"
-msgstr ""
-
-#: admin/docupress-cpt.php:37
-msgid "Parent Article:"
-msgstr ""
-
-#: admin/docupress-cpt.php:38
-msgid "All Articles"
-msgstr ""
-
-#: admin/docupress-cpt.php:39
-msgid "Add New Article"
-msgstr ""
-
 #: admin/docupress-cpt.php:40
-msgid "Add New"
+#, php-format
+msgid "%s Archives"
 msgstr ""
 
 #: admin/docupress-cpt.php:41
-msgid "New Article"
+#, php-format
+msgid "Parent %s:"
 msgstr ""
 
 #: admin/docupress-cpt.php:42
-msgid "Edit Article"
+#, php-format
+msgid "All %s"
 msgstr ""
 
 #: admin/docupress-cpt.php:43
-msgid "Update Article"
+#, php-format
+msgid "Add New %s"
 msgstr ""
 
 #: admin/docupress-cpt.php:44
-msgid "View Article"
+msgid "Add New"
 msgstr ""
 
 #: admin/docupress-cpt.php:45
-msgid "View Articles"
+#, php-format
+msgid "New %s"
 msgstr ""
 
 #: admin/docupress-cpt.php:46
-msgid "Search Articles"
+#, php-format
+msgid "Edit %s"
 msgstr ""
 
 #: admin/docupress-cpt.php:47
-msgid "Not found"
+#, php-format
+msgid "Update %s"
 msgstr ""
 
 #: admin/docupress-cpt.php:48
-msgid "Not found in Trash"
+#, php-format
+msgid "View %s"
 msgstr ""
 
 #: admin/docupress-cpt.php:49
-msgid "Featured Image"
+#, php-format
+msgid "Search %s"
 msgstr ""
 
 #: admin/docupress-cpt.php:50
-msgid "Set featured image"
+msgid "Not found"
 msgstr ""
 
 #: admin/docupress-cpt.php:51
-msgid "Remove featured image"
+msgid "Not found in Trash"
 msgstr ""
 
 #: admin/docupress-cpt.php:52
-msgid "Use as featured image"
+msgid "Featured Image"
 msgstr ""
 
 #: admin/docupress-cpt.php:53
-msgid "Insert into article"
+msgid "Set featured image"
 msgstr ""
 
 #: admin/docupress-cpt.php:54
-msgid "Uploaded to this article"
+msgid "Remove featured image"
 msgstr ""
 
 #: admin/docupress-cpt.php:55
-msgid "Articles list"
+msgid "Use as featured image"
 msgstr ""
 
 #: admin/docupress-cpt.php:56
-msgid "Articles list navigation"
+#, php-format
+msgid "Insert into %s"
 msgstr ""
 
 #: admin/docupress-cpt.php:57
-msgid "Filter articles list"
+#, php-format
+msgid "Uploaded to this %s"
 msgstr ""
 
-#: admin/docupress-cpt.php:66
-msgid "Article"
+#: admin/docupress-cpt.php:58
+#, php-format
+msgid "%s list"
 msgstr ""
 
-#: admin/docupress-cpt.php:67
-msgid "Documentation Articles"
+#: admin/docupress-cpt.php:59
+#, php-format
+msgid "%s list navigation"
+msgstr ""
+
+#: admin/docupress-cpt.php:60
+#, php-format
+msgid "Filter %s list"
 msgstr ""
 
 #: admin/docupress-metaboxes.php:28
@@ -149,6 +143,10 @@ msgstr ""
 
 #: admin/docupress-metaboxes.php:60
 msgid "Link"
+msgstr ""
+
+#: admin/docupress-shortcodes.php:78 admin/docupress-widgets.php:120
+msgid "view all"
 msgstr ""
 
 #: admin/docupress-taxonomies.php:25
@@ -205,41 +203,37 @@ msgstr ""
 msgid "Display documentation articles"
 msgstr ""
 
-#: admin/docupress-widgets.php:123
-msgid "view all"
-msgstr ""
-
-#: admin/docupress-widgets.php:178 admin/docupress-widgets.php:329
+#: admin/docupress-widgets.php:177 admin/docupress-widgets.php:329
 msgid "Widget Title:"
 msgstr ""
 
-#: admin/docupress-widgets.php:183
+#: admin/docupress-widgets.php:182
 msgid "Amount of articles to show:"
 msgstr ""
 
-#: admin/docupress-widgets.php:188
+#: admin/docupress-widgets.php:187
 msgid "Collections:"
 msgstr ""
 
-#: admin/docupress-widgets.php:214
+#: admin/docupress-widgets.php:213
 msgid "Randomize output?"
 msgstr ""
 
-#: admin/docupress-widgets.php:219
+#: admin/docupress-widgets.php:218
 msgid "Display link to all articles in collection?"
 msgstr ""
 
-#: admin/docupress-widgets.php:244
+#: admin/docupress-widgets.php:243
 msgid "DocuPress Collections"
 msgstr ""
 
-#: admin/docupress-widgets.php:246
+#: admin/docupress-widgets.php:245
 msgid "Display a list of collections"
 msgstr ""
 
-#: admin/docupress-widgets.php:283
+#: admin/docupress-widgets.php:282
 #, php-format
-msgid "View all post filed under %s"
+msgid "View all articles filed under %s"
 msgstr ""
 
 #. Plugin Name of the plugin/theme
@@ -259,5 +253,5 @@ msgid "Robert DeVore"
 msgstr ""
 
 #. Author URI of the plugin/theme
-msgid "https://www.robertdevore.com/"
+msgid "https://deviodigital.com"
 msgstr ""

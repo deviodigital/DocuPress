@@ -22,7 +22,7 @@
  * @since      1.0.0
  * @package    DocuPress
  * @subpackage DocuPress/includes
- * @author     Robert DeVore <deviodigital@gmail.com>
+ * @author     Robert DeVore <contact@deviodigital.com>
  */
 class DocuPress_i18n {
 

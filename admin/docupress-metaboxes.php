@@ -8,7 +8,7 @@
  *
  * @package    DocuPress
  * @subpackage DocuPress/admin
- * @author     Robert DeVore <deviodigital@gmail.com>
+ * @author     Robert DeVore <contact@deviodigital.com>
  */
 
 // Exit if accessed directly.

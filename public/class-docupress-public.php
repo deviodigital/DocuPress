@@ -53,9 +53,8 @@ class DocuPress_Public {
 	 * @since    1.0.0
 	 */
 	public function enqueue_styles() {
-
+		// General public CSS.
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/docupress-public.css', array(), $this->version, 'all' );
-
 	}
 
 	/**
@@ -64,9 +63,10 @@ class DocuPress_Public {
 	 * @since    1.0.0
 	 */
 	public function enqueue_scripts() {
-
+		// General public JS.
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/docupress-public.js', array( 'jquery' ), $this->version, false );
-
+		// Localize the general JS script so we can pass data to it with PHP.
+		wp_localize_script( $this->plugin_name, 'article_rating_ajax', array( 'ajax_url' => admin_url( 'admin-ajax.php' ), 'nonce' => wp_create_nonce( 'article-rating-nonce' ) ) );
 	}
 
 }

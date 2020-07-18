@@ -138,6 +138,11 @@ class DocuPress {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/docupress-shortcodes.php';
 
 		/**
+		 * The function responsible for adding ratings buttons to individual articles.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/docupress-article-ratings.php';
+
+		/**
 		 * The function responsible for creating the custom widgets.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/docupress-widgets.php';

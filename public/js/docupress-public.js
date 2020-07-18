@@ -1,32 +1,71 @@
-(function( $ ) {
-	"use strict";
+function article_rating_vote(ID, type) {
+	// For the LocalStorage.
+	var itemName = "articlerating" + ID;
 
-	/**
-	 * All of the code for your public-facing JavaScript source
-	 * should reside in this file.
-	 *
-	 * Note: It has been assumed you will write jQuery code here, so the
-	 * $ function reference has been prepared for usage within the scope
-	 * of this function.
-	 *
-	 * This enables you to define handlers, for when the DOM is ready:
-	 *
-	 * $(function() {
-	 *
-	 * });
-	 *
-	 * When the window is loaded:
-	 *
-	 * $( window ).load(function() {
-	 *
-	 * });
-	 *
-	 * ...and/or other possibilities.
-	 *
-	 * Ideally, it is not considered best practise to attach more than a
-	 * single DOM-ready or window-load handler for a particular page.
-	 * Although scripts in the WordPress core, Plugins and Themes may be
-	 * practising this, we should strive to set a better example in our own work.
-	 */
+	var container = '#article-rating-' + ID;
 
-})( jQuery );
+	// Check if the LocalStorage value exist. If do nothing.
+	if (!localStorage.getItem(itemName)) {
+
+		// Set HTML5 LocalStorage so the user can not vote again unless it's manually cleared.
+        localStorage.setItem(itemName, true);
+
+        // Set the localStorage type as well.
+		var typeItemName = "articlerating" + ID + "-" + type;
+		localStorage.setItem(typeItemName, true);
+	
+		// Data for the Ajax Request.
+		var data = {
+			action: 'article_rating_add_vote',
+			postid: ID,
+			type: type,
+			nonce: article_rating_ajax.nonce
+		};
+
+		jQuery.post(article_rating_ajax.ajax_url, data, function(response) {
+
+			var object = jQuery(container);
+
+			jQuery(container).html('');
+
+			jQuery(container).append(response);
+
+			// Remove the class and ID so we don't have 2 DIVs with the same ID.
+			jQuery(object).removeClass('article-rating-container');
+			jQuery(object).attr('id', '');
+
+			// Add the class to the clicked element.
+			var new_container = '#article-rating-' + ID;
+
+			// Check the type.			
+			if( type == 1){ article_rating_class = ".article-rating-up"; }
+			else{ article_rating_class = ".article-rating-down";  }
+
+			jQuery(new_container +  article_rating_class ).addClass('article-rating-voted');
+
+		});
+	} else {
+		// Display message if we detect LocalStorage.
+		jQuery('#article-rating-' + ID + ' .article-rating-already-voted').fadeIn().css('display', 'block');
+	}
+}
+
+jQuery(document).ready(function() {
+	// Get all article containers.
+	jQuery( ".article-rating-container" ).each(function( index ) {
+		// Get data attribute.
+		var content_id = jQuery(this).data('content-id');
+		// Set item name.
+		var itemName = "articlerating"+content_id;
+		// Check if this content has localstorage.
+		if (localStorage.getItem(itemName)){
+			// Check if it's Up or Down vote.
+			if ( localStorage.getItem("articlerating" + content_id + "-1") ){
+				jQuery(this).find('.article-rating-up').addClass('article-rating-voted');
+			}
+			if ( localStorage.getItem("articlerating" + content_id + "-0") ){
+				jQuery(this).find('.article-rating-down').addClass('article-rating-voted');
+			}
+		}
+	});
+});

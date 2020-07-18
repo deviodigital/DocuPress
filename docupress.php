@@ -31,7 +31,7 @@ if ( ! defined( 'WPINC' ) ) {
  */
 function activate_docupress() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-docupress-activator.php';
-	Docupress_Activator::activate();
+	DocuPress_Activator::activate();
 }
 
 /**
@@ -40,7 +40,7 @@ function activate_docupress() {
  */
 function deactivate_docupress() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-docupress-deactivator.php';
-	Docupress_Deactivator::deactivate();
+	DocuPress_Deactivator::deactivate();
 }
 
 register_activation_hook( __FILE__, 'activate_docupress' );

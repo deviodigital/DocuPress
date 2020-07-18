@@ -45,4 +45,18 @@
 
 .article-rating-title {
     font-style: italic;
+    margin: 0 0 12px 0;
+}
+
+ul.docupress-shortcode-list {
+    list-style-type: none;
+    margin: 0;
+}
+
+ul.docupress-shortcode-list li:before {
+    background:url(../images/file-text.svg);
+    content: '';
+    display: inline-block;
+    height: 24px;
+    width: 24px;
 }

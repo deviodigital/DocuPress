@@ -22,18 +22,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 function docupress_collections_taxonomy() {
 
 	$labels = array(
-		'name'              => _x( 'Collections', 'taxonomy general name' ),
-		'singular_name'     => _x( 'Collection', 'taxonomy singular name' ),
-		'search_items'      => __( 'Search Collections' ),
-		'all_items'         => __( 'All Collections' ),
-		'parent_item'       => __( 'Parent Collection' ),
-		'parent_item_colon' => __( 'Parent Collection:' ),
-		'edit_item'         => __( 'Edit Collection' ),
-		'update_item'       => __( 'Update Collection' ),
-		'add_new_item'      => __( 'Add New Collection' ),
-		'new_item_name'     => __( 'New Collection Name' ),
-		'not_found'         => 'No categories found',
-		'menu_name'         => __( 'Collections' ),
+		'name'              => _x( 'Collections', 'taxonomy general name', 'docupress' ),
+		'singular_name'     => _x( 'Collection', 'taxonomy singular name', 'docupress' ),
+		'search_items'      => __( 'Search Collections', 'docupress' ),
+		'all_items'         => __( 'All Collections', 'docupress' ),
+		'parent_item'       => __( 'Parent Collection', 'docupress' ),
+		'parent_item_colon' => __( 'Parent Collection:', 'docupress' ),
+		'edit_item'         => __( 'Edit Collection', 'docupress' ),
+		'update_item'       => __( 'Update Collection', 'docupress' ),
+		'add_new_item'      => __( 'Add New Collection', 'docupress' ),
+		'new_item_name'     => __( 'New Collection Name', 'docupress' ),
+		'not_found'         => __( 'No categories found', 'docupress' ),
+		'menu_name'         => __( 'Collections', 'docupress' ),
 	);
 
 	register_taxonomy( 'docupress_collections','docupress', array(

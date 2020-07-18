@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * 
  * @since 1.4.0
  */
-function article_rating_display( $post_ID = '', $type_of_vote = '' ) {
+function docupress_article_rating_display( $post_ID = '', $type_of_vote = '' ) {
     // Sanatize params.
     $post_ID      = intval( sanitize_text_field( $post_ID ) );
     $type_of_vote = intval( sanitize_text_field( $type_of_vote ) );
@@ -43,7 +43,7 @@ function article_rating_display( $post_ID = '', $type_of_vote = '' ) {
     $article_rating_link  = '<div  class="article-rating-container" id="article-rating-' . $post_ID . '" data-content-id="' . $post_ID . '">';
     $article_rating_link .= '<p class="article-rating-title">Was this article helpful?</p>';
     $article_rating_link .= $link_up . ' ' . $link_down;
-    $article_rating_link .= '<span class="article-rating-already-voted" data-text="' . __( 'You already voted!', 'docupress' ) . '"></span>';
+    $article_rating_link .= '<span class="article-rating-already-voted">' . __( 'You already voted!', 'docupress' ) . '</span>';
     $article_rating_link .= '</div>';
 
     return $article_rating_link;
@@ -56,7 +56,7 @@ function article_rating_display( $post_ID = '', $type_of_vote = '' ) {
  * 
  * @since 1.4.0
  */
-function article_rating_add_vote_callback() {
+function docupress_article_rating_add_vote_callback() {
     // Check the nonce - security.
     check_ajax_referer( 'article-rating-nonce', 'nonce' );
 
@@ -87,8 +87,8 @@ function article_rating_add_vote_callback() {
 
     die( $results );
 }
-add_action( 'wp_ajax_article_rating_add_vote', 'article_rating_add_vote_callback' );
-add_action( 'wp_ajax_nopriv_article_rating_add_vote', 'article_rating_add_vote_callback' );
+add_action( 'wp_ajax_docupress_article_rating_add_vote_callback', 'docupress_article_rating_add_vote_callback' );
+add_action( 'wp_ajax_nopriv_docupress_article_rating_add_vote_callback', 'docupress_article_rating_add_vote_callback' );
 
 /**
  * Admin column ratings display
@@ -97,13 +97,13 @@ add_action( 'wp_ajax_nopriv_article_rating_add_vote', 'article_rating_add_vote_c
  * 
  * @since 1.4.0
  */
-function article_rating_columns( $columns ) {
+function docupress_article_rating_columns( $columns ) {
     return array_merge( $columns, array(
         'article_smile_count' => __( 'Up Votes', 'docupress' ),
         'article_frown_count' => __( 'Down Votes', 'docupress' )
     ) );
 }
-add_filter( 'manage_pages_columns' , 'article_rating_columns' );
+add_filter( 'manage_pages_columns' , 'docupress_article_rating_columns' );
 
 /**
  * Add content to admin columns
@@ -112,7 +112,7 @@ add_filter( 'manage_pages_columns' , 'article_rating_columns' );
  * 
  * @since 1.4.0
  */
-function article_rating_column_values( $column, $post_id ) {
+function docupress_article_rating_column_values( $column, $post_id ) {
     switch ( $column ) {
     case 'article_smile_count' :
            echo get_post_meta( $post_id, 'docupress_article_smile', true ) != '' ? '+' . get_post_meta( $post_id, 'docupress_article_smile', true ) : '0';
@@ -122,14 +122,14 @@ function article_rating_column_values( $column, $post_id ) {
         break;
     }
 }
-add_action( 'manage_posts_custom_column' , 'article_rating_column_values', 10, 2 );
+add_action( 'manage_posts_custom_column' , 'docupress_article_rating_column_values', 10, 2 );
 
 /**
  * Sortable columns
  * 
  * @since 1.4.0
  */
-function article_rating_sortable_columns( $columns ) {
+function docupress_article_rating_sortable_columns( $columns ) {
     $columns[ 'article_smile_count' ] = 'article_smile_count';
     $columns[ 'article_frown_count' ] = 'article_frown_count';
     return $columns;
@@ -143,7 +143,7 @@ function article_rating_sortable_columns( $columns ) {
  * 
  * @since 1.4.0
  */
-function article_rating_column_sort_orderby( $vars ) {
+function docupress_article_rating_column_sort_orderby( $vars ) {
     // Smile count.
     if ( isset( $vars['orderby'] ) && 'article_smile_count' == $vars['orderby'] ) {
         $vars = array_merge( $vars, array(
@@ -162,11 +162,11 @@ function article_rating_column_sort_orderby( $vars ) {
 }
 
 // Apply this to the articles CPT.
-function article_rating_sort_articles() {
-    add_action( 'manage_edit-docupress_sortable_columns', 'article_rating_sortable_columns' );
-    add_filter( 'request', 'article_rating_column_sort_orderby' );
+function docupress_article_rating_sort_articles() {
+    add_action( 'manage_edit-docupress_sortable_columns', 'docupress_article_rating_sortable_columns' );
+    add_filter( 'request', 'docupress_article_rating_column_sort_orderby' );
 }
-add_action( 'admin_init', 'article_rating_sort_articles' );
+add_action( 'admin_init', 'docupress_article_rating_sort_articles' );
 
 /**
  * Add ratings to bottom of content
@@ -176,13 +176,14 @@ add_action( 'admin_init', 'article_rating_sort_articles' );
  * 
  * @since 1.4.0
  */
-function article_rating_print( $content ) {
+function docupress_article_rating_print( $content ) {
     // Check if this is a DocuPress article.
     if ( is_singular( 'docupress' ) ) {
         // Append ratings to the content.
-        return $content . article_rating_display();
+        return $content . docupress_article_rating_display();
     } else {
         // Do nothing.
+        return $content;
     }
 }
-add_filter( 'the_content', 'article_rating_print' );
+add_filter( 'the_content', 'docupress_article_rating_print' );

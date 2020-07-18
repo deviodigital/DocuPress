@@ -38,8 +38,8 @@ function article_rating_vote(ID, type) {
 			var new_container = '#article-rating-' + ID;
 
 			// Check the type.			
-			if( type == 1){ article_rating_class = ".article-rating-up"; }
-			else{ article_rating_class = ".article-rating-down";  }
+			if( type == 1){ article_rating_class = ".article-rating-smile"; }
+			else{ article_rating_class = ".article-rating-frown";  }
 
 			jQuery(new_container +  article_rating_class ).addClass('article-rating-voted');
 
@@ -59,12 +59,12 @@ jQuery(document).ready(function() {
 		var itemName = "articlerating"+content_id;
 		// Check if this content has localstorage.
 		if (localStorage.getItem(itemName)){
-			// Check if it's Up or Down vote.
+			// Check if it's a Smile or Frown vote.
 			if ( localStorage.getItem("articlerating" + content_id + "-1") ){
-				jQuery(this).find('.article-rating-up').addClass('article-rating-voted');
+				jQuery(this).find('.article-rating-smile').addClass('article-rating-voted');
 			}
 			if ( localStorage.getItem("articlerating" + content_id + "-0") ){
-				jQuery(this).find('.article-rating-down').addClass('article-rating-voted');
+				jQuery(this).find('.article-rating-frown').addClass('article-rating-voted');
 			}
 		}
 	});

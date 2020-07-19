@@ -37,14 +37,16 @@ function docupress_article_rating_display( $post_ID = '', $type_of_vote = '' ) {
     $article_smile_count = '' != get_post_meta( $post_ID, 'docupress_article_smile', true ) ? get_post_meta( $post_ID, 'docupress_article_smile', true ) : '0';
     $article_frown_count = '' != get_post_meta( $post_ID, 'docupress_article_frown', true ) ? get_post_meta( $post_ID, 'docupress_article_frown', true ) : '0';
     // Create ratings links.
-    $link_up   = '<span class="article-rating-up" onclick="article_rating_vote(' . $post_ID . ', 1);" data-text="' . __( 'Vote Up', 'docupress' ) . ' +"><img src="' . plugin_dir_url( __FILE__ ) . '/images/mood-smile.svg" /></span>';
-    $link_down = '<span class="article-rating-down" onclick="article_rating_vote(' . $post_ID . ', 2);" data-text="' . __( 'Vote Down', 'docupress' ) . ' -"><img src="' . plugin_dir_url( __FILE__ ) . '/images/mood-sad.svg" /></span>';
+    $face_smile = '<span class="article-rating-smile" onclick="docupress_article_rating_vote(' . $post_ID . ', 1);" data-text="' . __( 'Vote Up', 'docupress' ) . ' +"><img src="' . plugin_dir_url( __FILE__ ) . '/images/mood-smile.svg" /></span>';
+    $face_frown = '<span class="article-rating-frown" onclick="docupress_article_rating_vote(' . $post_ID . ', 2);" data-text="' . __( 'Vote Down', 'docupress' ) . ' -"><img src="' . plugin_dir_url( __FILE__ ) . '/images/mood-sad.svg" /></span>';
     // Article ratings content.
     $article_rating_link  = '<div  class="article-rating-container" id="article-rating-' . $post_ID . '" data-content-id="' . $post_ID . '">';
     $article_rating_link .= '<p class="article-rating-title">Was this article helpful?</p>';
-    $article_rating_link .= $link_up . ' ' . $link_down;
-    $article_rating_link .= '<span class="article-rating-already-voted">' . __( 'You already voted!', 'docupress' ) . '</span>';
+    $article_rating_link .= $face_smile . ' ' . $face_frown;
     $article_rating_link .= '</div>';
+
+    $article_rating_link .= '<p>Smiles: ' . $article_smile_count . '</p>';
+    $article_rating_link .= '<p>Frowns: ' . $article_frown_count . '</p>';
 
     return $article_rating_link;
 }
@@ -56,9 +58,9 @@ function docupress_article_rating_display( $post_ID = '', $type_of_vote = '' ) {
  * 
  * @since 1.4.0
  */
-function docupress_article_rating_add_vote_callback() {
+function docupress_article_rating_add_vote() {
     // Check the nonce - security.
-    check_ajax_referer( 'article-rating-nonce', 'nonce' );
+    check_ajax_referer( 'docupress-article-rating-nonce', 'nonce' );
 
     global $wpdb;
 
@@ -87,8 +89,8 @@ function docupress_article_rating_add_vote_callback() {
 
     die( $results );
 }
-add_action( 'wp_ajax_docupress_article_rating_add_vote_callback', 'docupress_article_rating_add_vote_callback' );
-add_action( 'wp_ajax_nopriv_docupress_article_rating_add_vote_callback', 'docupress_article_rating_add_vote_callback' );
+add_action( 'wp_ajax_docupress_article_rating_add_vote', 'docupress_article_rating_add_vote' );
+add_action( 'wp_ajax_nopriv_docupress_article_rating_add_vote', 'docupress_article_rating_add_vote' );
 
 /**
  * Admin column ratings display
@@ -145,14 +147,14 @@ function docupress_article_rating_sortable_columns( $columns ) {
  */
 function docupress_article_rating_column_sort_orderby( $vars ) {
     // Smile count.
-    if ( isset( $vars['orderby'] ) && 'article_smile_count' == $vars['orderby'] ) {
+    if ( isset( $vars['orderby'] ) && 'docupress_article_smile_count' == $vars['orderby'] ) {
         $vars = array_merge( $vars, array(
             'meta_key' => 'docupress_article_smile',
             'orderby'  => 'meta_value_num'
         ) );
     }
     // Frown count.
-    if ( isset( $vars['orderby'] ) && 'article_frown_count' == $vars['orderby'] ) {
+    if ( isset( $vars['orderby'] ) && 'docupress_article_frown_count' == $vars['orderby'] ) {
         $vars = array_merge( $vars, array(
             'meta_key' => 'docupress_article_frown',
             'orderby'  => 'meta_value_num'

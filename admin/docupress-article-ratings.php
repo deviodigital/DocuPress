@@ -45,9 +45,6 @@ function docupress_article_rating_display( $post_ID = '', $type_of_vote = '' ) {
     $article_rating_link .= $face_smile . ' ' . $face_frown;
     $article_rating_link .= '</div>';
 
-    $article_rating_link .= '<p>Smiles: ' . $article_smile_count . '</p>';
-    $article_rating_link .= '<p>Frowns: ' . $article_frown_count . '</p>';
-
     return $article_rating_link;
 }
 

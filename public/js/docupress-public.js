@@ -16,10 +16,10 @@ function docupress_article_rating_vote(ID, type) {
 
 		// Check type.
 		if ( 1 == type ) {
-			jQuery( '.article-rating-smike' ).addClass( 'article-rating-voted' );
+			jQuery( '.article-rating-smile' ).addClass( 'selected' );
 			jQuery( '.article-rating-frown' ).addClass( 'faded' );
 		} else if ( 2 == type ) {
-			jQuery( '.article-rating-frown' ).addClass( 'article-rating-voted' );
+			jQuery( '.article-rating-frown' ).addClass( 'selected' );
 			jQuery( '.article-rating-smile' ).addClass( 'faded' );
 		}
 	

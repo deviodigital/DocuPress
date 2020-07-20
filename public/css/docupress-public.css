@@ -27,12 +27,20 @@
     filter: invert(12%) sepia(32%) saturate(4%) hue-rotate(315deg) brightness(84%) contrast(94%);
 }
 
+.article-rating-container .article-rating-smile.selected img:hover {
+    filter: invert(76%) sepia(27%) saturate(842%) hue-rotate(31deg) brightness(91%) contrast(92%);
+}
+
 .article-rating-container .article-rating-frown img {
     filter: invert(50%) sepia(92%) saturate(4083%) hue-rotate(335deg) brightness(85%) contrast(81%);
 }
 
 .article-rating-container .article-rating-frown img:hover {
     filter: invert(12%) sepia(32%) saturate(4%) hue-rotate(315deg) brightness(84%) contrast(94%);
+}
+
+.article-rating-container .article-rating-frown.selected img {
+    filter: invert(50%) sepia(92%) saturate(4083%) hue-rotate(335deg) brightness(85%) contrast(81%);
 }
 
 .article-rating-container span.faded img {

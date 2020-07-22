@@ -114,6 +114,13 @@ class DocuPress {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-docupress-admin.php';
 
 		/**
+		 * The helper functions used throughout this plugin.
+		 * 
+		 * @since 1.3.1
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/docupress-helper-functions.php';
+
+		/**
 		 * The function responsible for creating the custom post type.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/docupress-cpt.php';

@@ -55,7 +55,7 @@
 
 ul.docupress-shortcode-list {
     list-style-type: none;
-    margin: 0;
+    margin: 0 0 24px 0;
 }
 
 ul.docupress-shortcode-list li:before {
@@ -68,4 +68,19 @@ ul.docupress-shortcode-list li:before {
     margin-top: 13px;
     margin-right: 6px;
     width: 20px;
+}
+
+p.docupress-est-reading {
+    font-style: italic;
+}
+
+.docupress-est-reading:before {
+    background: url(../images/clock.svg) no-repeat center center;
+    background-size: cover;
+    content: '';
+    display: inline-block;
+    height: 20px;
+    margin-right: 6px;
+    width: 20px;
+    vertical-align: text-bottom;
 }

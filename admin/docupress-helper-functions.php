@@ -22,23 +22,27 @@ if ( ! defined( 'ABSPATH' ) ) {
  * This function adds an estimated reading time to the top of articles
  * 
  * @since 1.4.0
- * 
- * @todo rearrange the $m and $s variables so the wording (minutes/seconds) is it's 
- * own var name, so I can apply a filter to it for people to change as needed
  */
 function docupress_estimated_reading_time( $content ) {
     global $post;
-    $mycontent = $post->post_content;
-    $word      = str_word_count( strip_tags( $mycontent ) );
-    $m         = floor( $word / apply_filters( 'docupress_estimated_reading_min_words', 200 ) );
-    $min       = $m . ' minute' . ( $m == 1 ? '' : 's' );
-    $s         = floor( $word % apply_filters( 'docupress_estimated_reading_min_words', 200 ) / ( apply_filters( 'docupress_estimated_reading_min_words', 200 ) / 60 ) );
-    $sec       = $s . ' second' . ( $s == 1 ? '' : 's' );
-    $est       = '<p class="docupress-est-reading">' . apply_filters( 'docupress_estimated_reading_prefix', '' ) . apply_filters( 'docupress_estimated_reading_time_display', $min . ', '  . $sec, $min, $sec ) . '</p>';
+    // Content.
+    $my_content = apply_filters( 'docupress_estimated_reading_content', $post->post_content );
+    // Words.
+    $words_count = str_word_count( strip_tags( $my_content ) );
+    // Min words.
+    $min_words = apply_filters( 'docupress_estimated_reading_min_words', 200 );
+    // Minutes.
+    $minutes = floor( $words_count / $min_words );
+    $min     = $minutes . ' minute' . ( $minutes == 1 ? '' : 's' );
+    // Seconds.
+    $seconds = floor( $words_count % $min_words / ( $min_words / 60 ) );
+    $sec     = $seconds . ' second' . ( $seconds == 1 ? '' : 's' );
+    // Estimated Reading.
+    $estimated_reading = '<p class="docupress-est-reading">' . apply_filters( 'docupress_estimated_reading_prefix', '' ) . apply_filters( 'docupress_estimated_reading_time_display', $min . ', '  . $sec, $min, $sec ) . '</p>';
 
     // Check if this is a DocuPress article.
     if ( is_singular( 'docupress' ) ) {
-        return $est . $content;
+        return $estimated_reading . $content;
     } else {
         // Do nothing.
         return $content;

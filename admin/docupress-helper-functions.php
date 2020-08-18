@@ -21,12 +21,17 @@ if ( ! defined( 'ABSPATH' ) ) {
  * 
  * This function adds an estimated reading time to the top of articles
  * 
+ * @param int $id - the post ID we're getting the estimated reading time for
+ * 
  * @since 1.4.0
  */
-function docupress_estimated_reading_time( $content ) {
-    global $post;
+function docupress_estimated_reading_time( $id = '' ) {
+    // Verify ID is present.
+    if ( ! $id ) { return; }
+    // Get the post.
+    $the_post = get_post( $id );
     // Content.
-    $my_content = apply_filters( 'docupress_estimated_reading_content', $post->post_content );
+    $my_content = apply_filters( 'docupress_estimated_reading_content', $the_post->post_content );
     // Words.
     $words_count = str_word_count( strip_tags( $my_content ) );
     // Min words.
@@ -40,12 +45,5 @@ function docupress_estimated_reading_time( $content ) {
     // Estimated Reading.
     $estimated_reading = '<p class="docupress-est-reading">' . apply_filters( 'docupress_estimated_reading_prefix', '' ) . apply_filters( 'docupress_estimated_reading_time_display', $min . ', '  . $sec, $min, $sec ) . '</p>';
 
-    // Check if this is a DocuPress article.
-    if ( is_singular( 'docupress' ) ) {
-        return $estimated_reading . $content;
-    } else {
-        // Do nothing.
-        return $content;
-    }
+    return $estimated_reading;
 }
-add_filter( 'the_content', 'docupress_estimated_reading_time' );

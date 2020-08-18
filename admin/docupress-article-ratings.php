@@ -41,7 +41,7 @@ function docupress_article_rating_display( $post_ID = '', $type_of_vote = '' ) {
     $face_frown = '<span class="article-rating-frown" onclick="docupress_article_rating_vote(' . $post_ID . ', 2);" data-text="' . __( 'Vote Down', 'docupress' ) . ' -"><img src="' . plugin_dir_url( __FILE__ ) . '/images/mood-sad.svg" /></span>';
     // Article ratings content.
     $article_rating_link  = '<div  class="article-rating-container" id="article-rating-' . $post_ID . '" data-content-id="' . $post_ID . '">';
-    $article_rating_link .= '<p class="article-rating-title">Was this article helpful?</p>';
+    $article_rating_link .= '<p class="article-rating-title">' . __( 'Was this article helpful?', 'docupress' ) . '</p>';
     $article_rating_link .= $face_smile . ' ' . $face_frown;
     $article_rating_link .= '</div>';
 

@@ -102,7 +102,7 @@ function docupress_article_rating_columns( $columns ) {
         'article_frown_count' => __( 'Down Votes', 'docupress' )
     ) );
 }
-add_filter( 'manage_pages_columns' , 'docupress_article_rating_columns' );
+add_filter( 'manage_docupress_posts_columns' , 'docupress_article_rating_columns' );
 
 /**
  * Add content to admin columns
@@ -121,7 +121,7 @@ function docupress_article_rating_column_values( $column, $post_id ) {
         break;
     }
 }
-add_action( 'manage_posts_custom_column' , 'docupress_article_rating_column_values', 10, 2 );
+add_action( 'manage_docupress_posts_custom_column' , 'docupress_article_rating_column_values', 10, 2 );
 
 /**
  * Sortable columns

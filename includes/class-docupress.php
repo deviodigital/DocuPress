@@ -116,7 +116,7 @@ class DocuPress {
 		/**
 		 * The helper functions used throughout this plugin.
 		 * 
-		 * @since 1.3.1
+		 * @since 1.4
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/docupress-helper-functions.php';
 
@@ -148,6 +148,13 @@ class DocuPress {
 		 * The function responsible for adding ratings buttons to individual articles.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/docupress-article-ratings.php';
+
+		/**
+		 * The functions responsible for addng an estimated reading time to individual articles.
+		 * 
+		 * @since 1.4
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/docupress-estimated-reading-time.php';
 
 		/**
 		 * The function responsible for creating the custom widgets.

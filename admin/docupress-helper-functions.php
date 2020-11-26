@@ -38,12 +38,16 @@ function docupress_estimated_reading_time( $id = '' ) {
     $min_words = apply_filters( 'docupress_estimated_reading_min_words', 200 );
     // Minutes.
     $minutes = floor( $words_count / $min_words );
-    $min     = $minutes . ' minute' . ( $minutes == 1 ? '' : 's' );
+    if ( 0 == $minutes ) {
+        $min = '';
+    } else {
+        $min = $minutes . ' minute' . ( $minutes == 1 ? '' : 's' ) . ', ';
+    }
     // Seconds.
     $seconds = floor( $words_count % $min_words / ( $min_words / 60 ) );
     $sec     = $seconds . ' second' . ( $seconds == 1 ? '' : 's' );
     // Estimated Reading.
-    $estimated_reading = '<p class="docupress-est-reading">' . apply_filters( 'docupress_estimated_reading_prefix', '' ) . apply_filters( 'docupress_estimated_reading_time_display', $min . ', '  . $sec, $min, $sec ) . '</p>';
+    $estimated_reading = '<p class="docupress-est-reading">' . apply_filters( 'docupress_estimated_reading_prefix', '' ) . apply_filters( 'docupress_estimated_reading_time_display', $min . $sec, $min, $sec ) . '</p>';
 
     return $estimated_reading;
 }

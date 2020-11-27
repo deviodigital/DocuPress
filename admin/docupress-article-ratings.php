@@ -29,7 +29,7 @@ function docupress_article_rating_display( $post_ID = '', $type_of_vote = '' ) {
     $post_ID      = intval( sanitize_text_field( $post_ID ) );
     $type_of_vote = intval( sanitize_text_field( $type_of_vote ) );
     // Empty var.
-    $article_rating_link = '';
+    $content = '';
     // Set the $post_ID var.
     if ( $post_ID == '' ) $post_ID = get_the_ID();
 
@@ -40,12 +40,12 @@ function docupress_article_rating_display( $post_ID = '', $type_of_vote = '' ) {
     $face_smile = '<span class="article-rating-smile" onclick="docupress_article_rating_vote(' . $post_ID . ', 1);" data-text="' . __( 'Vote Up', 'docupress' ) . ' +"><img src="' . plugin_dir_url( __FILE__ ) . '/images/mood-smile.svg" /></span>';
     $face_frown = '<span class="article-rating-frown" onclick="docupress_article_rating_vote(' . $post_ID . ', 2);" data-text="' . __( 'Vote Down', 'docupress' ) . ' -"><img src="' . plugin_dir_url( __FILE__ ) . '/images/mood-sad.svg" /></span>';
     // Article ratings content.
-    $article_rating_link  = '<div  class="article-rating-container" id="article-rating-' . $post_ID . '" data-content-id="' . $post_ID . '">';
-    $article_rating_link .= '<p class="article-rating-title">' . __( 'Was this article helpful?', 'docupress' ) . '</p>';
-    $article_rating_link .= $face_smile . ' ' . $face_frown;
-    $article_rating_link .= '</div>';
+    $content  = '<div  class="article-rating-container" id="article-rating-' . $post_ID . '" data-content-id="' . $post_ID . '">';
+    $content .= '<p class="article-rating-title">' . __( 'Was this article helpful?', 'docupress' ) . '</p>';
+    $content .= $face_smile . ' ' . $face_frown;
+    $content .= '</div>';
 
-    return $article_rating_link;
+    return $content;
 }
 
 /**
@@ -114,10 +114,10 @@ add_filter( 'manage_docupress_posts_columns' , 'docupress_article_rating_columns
 function docupress_article_rating_column_values( $column, $post_id ) {
     switch ( $column ) {
     case 'article_smile_count' :
-           echo get_post_meta( $post_id, 'docupress_article_smile', true ) != '' ? '+' . get_post_meta( $post_id, 'docupress_article_smile', true ) : '0';
-       break;
+        echo get_post_meta( $post_id, 'docupress_article_smile', true ) != '' ? '+' . get_post_meta( $post_id, 'docupress_article_smile', true ) : '0';
+        break;
     case 'article_frown_count' :
-          echo get_post_meta( $post_id, 'docupress_article_frown', true ) != '' ? '-' . get_post_meta( $post_id, 'docupress_article_frown', true ) : '0';
+        echo get_post_meta( $post_id, 'docupress_article_frown', true ) != '' ? '-' . get_post_meta( $post_id, 'docupress_article_frown', true ) : '0';
         break;
     }
 }

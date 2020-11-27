@@ -38,10 +38,10 @@ function docupress_estimated_reading_time( $id = '' ) {
     $min_words = apply_filters( 'docupress_estimated_reading_min_words', 200 );
     // Minutes.
     $minutes = floor( $words_count / $min_words );
+    $min     = $minutes . ' minute' . ( $minutes == 1 ? '' : 's' ) . ', ';
+    // Minutes (empty if zero).
     if ( 0 == $minutes ) {
         $min = '';
-    } else {
-        $min = $minutes . ' minute' . ( $minutes == 1 ? '' : 's' ) . ', ';
     }
     // Seconds.
     $seconds = floor( $words_count % $min_words / ( $min_words / 60 ) );

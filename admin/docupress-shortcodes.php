@@ -42,8 +42,6 @@ function docupress_shortcode( $atts ) {
         );
         // Filter args.
         $args = apply_filters( 'docupress_shortcode_query_args', $args );
-        // Get results.
-        $docupress_articles = new WP_Query( $args );
     } else {
         // Args.
         $args = array(
@@ -60,9 +58,10 @@ function docupress_shortcode( $atts ) {
         );
         // Filter args.
         $args = apply_filters( 'docupress_shortcode_query_args_collections', $args );
-        // Get results.
-        $docupress_articles = new WP_Query( $args );
     }
+
+    // Get results.
+    $docupress_articles = new WP_Query( $args );
 
     $docupress_list = '<ul class="docupress-shortcode-list">';
 
@@ -78,8 +77,11 @@ function docupress_shortcode( $atts ) {
     // Website link.
     if ( 'all' !== $collections ) {
         if ( 'on' === $viewall ) {
+            // URL for collections link.
+            $collections_url = apply_filters( 'docupress_shortcode_view_all_collections_url', get_bloginfo( 'url' ) . '/collections/' . $collections, $collections );
+            // Create list item with link.
             $docupress_list .= '<li>';
-            $docupress_list .= '<a href="' . get_bloginfo( 'url' ) . '/collections/' . $collections . '">' . __( 'view all', 'docupress' ) . ' &rarr;</a>';
+            $docupress_list .= '<a href="' . esc_url( $collections_url ) . '">' . __( 'view all', 'docupress' ) . ' &rarr;</a>';
             $docupress_list .= '</li>';
         }
     }

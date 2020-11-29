@@ -106,7 +106,7 @@ class DocuPress_Articles_Widget extends WP_Widget {
 		// Loop through articles.
 		while ( $docupress_articles_widget->have_posts() ) : $docupress_articles_widget->the_post();
 			$articles .= '<li>';
-			$articles .= "<a href='" . esc_url( get_permalink( $post->ID ) ) . "' class='docupress-widget-link'>" . get_the_title( $post->ID ) . "</a>";
+			$articles .= '<a href="' . esc_url( get_permalink( $post->ID ) ) . '" class="docupress-widget-link">' . get_the_title( $post->ID ) . '</a>';
 			$articles .= '</li>';
 		endwhile;
 
@@ -117,7 +117,7 @@ class DocuPress_Articles_Widget extends WP_Widget {
 		if ( 'all' !== $collections ) {
 			if ( 'on' === $instance['viewall'] ) {
 				$articles .= '<li>';
-				$articles .= "<a href='" . $websitelink . "/collections/". $collections ."'>" . __( 'view all', 'docupress' ) . " &rarr;</a>";
+				$articles .= '<a href="' . $websitelink . '/collections/' . $collections . '">' . __( 'view all', 'docupress' ) . ' &rarr;</a>';
 				$articles .= '</li>';
 			}
 		}
@@ -436,7 +436,7 @@ class DocuPress_Related_Articles_Widget extends WP_Widget {
 
 			if ( 'all' !== $collections && 'on' === $instance['viewall'] ) {
 				$articles .= '<li>';
-				$articles .= "<a href='" . $websitelink . "/collections/". $collections ."'>" . __( 'view all', 'docupress' ) . " &rarr;</a>";
+				$articles .= '<a href="' . $websitelink . '/collections/' . $collections . '">' . __( 'view all', 'docupress' ) . ' &rarr;</a>';
 				$articles .= '</li>';
 			}
 

@@ -335,6 +335,182 @@ class DocuPress_Collections_Widget extends WP_Widget {
 }
 
 /**
+ * DocuPress Related Articles Widget
+ *
+ * @since       1.4.0
+ */
+class DocuPress_Related_Articles_Widget extends WP_Widget {
+
+	/**
+	 * Constructor
+	 *
+	 * @access      public
+	 * @since       1.0.0
+	 * @return      void
+	 */
+	public function __construct() {
+
+		parent::__construct(
+			'docupress_related_articles_widget',
+			__( 'DocuPress Related Articles', 'docupress' ),
+			array(
+				'description' => __( 'Display related articles', 'docupress' ),
+				'classname'   => 'docupress-widget',
+			)
+		);
+
+	}
+
+	/**
+	 * Widget definition
+	 *
+	 * @access      public
+	 * @since       1.0.0
+	 * @see         WP_Widget::widget
+	 * @param       array $args Arguments to pass to the widget.
+	 * @param       array $instance A given widget instance.
+	 * @return      void
+	 */
+	public function widget( $args, $instance ) {
+		if ( ! isset( $args['id'] ) ) {
+		    $args['id'] = 'docupress_related_articles_widget';
+		}
+
+		$title = apply_filters( 'widget_title', $instance['title'], $instance, $args['id'] );
+
+		// Empty var.
+		$randorder = '';
+
+		// Randomize order.
+		if ( 'on' === $instance['order'] ) {
+			$randorder = 'rand';
+		}
+
+		// Get current article post terms.
+		$terms = get_the_terms( get_the_ID(), 'docupress_collections' );
+
+		// Pluck out the IDs to get an array of IDS.
+		$term_ids = wp_list_pluck( $terms, 'term_id' );
+
+		$related_articles = new WP_Query(
+			array(
+				'post_type'    => 'docupress',
+				'showposts'    => $instance['limit'],
+				'orderby'      => $randorder,
+				'post__not_in' => array( get_the_ID() ),
+				'tax_query'    => array(
+					array(
+						'taxonomy' => 'docupress_collections',
+						'field'    => 'id',
+						'terms'    => $term_ids,
+						'operator' => 'IN'
+					),
+				),
+			)
+		);
+
+		if ( is_singular( 'docupress' ) && true == $related_articles ) {
+
+			echo $args['before_widget'];
+
+			if ( $title ) {
+				echo $args['before_title'] . $title . $args['after_title'];
+			}
+
+			$articles = '<ul class="docupress-widget-list">';
+
+			// Loop through articles.
+			while ( $related_articles->have_posts() ) : $related_articles->the_post();
+				$articles .= '<li>';
+				$articles .= '<a href="' . esc_url( get_permalink( $related_articles->ID ) ) . '" class="docupress-widget-link">' . get_the_title( $related_articles->ID ) . '</a>';
+				$articles .= '</li>';
+			endwhile;
+
+			wp_reset_postdata();
+			
+			$websitelink = get_bloginfo( 'url' );
+
+			if ( 'all' !== $collections && 'on' === $instance['viewall'] ) {
+				$articles .= '<li>';
+				$articles .= "<a href='" . $websitelink . "/collections/". $collections ."'>" . __( 'view all', 'docupress' ) . " &rarr;</a>";
+				$articles .= '</li>';
+			}
+
+			$articles .= '</ul>';
+
+			echo $articles;
+
+			echo $args['after_widget'];
+		}
+	}
+
+
+	/**
+	 * Update widget options
+	 *
+	 * @access      public
+	 * @since       1.0.0
+	 * @see         WP_Widget::update
+	 * @param       array $new_instance The updated options.
+	 * @param       array $old_instance The old options.
+	 * @return      array $instance The updated instance options
+	 */
+	public function update( $new_instance, $old_instance ) {
+	    $instance = $old_instance;
+
+	    $instance['title']   = strip_tags( $new_instance['title'] );
+	    $instance['limit']   = strip_tags( $new_instance['limit'] );
+	    $instance['order']   = $new_instance['order'];
+	    $instance['viewall'] = $new_instance['viewall'];
+
+	    return $instance;
+	}
+
+
+	/**
+	 * Display widget form on dashboard
+	 *
+	 * @access      public
+	 * @since       1.0.0
+	 * @see         WP_Widget::form
+	 * @param       array $instance A given widget instance.
+	 * @return      void
+	 */
+	public function form( $instance ) {
+	    $defaults = array(
+	        'title'       => __( 'Related Articles', 'docupress' ),
+	        'limit'       => '5',
+	        'order'       => '',
+			'viewall'     => '',
+	    );
+
+		$instance = wp_parse_args( (array) $instance, $defaults );
+	?>
+	<p>
+		<label for="<?php esc_attr_e( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Widget Title:', 'docupress' ); ?></label>
+		<input class="widefat" id="<?php esc_attr_e( $this->get_field_id( 'title' ) ); ?>" name="<?php esc_attr_e( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php esc_attr_e( $instance['title'] ); ?>" />
+	</p>
+
+	<p>
+		<label for="<?php esc_attr_e( $this->get_field_id( 'limit' ) ); ?>"><?php esc_html_e( 'Amount of articles to show:', 'docupress' ); ?></label>
+		<input class="widefat" id="<?php esc_attr_e( $this->get_field_id( 'limit' ) ); ?>" type="number" name="<?php esc_attr_e( $this->get_field_name( 'limit' ) ); ?>" min="1" max="999" value="<?php esc_attr_e( $instance['limit'] ); ?>" />
+	</p>
+
+	<p>
+		<input class="checkbox" type="checkbox" <?php checked( $instance['order'], 'on' ); ?> id="<?php esc_attr_e( $this->get_field_id( 'order' ) ); ?>" name="<?php esc_attr_e( $this->get_field_name( 'order' ) ); ?>" />
+		<label for="<?php esc_attr_e( $this->get_field_id( 'order' ) ); ?>"><?php esc_html_e( 'Randomize output?', 'docupress' ); ?></label>
+	</p>
+
+	<p>
+		<input class="checkbox" type="checkbox" <?php checked( $instance['viewall'], 'on' ); ?> id="<?php esc_attr_e( $this->get_field_id( 'viewall' ) ); ?>" name="<?php esc_attr_e( $this->get_field_name( 'viewall' ) ); ?>" />
+		<label for="<?php esc_attr_e( $this->get_field_id( 'viewall' ) ); ?>"><?php esc_html_e( 'Display link to all articles in collection?', 'docupress' ); ?></label>
+	</p>
+
+	<?php
+	}
+}
+
+/**
  * Register the new widgets
  *
  * @since       1.0.0
@@ -343,5 +519,6 @@ class DocuPress_Collections_Widget extends WP_Widget {
 function docupress_register_widgets() {
 	register_widget( 'docupress_articles_widget' );
 	register_widget( 'docupress_collections_widget' );
+	register_widget( 'docupress_related_articles_widget' );
 }
 add_action( 'widgets_init', 'docupress_register_widgets' );

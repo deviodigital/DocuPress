@@ -409,7 +409,11 @@ class DocuPress_Related_Articles_Widget extends WP_Widget {
 			)
 		);
 
-		if ( is_singular( 'docupress' ) && true == $related_articles ) {
+		// Are related articles found?
+		$related_articles->get_posts();
+
+		// Only display related articles if results are found.
+		if ( is_singular( 'docupress' ) && null != $related_articles->have_posts() ) {
 
 			echo $args['before_widget'];
 

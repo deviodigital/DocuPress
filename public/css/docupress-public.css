@@ -53,6 +53,8 @@
     margin: 0 0 12px 0;
 }
 
+/** Shortcode */
+
 ul.docupress-shortcode-list {
     list-style-type: none;
     margin: 0 0 24px 0;
@@ -70,8 +72,65 @@ ul.docupress-shortcode-list li:before {
     width: 20px;
 }
 
+/** Estimated reading time */
+
 p.docupress-est-reading {
     font-style: italic;
+}
+
+ul.docupress-shortcode-list li {
+    display: flex;
+    flex-direction: row;
+    line-height: 20px;
+    margin-bottom: 12px;
+}
+
+ul.docupress-shortcode-list li:before {
+    background: url(../images/file-text.svg);
+    background-position: 0 0;
+    background-size: 20px 20px;
+    content: '';
+    display: inline-block;
+    height: 20px;
+    margin-right: 6px;
+    width: 20px;
+}
+
+ul.docupress-shortcode-list li:last-child {
+    margin-bottom: 0;
+}
+
+/** Articles widget */
+
+ul.docupress-widget-list li {
+    display: flex;
+    flex-direction: row;
+    line-height: 20px;
+    margin-bottom: 12px;
+}
+
+ul.docupress-widget-list li:last-child {
+    margin-bottom: 0;
+}
+
+ul.docupress-widget-list li:before {
+    background: url(../images/file-text.svg);
+    background-position: 0 0px;
+    background-size: 20px 20px;
+    content: '';
+    display: inline-block;
+    height: 20px;
+    margin-right: 6px;
+    width: 20px;
+}
+
+/** Estimated reading time */
+
+p.docupress-est-reading {
+    font-style: italic;
+    line-height: 20px;
+    display: flex;
+    flex-direction: row;
 }
 
 .docupress-est-reading:before {
@@ -82,5 +141,4 @@ p.docupress-est-reading {
     height: 20px;
     margin-right: 6px;
     width: 20px;
-    vertical-align: text-bottom;
 }

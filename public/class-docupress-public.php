@@ -37,8 +37,8 @@ class DocuPress_Public {
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
-	 * @param      string    $plugin_name       The name of the plugin.
-	 * @param      string    $version    The version of this plugin.
+	 * @param    string    $plugin_name    The name of the plugin.
+	 * @param    string    $version        The version of this plugin.
 	 */
 	public function __construct( $plugin_name, $version ) {
 
@@ -54,7 +54,7 @@ class DocuPress_Public {
 	 */
 	public function enqueue_styles() {
 		// General public CSS.
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/docupress-public.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/docupress-public.min.css', array(), $this->version, 'all' );
 	}
 
 	/**

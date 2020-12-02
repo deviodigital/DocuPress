@@ -66,10 +66,10 @@ class DocuPress_Articles_Widget extends WP_Widget {
 		    echo $args['before_title'] . $title . $args['after_title'];
 		}
 
+		$randorder = '';
+
 		if ( 'on' === $instance['order'] ) {
 			$randorder = 'rand';
-		} else {
-			$randorder = '';
 		}
 
 		$collections = $instance['collections'];
@@ -77,7 +77,7 @@ class DocuPress_Articles_Widget extends WP_Widget {
 		global $post;
 		
 		if ( 'all' === $collections ) {
-			$docupress_articles_widget = new WP_Query(
+			$articles_widget = new WP_Query(
 				array(
 					'post_type' => 'docupress',
 					'showposts' => $instance['limit'],
@@ -85,7 +85,7 @@ class DocuPress_Articles_Widget extends WP_Widget {
 				)
 			);
 		} else {
-			$docupress_articles_widget = new WP_Query(
+			$articles_widget = new WP_Query(
 				array(
 					'post_type' => 'docupress',
 					'showposts' => $instance['limit'],
@@ -104,7 +104,7 @@ class DocuPress_Articles_Widget extends WP_Widget {
 		$articles = '<ul class="docupress-widget-list">';
 
 		// Loop through articles.
-		while ( $docupress_articles_widget->have_posts() ) : $docupress_articles_widget->the_post();
+		while ( $articles_widget->have_posts() ) : $articles_widget->the_post();
 			$articles .= '<li>';
 			$articles .= '<a href="' . esc_url( get_permalink( $post->ID ) ) . '" class="docupress-widget-link">' . get_the_title( $post->ID ) . '</a>';
 			$articles .= '</li>';

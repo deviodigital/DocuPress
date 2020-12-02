@@ -1,4 +1,4 @@
-function docupress_article_rating_vote(ID, type) {
+function DocuPress_Article_Rating_Vote(ID, type) {
 	// For the LocalStorage.
 	var itemName = "articlerating" + ID;
 
@@ -15,45 +15,45 @@ function docupress_article_rating_vote(ID, type) {
 		localStorage.setItem(typeItemName, true);
 
 		// Check type.
-		if ( 1 == type ) {
-			jQuery( '.article-rating-smile' ).addClass( 'selected' );
-			jQuery( '.article-rating-frown' ).addClass( 'faded' );
-		} else if ( 2 == type ) {
-			jQuery( '.article-rating-frown' ).addClass( 'selected' );
-			jQuery( '.article-rating-smile' ).addClass( 'faded' );
+		if ( 1 === type ) {
+			jQuery( ".article-rating-smile" ).addClass( "selected" );
+			jQuery( ".article-rating-frown" ).addClass( "faded" );
+		} else if ( 2 === type ) {
+			jQuery( ".article-rating-frown" ).addClass( "selected" );
+			jQuery( ".article-rating-smile" ).addClass( "faded" );
 		}
 	
 		// Data for the Ajax Request.
 		var data = {
-			action: 'docupress_article_rating_add_vote',
+			action: "docupress_article_rating_add_vote",
 			postid: ID,
 			type: type,
-			nonce: docupress_article_rating_ajax.nonce
+			nonce: DocuPress_Article_Rating_Ajax.nonce
 		};
 
-		jQuery.post(docupress_article_rating_ajax.ajax_url, data, function(response) {
+		jQuery.post(DocuPress_Article_Rating_Ajax.ajax_url, data, function(response) {
 
 			var object = jQuery(container);
 
-			jQuery(container).html('');
+			jQuery(container).html("");
 
 			jQuery(container).append(response);
 
 			// Remove the class and ID so we don't have 2 DIVs with the same ID.
-			jQuery(object).removeClass('article-rating-container');
-			jQuery(object).attr('id', '');
+			jQuery(object).removeClass("article-rating-container");
+			jQuery(object).attr("id", "");
 
 			// Add the class to the clicked element.
-			var new_container = '#article-rating-' + ID;
+			var newContainer = "#article-rating-" + ID;
 
 			// Check the type.			
-			if ( type == 1 ) {
-				article_rating_class = ".article-rating-smile";
+			if ( type === 1 ) {
+				var articleRatingClass = ".article-rating-smile";
 			} else {
-				article_rating_class = ".article-rating-frown";
+				var articleRatingClass = ".article-rating-frown";
 			}
 			// Add class.
-			jQuery(new_container + article_rating_class ).addClass('article-rating-voted');
+			jQuery(newContainer + articleRatingClass ).addClass("article-rating-voted");
 		});
 	} else {
 		// Do nothing.
@@ -64,17 +64,17 @@ jQuery(document).ready(function() {
 	// Get all article containers.
 	jQuery( ".article-rating-container" ).each(function( index ) {
 		// Get data attribute.
-		var content_id = jQuery(this).data('content-id');
+		var contentID = jQuery(this).data('content-id');
 		// Set item name.
-		var itemName = "articlerating"+content_id;
+		var itemName = "articlerating"+contentID;
 		// Check if this content has localstorage.
 		if (localStorage.getItem(itemName)) {
 			// Check if it's a Smile or Frown vote.
-			if ( localStorage.getItem("articlerating" + content_id + "-1") ) {
+			if ( localStorage.getItem("articlerating" + contentID + "-1") ) {
 				jQuery(this).find('.article-rating-smile').addClass('article-rating-voted');
 				jQuery(this).find('.article-rating-frown').addClass('faded');
 			}
-			if ( localStorage.getItem("articlerating" + content_id + "-2") ) {
+			if ( localStorage.getItem("articlerating" + contentID + "-2") ) {
 				jQuery(this).find('.article-rating-frown').addClass('article-rating-voted');
 				jQuery(this).find('.article-rating-smile').addClass('faded');
 			}

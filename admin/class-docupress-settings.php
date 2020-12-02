@@ -55,8 +55,8 @@ class DocuPress_Permalink_Settings {
 			 isset( $_POST['category_base'] ) &&
 			 isset( $_POST['docupress_article_slug'] ) &&
 			 wp_verify_nonce( wp_unslash( $_POST['docupress_article_slug_nonce'] ), 'docupress' ) ) {
-				$docupress_article_slug = sanitize_title( wp_unslash( $_POST['docupress_article_slug'] ) );
-				update_option( 'docupress_article_slug', $docupress_article_slug );
+				$article_slug = sanitize_title( wp_unslash( $_POST['docupress_article_slug'] ) );
+				update_option( 'docupress_article_slug', $article_slug );
 		}
 	}
 }

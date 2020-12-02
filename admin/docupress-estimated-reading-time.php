@@ -26,9 +26,9 @@ function docupress_the_content_estimated_reading_time( $content ) {
     // Check if this is a DocuPress article.
     if ( is_singular( 'docupress' ) && 'hide_estimated_reading' != get_post_meta( $post->ID, 'docupress_article_estimated_reading_display', true ) ) {
         return docupress_estimated_reading_time( $post->ID ) . $content;
-    } else {
-        // Do nothing.
-        return $content;
     }
+
+    // Default content.
+    return $content;
 }
 add_filter( 'the_content', 'docupress_the_content_estimated_reading_time' );

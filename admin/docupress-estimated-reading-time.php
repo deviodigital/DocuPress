@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 function docupress_the_content_estimated_reading_time( $content ) {
     global $post;
     // Check if this is a DocuPress article.
-    if ( is_singular( 'docupress' ) ) {
+    if ( is_singular( 'docupress' ) && 'hide_estimated_reading' != get_post_meta( $post->ID, 'docupress_article_estimated_reading_display', true ) ) {
         return docupress_estimated_reading_time( $post->ID ) . $content;
     } else {
         // Do nothing.

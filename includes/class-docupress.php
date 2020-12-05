@@ -67,9 +67,12 @@ class DocuPress {
 	 * @since    1.0.0
 	 */
 	public function __construct() {
+		$this->plugin_name = 'docupress';
+		$this->version     = '2.0';
 
-		$this->plugin_name = 'DocuPress';
-		$this->version     = '1.3';
+		if ( defined( 'DOCUPRESS_VERSION' ) ) {
+			$this->version = DOCUPRESS_VERSION;
+		}
 
 		$this->load_dependencies();
 		$this->set_locale();

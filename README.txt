@@ -3,8 +3,8 @@ Contributors: deviodigital
 Donate link: https://deviodigital.com
 Tags: documentation, document, knowledgebase, help, support, notes
 Requires at least: 3.0.1
-Tested up to: 5.2.3
-Stable tag: 1.3
+Tested up to: 5.5.3
+Stable tag: 2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -20,6 +20,7 @@ DocuPress also comes with 2 custom widgets:
 
 *   Collections - output's a list of every collection you create with DocuPress.
 *   Recent Articles - select how many articles to display, randomize the output order and also choose which collection you'd like to display articles from.
+*   Related Articles - select how many articles to display and randomize the output order in this widget that will only display when viewing a single article.
 
 == Installation ==
 
@@ -31,8 +32,20 @@ DocuPress also comes with 2 custom widgets:
 
 1. DocuPress adds a `Documentation` tab to your admin dashboard
 2. DocuPress widget, available via `Appearance - Widgets`
+3. DocuPress shortcode display
+4. DocuPress single article display
 
 == Changelog ==
+
+= 2.0 =
+*   Added "Was this article helpful?" section to the bottom of single articles in `admin/docupress-article-ratings.php`
+*   Added an estimated reading time to the beginning of single articles in `admin/docupress-article-ratings.php`
+*   Added 2 filters to the `[docupress]` shortcode in `admin/docupress-shortcodes.php `
+*   Updated shortcode list style in `public/css/docupress-public.css`
+*   Updated activator and deactivator class names in `docupress.php`
+*   Updated metabox with checkbox to hide estimated reading time in `admin/docupress-metaboxes.php`
+*   Updated `.pot` file for translation in `languages/docupress.pot`
+*   General code cleanup throughout multiple files in the plugin
 
 = 1.3 =
 *   Added new `[docupress]` shortcode in `admin/docupress-shortcodes.php`

@@ -1,299 +1,299 @@
-#, fuzzy
 msgid ""
 msgstr ""
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: DocuPress\n"
-"POT-Creation-Date: 2020-12-24 20:29-0500\n"
-"PO-Revision-Date: 2020-12-24 20:29-0500\n"
+"POT-Creation-Date: 2020-12-24 20:34-0500\n"
+"PO-Revision-Date: 2020-12-24 20:34-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 2.4.2\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: docupress.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
-"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 
 #: admin/class-docupress-settings.php:33
 msgid "DocuPress Base"
-msgstr ""
+msgstr "DocuPress Base"
 
 #: admin/docupress-article-ratings.php:40
 msgid "Vote Up"
-msgstr ""
+msgstr "Me Gusta"
 
 #: admin/docupress-article-ratings.php:41
 msgid "Vote Down"
-msgstr ""
+msgstr "No Me Gusta"
 
 #: admin/docupress-article-ratings.php:44
 msgid "Was this article helpful?"
-msgstr ""
+msgstr "¿Te resultó útil este artículo?"
 
 #: admin/docupress-article-ratings.php:101
 msgid "Up Votes"
-msgstr ""
+msgstr "Votos positivos"
 
 #: admin/docupress-article-ratings.php:102
 msgid "Down Votes"
-msgstr ""
+msgstr "Votos negativos"
 
 #: admin/docupress-cpt.php:36 admin/docupress-cpt.php:37
 #: admin/docupress-cpt.php:39 admin/docupress-cpt.php:71
 #, php-format
 msgid "%s"
-msgstr ""
+msgstr "%s"
 
 #: admin/docupress-cpt.php:38 admin/docupress-cpt.php:72
 msgid "Documentation"
-msgstr ""
+msgstr "Documentación"
 
 #: admin/docupress-cpt.php:40
 #, php-format
 msgid "%s Archives"
-msgstr ""
+msgstr "%s Archivos"
 
 #: admin/docupress-cpt.php:41
 #, php-format
 msgid "Parent %s:"
-msgstr ""
+msgstr "Superior %s:"
 
 #: admin/docupress-cpt.php:42
 #, php-format
 msgid "All %s"
-msgstr ""
+msgstr "Todos %s"
 
 #: admin/docupress-cpt.php:43
 #, php-format
 msgid "Add New %s"
-msgstr ""
+msgstr "Añadir nuevo %s"
 
 #: admin/docupress-cpt.php:44
 msgid "Add New"
-msgstr ""
+msgstr "Añadir nuevo"
 
 #: admin/docupress-cpt.php:45
 #, php-format
 msgid "New %s"
-msgstr ""
+msgstr "Nuevo %s"
 
 #: admin/docupress-cpt.php:46
 #, php-format
 msgid "Edit %s"
-msgstr ""
+msgstr "Editar %s"
 
 #: admin/docupress-cpt.php:47
 #, php-format
 msgid "Update %s"
-msgstr ""
+msgstr "Actualizar %s"
 
 #: admin/docupress-cpt.php:48
 #, php-format
 msgid "View %s"
-msgstr ""
+msgstr "Ver %s"
 
 #: admin/docupress-cpt.php:49
 #, php-format
 msgid "Search %s"
-msgstr ""
+msgstr "Buscar %s"
 
 #: admin/docupress-cpt.php:50
 msgid "Not found"
-msgstr ""
+msgstr "No encontrado"
 
 #: admin/docupress-cpt.php:51
 msgid "Not found in Trash"
-msgstr ""
+msgstr "No encontrado en la papelera"
 
 #: admin/docupress-cpt.php:52
 msgid "Featured Image"
-msgstr ""
+msgstr "Imagen destacada"
 
 #: admin/docupress-cpt.php:53
 msgid "Set featured image"
-msgstr ""
+msgstr "Establecer imagen destacada"
 
 #: admin/docupress-cpt.php:54
 msgid "Remove featured image"
-msgstr ""
+msgstr "Eliminar la imagen destacada"
 
 #: admin/docupress-cpt.php:55
 msgid "Use as featured image"
-msgstr ""
+msgstr "Usar como imagen destacada"
 
 #: admin/docupress-cpt.php:56
 #, php-format
 msgid "Insert into %s"
-msgstr ""
+msgstr "Insertar en %s"
 
 #: admin/docupress-cpt.php:57
 #, php-format
 msgid "Uploaded to this %s"
-msgstr ""
+msgstr "Subido a este %s"
 
 #: admin/docupress-cpt.php:58
 #, php-format
 msgid "%s list"
-msgstr ""
+msgstr "%s List"
 
 #: admin/docupress-cpt.php:59
 #, php-format
 msgid "%s list navigation"
-msgstr ""
+msgstr "%s navegación de la lista"
 
 #: admin/docupress-cpt.php:60
 #, php-format
 msgid "Filter %s list"
-msgstr ""
+msgstr "Filtro %s lista"
 
 #: admin/docupress-metaboxes.php:31
 msgid "DocuPress Details"
-msgstr ""
+msgstr "Detalles de DocuPress"
 
 #: admin/docupress-metaboxes.php:76
 msgid "Path"
-msgstr ""
+msgstr "Ruta"
 
 #: admin/docupress-metaboxes.php:80
 msgid "Link"
-msgstr ""
+msgstr "Enlace"
 
 #: admin/docupress-metaboxes.php:85
 msgid "Remove estimated reading time?"
-msgstr ""
+msgstr "¿Eliminar el tiempo de lectura estimado?"
 
 #: admin/docupress-shortcodes.php:84 admin/docupress-widgets.php:120
 #: admin/docupress-widgets.php:439
 msgid "view all"
-msgstr ""
+msgstr "ver todo"
 
 #: admin/docupress-taxonomies.php:25
 msgctxt "taxonomy general name"
 msgid "Collections"
-msgstr ""
+msgstr "Colecciones"
 
 #: admin/docupress-taxonomies.php:26
 msgctxt "taxonomy singular name"
 msgid "Collection"
-msgstr ""
+msgstr "Colección"
 
 #: admin/docupress-taxonomies.php:27
 msgid "Search Collections"
-msgstr ""
+msgstr "Buscar Colecciones"
 
 #: admin/docupress-taxonomies.php:28
 msgid "All Collections"
-msgstr ""
+msgstr "Todas las Colecciones"
 
 #: admin/docupress-taxonomies.php:29
 msgid "Parent Collection"
-msgstr ""
+msgstr "Colección Principal"
 
 #: admin/docupress-taxonomies.php:30
 msgid "Parent Collection:"
-msgstr ""
+msgstr "Colección Principal:"
 
 #: admin/docupress-taxonomies.php:31
 msgid "Edit Collection"
-msgstr ""
+msgstr "Editar colección"
 
 #: admin/docupress-taxonomies.php:32
 msgid "Update Collection"
-msgstr ""
+msgstr "Actualizar la Colección"
 
 #: admin/docupress-taxonomies.php:33
 msgid "Add New Collection"
-msgstr ""
+msgstr "Añadir Nueva Colección"
 
 #: admin/docupress-taxonomies.php:34
 msgid "New Collection Name"
-msgstr ""
+msgstr "Nombre de la nueva colección"
 
 #: admin/docupress-taxonomies.php:35
 msgid "No categories found"
-msgstr ""
+msgstr "No se encontraron categorías"
 
 #: admin/docupress-taxonomies.php:36
 msgid "Collections"
-msgstr ""
+msgstr "Colecciones"
 
 #: admin/docupress-widgets.php:37
 msgid "DocuPress Articles"
-msgstr ""
+msgstr "Artículos de DocuPress"
 
 #: admin/docupress-widgets.php:39
 msgid "Display documentation articles"
-msgstr ""
+msgstr "Mostrar artículos de documentación"
 
 #: admin/docupress-widgets.php:177 admin/docupress-widgets.php:329
 #: admin/docupress-widgets.php:494
 msgid "Widget Title:"
-msgstr ""
+msgstr "Título del widget:"
 
 #: admin/docupress-widgets.php:182 admin/docupress-widgets.php:499
 msgid "Amount of articles to show:"
-msgstr ""
+msgstr "Cantidad de artículos para mostrar"
 
 #: admin/docupress-widgets.php:187
 msgid "Collections:"
-msgstr ""
+msgstr "Colecciones"
 
 #: admin/docupress-widgets.php:213 admin/docupress-widgets.php:505
 msgid "Randomize output?"
-msgstr ""
+msgstr "¿Aleatorizar la salida?"
 
 #: admin/docupress-widgets.php:218 admin/docupress-widgets.php:510
 msgid "Display link to all articles in collection?"
-msgstr ""
+msgstr "¿Mostrar enlace a todos los artículos de la colección?"
 
 #: admin/docupress-widgets.php:243
 msgid "DocuPress Collections"
-msgstr ""
+msgstr "DocuPress Colecciones"
 
 #: admin/docupress-widgets.php:245
 msgid "Display a list of collections"
-msgstr ""
+msgstr "Mostrar una lista de colecciones"
 
 #: admin/docupress-widgets.php:282
 #, php-format
 msgid "View all articles filed under %s"
-msgstr ""
+msgstr "Ver todos los artículos archivados en %s"
 
 #: admin/docupress-widgets.php:355
 msgid "DocuPress Related Articles"
-msgstr ""
+msgstr "DocuPress Artículos relacionados "
 
 #: admin/docupress-widgets.php:357
 msgid "Display related articles"
-msgstr ""
+msgstr "Mostrar artículos relacionados"
 
 #: admin/docupress-widgets.php:485
 msgid "Related Articles"
-msgstr ""
+msgstr "Artículos relacionados"
 
 #. Plugin Name of the plugin/theme
 msgid "DocuPress"
-msgstr ""
+msgstr "DocuPress"
 
 #. Plugin URI of the plugin/theme
 msgid "https://www.robertdevore.com/docupress"
-msgstr ""
+msgstr "https://www.robertdevore.com/docupress"
 
 #. Description of the plugin/theme
 msgid "Documentation simplified."
-msgstr ""
+msgstr "Documentación simplificada"
 
 #. Author of the plugin/theme
 msgid "Devio Digital"
-msgstr ""
+msgstr "Devio Digital"
 
 #. Author URI of the plugin/theme
 msgid "https://deviodigital.com"
-msgstr ""
+msgstr "https://deviodigital.com"

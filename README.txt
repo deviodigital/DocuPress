@@ -4,7 +4,7 @@ Donate link: https://deviodigital.com
 Tags: documentation, document, knowledgebase, help, support, notes
 Requires at least: 3.0.1
 Tested up to: 5.6
-Stable tag: 2.2
+Stable tag: 2.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,8 +34,10 @@ Currently, **DocuPress** comes prepackaged with the following translations:
 
 *   English
 *   Spanish
+*   French
+*   Italian
 
-Please [let us know](https://www.deviodigital.com/contact/) if there's a language you'd like to see **DocuPress* translated to next.
+Please [let us know](https://www.deviodigital.com/contact/) if there's a language you'd like to see **DocuPress** translated to next.
 
 == Installation ==
 
@@ -51,6 +53,13 @@ Please [let us know](https://www.deviodigital.com/contact/) if there's a languag
 4. DocuPress widget, available via `Appearance - Widgets`
 
 == Changelog ==
+
+= 2.2.1 =
+*   Actually added the new French translation in `languages/docupress-es_ES.pot`
+*   Actually added the new Italian translation in `languages/docupress-es_ES.pot`
+*   Updated text strings for localization in `languages/docupress.pot`
+*   Updated various styles in `public/css/docupress-public.css`
+*   General code cleanup throughout multiple files in the plugin
 
 = 2.2 =
 *   Added new Spanish translation in `languages/docupress-es_ES.pot`

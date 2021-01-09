@@ -68,7 +68,7 @@ class DocuPress {
 	 */
 	public function __construct() {
 		$this->plugin_name = 'docupress';
-		$this->version     = '2.1';
+		$this->version     = '2.2';
 
 		if ( defined( 'DOCUPRESS_VERSION' ) ) {
 			$this->version = DOCUPRESS_VERSION;

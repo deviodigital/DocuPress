@@ -4,7 +4,7 @@ Donate link: https://deviodigital.com
 Tags: documentation, document, knowledgebase, help, support, notes
 Requires at least: 3.0.1
 Tested up to: 5.6
-Stable tag: 2.1
+Stable tag: 2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -36,6 +36,12 @@ DocuPress also comes with 2 custom widgets:
 4. DocuPress single article display
 
 == Changelog ==
+
+= 2.2 =
+*   Added new Spanish translation in `languages/docupress-es_ES.pot`
+*   Added new French translation in `languages/docupress-fr_FR.pot`
+*   Added new Italian translation in `languages/docupress-it_IT.pot`
+*   Updated text strings for localization in `languages/docupress.pot`
 
 = 2.1 =
 *   Added new Spanish translation in `languages/docupress-es_ES.pot`

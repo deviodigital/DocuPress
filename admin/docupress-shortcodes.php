@@ -30,8 +30,6 @@ function docupress_shortcode( $atts ) {
 		$atts,
 		'docupress'
 	) );
-
-    global $post;
     
     if ( 'all' === $collections ) {
         // Args.
@@ -63,30 +61,37 @@ function docupress_shortcode( $atts ) {
     // Get results.
     $docupress_articles = new WP_Query( $args );
 
-    $docupress_list = '<ul class="docupress-shortcode-list">';
-
-    // Loop through the articles.
-    while ( $docupress_articles->have_posts() ) : $docupress_articles->the_post();
-        $docupress_list .= '<li>';
-        $docupress_list .= '<a href="' . esc_url( get_permalink( $post->ID ) ) . '" class="docupress-shortcode-link">' . get_the_title( $post->ID ) . '</a>';
-        $docupress_list .= '</li>';
-    endwhile; // End loop.
-
-    wp_reset_postdata();
-
-    // Website link.
-    if ( 'all' !== $collections ) {
-        if ( 'on' === $viewall ) {
-            // URL for collections link.
-            $collections_url = apply_filters( 'docupress_shortcode_view_all_collections_url', get_bloginfo( 'url' ) . '/collections/' . $collections, $collections );
-            // Create list item with link.
-            $docupress_list .= '<li>';
-            $docupress_list .= '<a href="' . esc_url( $collections_url ) . '">' . __( 'view all', 'docupress' ) . ' &rarr;</a>';
-            $docupress_list .= '</li>';
-        }
+    // Display message if no articles are found.
+    if ( ! $docupress_articles->have_posts() ) {
+        return __( 'No articles found', 'docupress' );
+        exit;
     }
 
-    $docupress_list .= '</ul>';
+    // Check if articles exist.
+    if ( $docupress_articles->have_posts() ) {
+
+            // Create UL for articles.
+            $docupress_list = '<ul class="docupress-shortcode-list">';
+
+            while ( $docupress_articles->have_posts() ) : $docupress_articles->the_post();
+                // Loop through the articles.
+                $docupress_list .= '<li>';
+                $docupress_list .= '<a href="' . get_the_permalink( $docupress_articles->ID ) . '" class="docupress-shortcode-link">' . get_the_title( $docupress_articles->ID ) . '</a>';
+                $docupress_list .= '</li>';
+            endwhile;
+
+            // Website link.
+            if ( 'all' !== $collections && 'on' === $viewall ) {
+                // URL for collections link.
+                $collections_url = apply_filters( 'docupress_shortcode_view_all_collections_url', get_bloginfo( 'url' ) . '/collections/' . $collections, $collections );
+                // Create list item with link.
+                $docupress_list .= '<li>';
+                $docupress_list .= '<a href="' . esc_url( $collections_url ) . '">' . __( 'view all', 'docupress' ) . ' &rarr;</a>';
+                $docupress_list .= '</li>';
+            }
+
+            $docupress_list .= '</ul>';
+    }
 
     return $docupress_list;
 }

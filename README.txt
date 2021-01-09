@@ -12,28 +12,43 @@ Documentation Simplified.
 
 == Description ==
 
-Create your own online help documents from your WordPress dashboard with DocuPress.
+**DocuPress** helps you create your own documentation directly within your WordPress dashboard.
 
-Separate your documentation into collections, making it easy for users to browse only the content they're looking for.
+Separate your articles into collections, making it easy for users to browse only the content they're looking for.
 
-DocuPress also comes with 2 custom widgets:
+### Widgets & Shortcode
 
-*   Collections - output's a list of every collection you create with DocuPress.
-*   Recent Articles - select how many articles to display, randomize the output order and also choose which collection you'd like to display articles from.
-*   Related Articles - select how many articles to display and randomize the output order in this widget that will only display when viewing a single article.
+**DocuPress** includes the `[docupress]` shortcode, making it easy to include a list of articles anywhere on your site.
+
+Full list of shortcode options: `[docupress limit="99" collections="" order="" viewall="on"]`
+
+**DocuPress** also includes 3 custom widgets:
+
+*   **Collections** - output's a list of every collection you create with DocuPress.
+*   **Recent Articles** - select how many articles to display, randomize the output order and also choose which collection you'd like to display articles from.
+*   **Related Articles** - select how many articles to display and randomize the output order in this widget that will only display when viewing a single article.
+
+### Translations
+
+Currently, **DocuPress** comes prepackaged with the following translations:
+
+*   English
+*   Spanish
+
+Please [let us know](https://www.deviodigital.com/contact/) if there's a language you'd like to see **DocuPress* translated to next.
 
 == Installation ==
 
-1. Go to `Plugins - Add New` in your WordPress admin panel and search for "DocuPress"
+1. Go to `Plugins - Add New` in your WordPress admin panel and search for `DocuPress`
 2. Install and activate the plugin directly in your admin panel
 3. Pat yourself on the back for a job well done :)
 
 == Screenshots ==
 
-1. DocuPress adds a `Documentation` tab to your admin dashboard
-2. DocuPress widget, available via `Appearance - Widgets`
-3. DocuPress shortcode display
-4. DocuPress single article display
+1. DocuPress shortcode display
+2. DocuPress single article display
+3. DocuPress adds a `Documentation` tab to your admin dashboard
+4. DocuPress widget, available via `Appearance - Widgets`
 
 == Changelog ==
 

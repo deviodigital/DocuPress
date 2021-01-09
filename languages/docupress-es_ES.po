@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: DocuPress\n"
-"POT-Creation-Date: 2020-12-24 20:34-0500\n"
-"PO-Revision-Date: 2020-12-24 20:34-0500\n"
+"POT-Creation-Date: 2021-01-09 09:35-0500\n"
+"PO-Revision-Date: 2021-01-09 09:35-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es\n"
@@ -157,20 +157,24 @@ msgstr "Filtro %s lista"
 msgid "DocuPress Details"
 msgstr "Detalles de DocuPress"
 
-#: admin/docupress-metaboxes.php:76
+#: admin/docupress-metaboxes.php:77
 msgid "Path"
 msgstr "Ruta"
 
-#: admin/docupress-metaboxes.php:80
+#: admin/docupress-metaboxes.php:81
 msgid "Link"
 msgstr "Enlace"
 
-#: admin/docupress-metaboxes.php:85
+#: admin/docupress-metaboxes.php:86
 msgid "Remove estimated reading time?"
 msgstr "¿Eliminar el tiempo de lectura estimado?"
 
-#: admin/docupress-shortcodes.php:84 admin/docupress-widgets.php:120
-#: admin/docupress-widgets.php:439
+#: admin/docupress-shortcodes.php:66
+msgid "No articles found"
+msgstr "No se han encontrado artículos"
+
+#: admin/docupress-shortcodes.php:89 admin/docupress-widgets.php:120
+#: admin/docupress-widgets.php:437
 msgid "view all"
 msgstr "ver todo"
 
@@ -232,49 +236,49 @@ msgstr "Artículos de DocuPress"
 msgid "Display documentation articles"
 msgstr "Mostrar artículos de documentación"
 
-#: admin/docupress-widgets.php:177 admin/docupress-widgets.php:329
-#: admin/docupress-widgets.php:494
+#: admin/docupress-widgets.php:176 admin/docupress-widgets.php:328
+#: admin/docupress-widgets.php:492
 msgid "Widget Title:"
 msgstr "Título del widget:"
 
-#: admin/docupress-widgets.php:182 admin/docupress-widgets.php:499
+#: admin/docupress-widgets.php:181 admin/docupress-widgets.php:497
 msgid "Amount of articles to show:"
 msgstr "Cantidad de artículos para mostrar"
 
-#: admin/docupress-widgets.php:187
+#: admin/docupress-widgets.php:186
 msgid "Collections:"
 msgstr "Colecciones"
 
-#: admin/docupress-widgets.php:213 admin/docupress-widgets.php:505
+#: admin/docupress-widgets.php:212 admin/docupress-widgets.php:503
 msgid "Randomize output?"
 msgstr "¿Aleatorizar la salida?"
 
-#: admin/docupress-widgets.php:218 admin/docupress-widgets.php:510
+#: admin/docupress-widgets.php:217 admin/docupress-widgets.php:508
 msgid "Display link to all articles in collection?"
 msgstr "¿Mostrar enlace a todos los artículos de la colección?"
 
-#: admin/docupress-widgets.php:243
+#: admin/docupress-widgets.php:242
 msgid "DocuPress Collections"
 msgstr "DocuPress Colecciones"
 
-#: admin/docupress-widgets.php:245
+#: admin/docupress-widgets.php:244
 msgid "Display a list of collections"
 msgstr "Mostrar una lista de colecciones"
 
-#: admin/docupress-widgets.php:282
+#: admin/docupress-widgets.php:281
 #, php-format
 msgid "View all articles filed under %s"
 msgstr "Ver todos los artículos archivados en %s"
 
-#: admin/docupress-widgets.php:355
+#: admin/docupress-widgets.php:354
 msgid "DocuPress Related Articles"
 msgstr "DocuPress Artículos relacionados "
 
-#: admin/docupress-widgets.php:357
+#: admin/docupress-widgets.php:356
 msgid "Display related articles"
 msgstr "Mostrar artículos relacionados"
 
-#: admin/docupress-widgets.php:485
+#: admin/docupress-widgets.php:483
 msgid "Related Articles"
 msgstr "Artículos relacionados"
 

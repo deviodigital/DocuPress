@@ -117,7 +117,7 @@ ul.docupress-widget-list li:before {
     background: url(../images/file-text.svg);
     background-position: 0 0px;
     background-size: 20px 20px;
-    content: '';
+    content: '' !important;
     display: inline-block;
     height: 20px;
     margin-right: 6px;

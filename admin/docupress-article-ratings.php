@@ -31,7 +31,7 @@ function docupress_article_rating_display( $post_ID = '', $type_of_vote = '' ) {
     // Empty var.
     $content = '';
     // Set the $post_ID var.
-    if ( $post_ID == '' ) $post_ID = get_the_ID();
+    if ( '' == $post_ID ) $post_ID = get_the_ID();
 
     // Get the article ratings counts.
     $article_smile_count = '' != get_post_meta( $post_ID, 'docupress_article_smile', true ) ? get_post_meta( $post_ID, 'docupress_article_smile', true ) : '0';
@@ -114,12 +114,13 @@ add_filter( 'manage_docupress_posts_columns' , 'docupress_article_rating_columns
 function docupress_article_rating_column_values( $column, $post_id ) {
     switch ( $column ) {
     case 'article_smile_count' :
-        echo get_post_meta( $post_id, 'docupress_article_smile', true ) != '' ? '+' . get_post_meta( $post_id, 'docupress_article_smile', true ) : '0';
+        $face_count = get_post_meta( $post_id, 'docupress_article_smile', true ) != '' ? '+' . get_post_meta( $post_id, 'docupress_article_smile', true ) : '0';
         break;
     case 'article_frown_count' :
-        echo get_post_meta( $post_id, 'docupress_article_frown', true ) != '' ? '-' . get_post_meta( $post_id, 'docupress_article_frown', true ) : '0';
+        $face_count = get_post_meta( $post_id, 'docupress_article_frown', true ) != '' ? '-' . get_post_meta( $post_id, 'docupress_article_frown', true ) : '0';
         break;
     }
+    echo $face_count;
 }
 add_action( 'manage_docupress_posts_custom_column' , 'docupress_article_rating_column_values', 10, 2 );
 

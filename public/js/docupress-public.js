@@ -1,11 +1,10 @@
 function DocuPress_Article_Rating_Vote(ID, type) {
 	// For the LocalStorage.
 	var itemName = "articlerating" + ID;
-
 	var container = '#article-rating-' + ID;
 
 	// Check if the LocalStorage value exist.
-	if ( ! localStorage.getItem(itemName)) {
+	if ( ! localStorage.getItem(itemName) ) {
 
 		// Set HTML5 LocalStorage so the user can not vote again unless it's manually cleared.
         localStorage.setItem(itemName, true);
@@ -47,7 +46,7 @@ function DocuPress_Article_Rating_Vote(ID, type) {
 			var newContainer = "#article-rating-" + ID;
 
 			// Check the type.			
-			if ( type === 1 ) {
+			if ( 1 === type ) {
 				var articleRatingClass = ".article-rating-smile";
 			} else {
 				var articleRatingClass = ".article-rating-frown";
@@ -60,6 +59,7 @@ function DocuPress_Article_Rating_Vote(ID, type) {
 	}
 }
 
+// Run custom jQuery.
 jQuery(document).ready(function() {
 	// Get all article containers.
 	jQuery( ".article-rating-container" ).each(function( index ) {

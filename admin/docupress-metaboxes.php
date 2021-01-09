@@ -47,6 +47,7 @@ function docupress_article_details_meta( $value ) {
 	global $post;
 
 	$field = get_post_meta( $post->ID, $value, true );
+
 	if ( ! empty( $field ) ) {
 		return is_array( $field ) ? stripslashes_deep( $field ) : stripslashes( wp_kses_decode_entities( $field ) );
 	} else {
@@ -144,4 +145,4 @@ function docupress_save_article_details_meta( $post_id, $post ) {
 	}
 
 }
-add_action( 'save_post', 'docupress_save_article_details_meta', 1, 2 ); // save the custom fields.
+add_action( 'save_post', 'docupress_save_article_details_meta', 1, 2 );

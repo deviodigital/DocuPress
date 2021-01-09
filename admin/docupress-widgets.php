@@ -68,14 +68,14 @@ class DocuPress_Articles_Widget extends WP_Widget {
 
 		$randorder = '';
 
+		// Randomize order?
 		if ( 'on' === $instance['order'] ) {
 			$randorder = 'rand';
 		}
 
 		$collections = $instance['collections'];
 
-		global $post;
-		
+		// Setup the WP_Query.
 		if ( 'all' === $collections ) {
 			$articles_widget = new WP_Query(
 				array(
@@ -106,7 +106,7 @@ class DocuPress_Articles_Widget extends WP_Widget {
 		// Loop through articles.
 		while ( $articles_widget->have_posts() ) : $articles_widget->the_post();
 			$articles .= '<li>';
-			$articles .= '<a href="' . esc_url( get_permalink( $post->ID ) ) . '" class="docupress-widget-link">' . get_the_title( $post->ID ) . '</a>';
+			$articles .= '<a href="' . esc_url( get_permalink( $articles_widget->ID ) ) . '" class="docupress-widget-link">' . get_the_title( $articles_widget->ID ) . '</a>';
 			$articles .= '</li>';
 		endwhile;
 
@@ -114,12 +114,11 @@ class DocuPress_Articles_Widget extends WP_Widget {
 		
 		$websitelink = get_bloginfo( 'url' );
 
-		if ( 'all' !== $collections ) {
-			if ( 'on' === $instance['viewall'] ) {
-				$articles .= '<li>';
-				$articles .= '<a href="' . $websitelink . '/collections/' . $collections . '">' . __( 'view all', 'docupress' ) . ' &rarr;</a>';
-				$articles .= '</li>';
-			}
+		// Add link to all collections?
+		if ( 'all' !== $collections && 'on' === $instance['viewall'] ) {
+			$articles .= '<li>';
+			$articles .= '<a href="' . $websitelink . '/collections/' . $collections . '">' . __( 'view all', 'docupress' ) . ' &rarr;</a>';
+			$articles .= '</li>';
 		}
 
 		$articles .= '</ul>';
@@ -381,7 +380,7 @@ class DocuPress_Related_Articles_Widget extends WP_Widget {
 		// Empty var.
 		$randorder = '';
 
-		// Randomize order.
+		// Randomize order?
 		if ( 'on' === $instance['order'] ) {
 			$randorder = 'rand';
 		}
@@ -392,6 +391,7 @@ class DocuPress_Related_Articles_Widget extends WP_Widget {
 		// Pluck out the IDs to get an array of IDS.
 		$term_ids = wp_list_pluck( $terms, 'term_id' );
 
+		// Setup WP_Query.
 		$related_articles = new WP_Query(
 			array(
 				'post_type'    => 'docupress',
@@ -431,12 +431,10 @@ class DocuPress_Related_Articles_Widget extends WP_Widget {
 			endwhile;
 
 			wp_reset_postdata();
-			
-			$websitelink = get_bloginfo( 'url' );
 
 			if ( 'all' !== $collections && 'on' === $instance['viewall'] ) {
 				$articles .= '<li>';
-				$articles .= '<a href="' . $websitelink . '/collections/' . $collections . '">' . __( 'view all', 'docupress' ) . ' &rarr;</a>';
+				$articles .= '<a href="' . get_bloginfo( 'url' ) . '/collections/' . $collections . '">' . __( 'view all', 'docupress' ) . ' &rarr;</a>';
 				$articles .= '</li>';
 			}
 

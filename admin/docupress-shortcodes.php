@@ -63,7 +63,7 @@ function docupress_shortcode( $atts ) {
 
     // Display message if no articles are found.
     if ( ! $docupress_articles->have_posts() ) {
-        return __( 'No articles found', 'docupress' );
+        return '<p class="docupress-shortcode-empty">' . __( 'No articles found', 'docupress' ) . '</p>';
         exit;
     }
 

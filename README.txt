@@ -47,16 +47,16 @@ Please [let us know](https://www.deviodigital.com/contact/) if there's a languag
 
 == Screenshots ==
 
-1. DocuPress shortcode display
-2. DocuPress single article display
+1. DocuPress single article display
+2. DocuPress shortcode display
 3. DocuPress adds a `Documentation` tab to your admin dashboard
-4. DocuPress widget, available via `Appearance - Widgets`
+4. DocuPress widget, available via `Appearance -> Widgets`
 
 == Changelog ==
 
 = 2.2.1 =
-*   Actually added the new French translation in `languages/docupress-es_ES.pot`
-*   Actually added the new Italian translation in `languages/docupress-es_ES.pot`
+*   Actually added the new French translation in `languages/docupress-fr_FR.pot`
+*   Actually added the new Italian translation in `languages/docupress-it_IT.pot`
 *   Updated text strings for localization in `languages/docupress.pot`
 *   Updated various styles in `public/css/docupress-public.css`
 *   General code cleanup throughout multiple files in the plugin

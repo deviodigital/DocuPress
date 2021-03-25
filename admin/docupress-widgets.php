@@ -66,6 +66,7 @@ class DocuPress_Articles_Widget extends WP_Widget {
 		    echo $args['before_title'] . $title . $args['after_title'];
 		}
 
+		// Empty var.
 		$randorder = '';
 
 		// Randomize order?
@@ -73,6 +74,7 @@ class DocuPress_Articles_Widget extends WP_Widget {
 			$randorder = 'rand';
 		}
 
+		// Get collections from widget settings.
 		$collections = $instance['collections'];
 
 		// Setup the WP_Query.
@@ -111,13 +113,11 @@ class DocuPress_Articles_Widget extends WP_Widget {
 		endwhile;
 
 		wp_reset_postdata();
-		
-		$websitelink = get_bloginfo( 'url' );
 
 		// Add link to all collections?
 		if ( 'all' !== $collections && 'on' === $instance['viewall'] ) {
 			$articles .= '<li>';
-			$articles .= '<a href="' . $websitelink . '/collections/' . $collections . '">' . __( 'view all', 'docupress' ) . ' &rarr;</a>';
+			$articles .= '<a href="' . get_bloginfo( 'url' ) . '/collections/' . $collections . '">' . __( 'view all', 'docupress' ) . ' &rarr;</a>';
 			$articles .= '</li>';
 		}
 
@@ -189,18 +189,18 @@ class DocuPress_Articles_Widget extends WP_Widget {
 			if ( $terms ) {
 				printf( '<select name="%s" id="'. $this->get_field_id( 'collections' ) .'" name="'. $this->get_field_name( 'collections' ) .'" class="widefat">', esc_attr( $this->get_field_name( 'collections' ) ) );
 					if ( esc_attr( $term->slug ) == $instance['collections'] ) {
-						$collectionsinfo = '';
+						$selected = '';
 					} else {
-						$collectionsinfo = 'selected="selected"';
+						$selected = 'selected="selected"';
 					}
-					printf( '<option value="%s" '. $collectionsinfo .'>%s</option>', 'all', 'All' );
+					printf( '<option value="%s" '. $selected .'>%s</option>', 'all', 'All' );
 					foreach ( $terms as $term ) {
 						if ( esc_attr( $term->slug ) == $instance['collections'] ) {
-							$collectionsinfo = 'selected="selected"';
+							$selected = 'selected="selected"';
 						} else {
-							$collectionsinfo = '';
+							$selected = '';
 						}
-						printf( '<option value="%s" ' . $collectionsinfo . '>%s</option>', esc_attr( $term->slug ), esc_html( $term->name ) );
+						printf( '<option value="%s" ' . $selected . '>%s</option>', esc_attr( $term->slug ), esc_html( $term->name ) );
 					}
 				print( '</select>' );
 			}

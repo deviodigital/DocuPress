@@ -26,7 +26,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 // Current plugin version.
-define( 'DOCUPRESS_VERSION', '2.1' );
+define( 'DOCUPRESS_VERSION', '2.2.1' );
 
 /**
  * The code that runs during plugin activation.

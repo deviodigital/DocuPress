@@ -55,7 +55,7 @@ class DocuPress_Articles_Widget extends WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 		if ( ! isset( $args['id'] ) ) {
-		    $args['id'] = 'docupress_articles_widget';
+			$args['id'] = 'docupress_articles_widget';
 		}
 
 		$title = apply_filters( 'widget_title', $instance['title'], $instance, $args['id'] );
@@ -63,7 +63,7 @@ class DocuPress_Articles_Widget extends WP_Widget {
 		echo $args['before_widget'];
 
 		if ( $title ) {
-		    echo $args['before_title'] . $title . $args['after_title'];
+			echo $args['before_title'] . $title . $args['after_title'];
 		}
 
 		// Empty var.
@@ -140,15 +140,15 @@ class DocuPress_Articles_Widget extends WP_Widget {
 	 * @return      array $instance The updated instance options
 	 */
 	public function update( $new_instance, $old_instance ) {
-	    $instance = $old_instance;
+		$instance = $old_instance;
 
-	    $instance['title']       = strip_tags( $new_instance['title'] );
-	    $instance['limit']       = strip_tags( $new_instance['limit'] );
-	    $instance['collections'] = $new_instance['collections'];
-	    $instance['order']       = $new_instance['order'];
-	    $instance['viewall']     = $new_instance['viewall'];
+		$instance['title']       = strip_tags( $new_instance['title'] );
+		$instance['limit']       = strip_tags( $new_instance['limit'] );
+		$instance['collections'] = $new_instance['collections'];
+		$instance['order']       = $new_instance['order'];
+		$instance['viewall']     = $new_instance['viewall'];
 
-	    return $instance;
+		return $instance;
 	}
 
 
@@ -162,13 +162,13 @@ class DocuPress_Articles_Widget extends WP_Widget {
 	 * @return      void
 	 */
 	public function form( $instance ) {
-	    $defaults = array(
-	        'title'       => 'Documentation',
-	        'limit'       => '5',
+		$defaults = array(
+			'title'       => 'Documentation',
+			'limit'       => '5',
 			'collections' => '',
-	        'order'       => '',
+			'order'       => '',
 			'viewall'     => '',
-	    );
+		);
 
 		$instance = wp_parse_args( (array) $instance, $defaults );
 	?>
@@ -260,7 +260,7 @@ class DocuPress_Collections_Widget extends WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 		if ( ! isset( $args['id'] ) ) {
-		    $args['id'] = 'docupress_collections_widget';
+			$args['id'] = 'docupress_collections_widget';
 		}
 
 		$title = apply_filters( 'widget_title', $instance['title'], $instance, $args['id'] );
@@ -299,12 +299,12 @@ class DocuPress_Collections_Widget extends WP_Widget {
 	 * @return      array $instance The updated instance options
 	 */
 	public function update( $new_instance, $old_instance ) {
-	    $instance = $old_instance;
+		$instance = $old_instance;
 
 		$instance['title'] = strip_tags( $new_instance['title'] );
 		$instance['limit'] = strip_tags( $new_instance['limit'] );
 
-	    return $instance;
+		return $instance;
 	}
 
 	/**
@@ -317,10 +317,10 @@ class DocuPress_Collections_Widget extends WP_Widget {
 	 * @return      void
 	 */
 	public function form( $instance ) {
-	    $defaults = array(
-	        'title' => 'Collections',
-	        'limit' => '5',
-	    );
+		$defaults = array(
+			'title' => 'Collections',
+			'limit' => '5',
+		);
 
 		$instance = wp_parse_args( (array) $instance, $defaults );
 	?>
@@ -372,7 +372,7 @@ class DocuPress_Related_Articles_Widget extends WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 		if ( ! isset( $args['id'] ) ) {
-		    $args['id'] = 'docupress_related_articles_widget';
+			$args['id'] = 'docupress_related_articles_widget';
 		}
 
 		$title = apply_filters( 'widget_title', $instance['title'], $instance, $args['id'] );
@@ -458,14 +458,14 @@ class DocuPress_Related_Articles_Widget extends WP_Widget {
 	 * @return      array $instance The updated instance options
 	 */
 	public function update( $new_instance, $old_instance ) {
-	    $instance = $old_instance;
+		$instance = $old_instance;
 
-	    $instance['title']   = strip_tags( $new_instance['title'] );
-	    $instance['limit']   = strip_tags( $new_instance['limit'] );
-	    $instance['order']   = $new_instance['order'];
-	    $instance['viewall'] = $new_instance['viewall'];
+		$instance['title']   = strip_tags( $new_instance['title'] );
+		$instance['limit']   = strip_tags( $new_instance['limit'] );
+		$instance['order']   = $new_instance['order'];
+		$instance['viewall'] = $new_instance['viewall'];
 
-	    return $instance;
+		return $instance;
 	}
 
 
@@ -479,12 +479,12 @@ class DocuPress_Related_Articles_Widget extends WP_Widget {
 	 * @return      void
 	 */
 	public function form( $instance ) {
-	    $defaults = array(
-	        'title'       => __( 'Related Articles', 'docupress' ),
-	        'limit'       => '5',
-	        'order'       => '',
+		$defaults = array(
+			'title'       => __( 'Related Articles', 'docupress' ),
+			'limit'       => '5',
+			'order'       => '',
 			'viewall'     => '',
-	    );
+		);
 
 		$instance = wp_parse_args( (array) $instance, $defaults );
 	?>

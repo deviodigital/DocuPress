@@ -34,11 +34,11 @@ function docupress_article_rating_display( $post_ID = '', $type_of_vote = '' ) {
 	if ( '' == $post_ID ) $post_ID = get_the_ID();
 
 	// Get the article ratings counts.
-	$article_smile_count = '' != get_post_meta( $post_ID, 'docupress_article_smile', true ) ? get_post_meta( $post_ID, 'docupress_article_smile', true ) : '0';
-	$article_frown_count = '' != get_post_meta( $post_ID, 'docupress_article_frown', true ) ? get_post_meta( $post_ID, 'docupress_article_frown', true ) : '0';
+	//$article_smile_count = '' != get_post_meta( $post_ID, 'docupress_article_smile', true ) ? get_post_meta( $post_ID, 'docupress_article_smile', true ) : '0';
+	//$article_frown_count = '' != get_post_meta( $post_ID, 'docupress_article_frown', true ) ? get_post_meta( $post_ID, 'docupress_article_frown', true ) : '0';
 	// Create ratings links.
-	$face_smile = '<span class="article-rating-smile" onclick="DocuPress_Article_Rating_Vote(' . $post_ID . ', 1);" data-text="' . esc_attr__( 'Vote Up', 'docupress' ) . ' +"><img src="' . plugin_dir_url( __FILE__ ) . '/images/mood-smile.svg" /></span>';
-	$face_frown = '<span class="article-rating-frown" onclick="DocuPress_Article_Rating_Vote(' . $post_ID . ', 2);" data-text="' . esc_attr__( 'Vote Down', 'docupress' ) . ' -"><img src="' . plugin_dir_url( __FILE__ ) . '/images/mood-sad.svg" /></span>';
+	$face_smile = '<span class="article-rating-smile" onclick="DocuPressVote(' . $post_ID . ', 1);" data-text="' . esc_attr__( 'Vote Up', 'docupress' ) . ' +"><img src="' . plugin_dir_url( __FILE__ ) . '/images/mood-smile.svg" /></span>';
+	$face_frown = '<span class="article-rating-frown" onclick="DocuPressVote(' . $post_ID . ', 2);" data-text="' . esc_attr__( 'Vote Down', 'docupress' ) . ' -"><img src="' . plugin_dir_url( __FILE__ ) . '/images/mood-sad.svg" /></span>';
 	// Article ratings content.
 	$content  = '<div  class="article-rating-container" id="article-rating-' . $post_ID . '" data-content-id="' . $post_ID . '">';
 	$content .= '<p class="article-rating-title">' . esc_attr__( 'Was this article helpful?', 'docupress' ) . '</p>';

@@ -1,15 +1,15 @@
-function DocuPress_Article_Rating_Vote(ID, type) {
+function DocuPressVote(ID, type) {
 	// For the LocalStorage.
 	var itemName = "articlerating" + ID;
-	var container = '#article-rating-' + ID;
+	var container = "#article-rating-" + ID;
 
 	// Check if the LocalStorage value exist.
 	if ( ! localStorage.getItem(itemName) ) {
 
 		// Set HTML5 LocalStorage so the user can not vote again unless it's manually cleared.
-        localStorage.setItem(itemName, true);
+		localStorage.setItem(itemName, true);
 
-        // Set the localStorage type as well.
+		// Set the localStorage type as well.
 		var typeItemName = "articlerating" + ID + "-" + type;
 		localStorage.setItem(typeItemName, true);
 
@@ -27,10 +27,10 @@ function DocuPress_Article_Rating_Vote(ID, type) {
 			action: "docupress_article_rating_add_vote",
 			postid: ID,
 			type: type,
-			nonce: DocuPress_Article_Rating_Ajax.nonce
+			nonce: DocuPressRatingAjax.nonce
 		};
 
-		jQuery.post(DocuPress_Article_Rating_Ajax.ajax_url, data, function(response) {
+		jQuery.post(DocuPressRatingAjax.ajax_url, data, function(response) {
 
 			var object = jQuery(container);
 
@@ -64,19 +64,19 @@ jQuery(document).ready(function() {
 	// Get all article containers.
 	jQuery( ".article-rating-container" ).each(function( index ) {
 		// Get data attribute.
-		var contentID = jQuery(this).data('content-id');
+		var contentID = jQuery(this).data("content-id");
 		// Set item name.
 		var itemName = "articlerating"+contentID;
 		// Check if this content has localstorage.
 		if (localStorage.getItem(itemName)) {
 			// Check if it's a Smile or Frown vote.
 			if ( localStorage.getItem("articlerating" + contentID + "-1") ) {
-				jQuery(this).find('.article-rating-smile').addClass('article-rating-voted');
-				jQuery(this).find('.article-rating-frown').addClass('faded');
+				jQuery(this).find(".article-rating-smile").addClass("article-rating-voted");
+				jQuery(this).find(".article-rating-frown").addClass("faded");
 			}
 			if ( localStorage.getItem("articlerating" + contentID + "-2") ) {
-				jQuery(this).find('.article-rating-frown').addClass('article-rating-voted');
-				jQuery(this).find('.article-rating-smile').addClass('faded');
+				jQuery(this).find(".article-rating-frown").addClass("article-rating-voted");
+				jQuery(this).find(".article-rating-smile").addClass("faded");
 			}
 		}
 	});

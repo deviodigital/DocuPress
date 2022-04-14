@@ -2,7 +2,7 @@
  * Public CSS
  */
 
- .article-rating-container {  
+.article-rating-container {
   border-top: 1px solid #ddd;
   display: block;
   padding: 1em 0;
@@ -46,7 +46,7 @@
 .article-rating-container .article-rating-frown img:hover {
   filter: invert(12%) sepia(32%) saturate(4%) hue-rotate(315deg) brightness(84%) contrast(94%);
 }
-  
+
 .article-rating-container span.faded img {
   filter: none;
   opacity: 0.1;
@@ -75,7 +75,7 @@ ul.docupress-shortcode-list li:last-child {
   margin-bottom: 0;
 }
 
-ul.docupress-shortcode-list li:before {
+ul.docupress-shortcode-list li::before {
   background: url(../images/file-text.svg);
   background-position: 0 0;
   background-size: 20px 20px;
@@ -84,12 +84,6 @@ ul.docupress-shortcode-list li:before {
   height: 20px;
   margin-right: 6px;
   width: 20px;
-}
-
-/** Estimated reading time */
-
-p.docupress-est-reading {
-  font-style: italic;
 }
 
 /** Articles widget */
@@ -105,9 +99,9 @@ ul.docupress-widget-list li:last-child {
   margin-bottom: 0;
 }
 
-ul.docupress-widget-list li:before {
+ul.docupress-widget-list li::before {
   background: url(../images/file-text.svg);
-  background-position: 0 0px;
+  background-position: 0px 0px;
   background-size: 20px 20px;
   content: '' !important;
   display: inline-block;
@@ -125,7 +119,7 @@ p.docupress-est-reading {
   flex-direction: row;
 }
 
-.docupress-est-reading:before {
+.docupress-est-reading::before {
   background: url(../images/clock.svg) no-repeat center center;
   background-size: cover;
   content: '';

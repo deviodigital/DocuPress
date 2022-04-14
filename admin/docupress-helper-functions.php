@@ -13,7 +13,7 @@
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
-	exit;
+	wp_die();
 }
 
 /**
@@ -21,15 +21,16 @@ if ( ! defined( 'ABSPATH' ) ) {
  * 
  * This function adds an estimated reading time to the top of articles
  * 
- * @param int $id - the post ID we're getting the estimated reading time for
+ * @param  int $post_id - the post ID we're getting the estimated reading time for
  * 
- * @since 1.4.0
+ * @return string
+ * @since  1.4.0
  */
-function docupress_estimated_reading_time( $id = '' ) {
+function docupress_estimated_reading_time( $post_id   = '' ) {
 	// Verify ID is present.
-	if ( ! $id ) { return; }
+	if ( ! $post_id   ) { return; }
 	// Get the post.
-	$the_post = get_post( $id );
+	$the_post = get_post( $post_id   );
 	// Content.
 	$my_content = apply_filters( 'docupress_estimated_reading_content', $the_post->post_content );
 	// Words.

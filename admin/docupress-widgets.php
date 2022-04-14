@@ -13,7 +13,7 @@
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
-	exit;
+	wp_die();
 }
 
 /**
@@ -36,7 +36,7 @@ class DocuPress_Articles_Widget extends WP_Widget {
 			'docupress_articles_widget',
 			__( 'DocuPress Articles', 'docupress' ),
 			array(
-				'description' => __( 'Display documentation articles', 'docupress' ),
+				'description' => esc_attr__( 'Display documentation articles', 'docupress' ),
 				'classname'   => 'docupress-widget',
 			)
 		);
@@ -117,7 +117,7 @@ class DocuPress_Articles_Widget extends WP_Widget {
 		// Add link to all collections?
 		if ( 'all' !== $collections && 'on' === $instance['viewall'] ) {
 			$articles .= '<li>';
-			$articles .= '<a href="' . get_bloginfo( 'url' ) . '/collections/' . $collections . '">' . __( 'view all', 'docupress' ) . ' &rarr;</a>';
+			$articles .= '<a href="' . get_bloginfo( 'url' ) . '/collections/' . $collections . '">' . esc_attr__( 'view all', 'docupress' ) . ' &rarr;</a>';
 			$articles .= '</li>';
 		}
 
@@ -183,7 +183,7 @@ class DocuPress_Articles_Widget extends WP_Widget {
 	</p>
 
 	<p>
-		<label for="<?php esc_attr_e( $this->get_field_id( 'collections' ) ); ?>"><?php _e( 'Collections:', 'docupress' ); ?></label>
+		<label for="<?php esc_attr_e( $this->get_field_id( 'collections' ) ); ?>"><?php esc_attr_e( 'Collections:', 'docupress' ); ?></label>
 		<?php 
 			$terms = get_terms( 'docupress_collections' );
 			if ( $terms ) {
@@ -193,14 +193,14 @@ class DocuPress_Articles_Widget extends WP_Widget {
 					} else {
 						$selected = 'selected="selected"';
 					}
-					printf( '<option value="%s" '. $selected .'>%s</option>', 'all', 'All' );
+					printf( '<option value="%s" '. esc_html( $selected ) .'>%s</option>', 'all', 'All' );
 					foreach ( $terms as $term ) {
 						if ( esc_attr( $term->slug ) == $instance['collections'] ) {
 							$selected = 'selected="selected"';
 						} else {
 							$selected = '';
 						}
-						printf( '<option value="%s" ' . $selected . '>%s</option>', esc_attr( $term->slug ), esc_html( $term->name ) );
+						printf( '<option value="%s" ' . esc_html( $selected ) . '>%s</option>', esc_attr( $term->slug ), esc_html( $term->name ) );
 					}
 				print( '</select>' );
 			}
@@ -239,9 +239,9 @@ class DocuPress_Collections_Widget extends WP_Widget {
 
 		parent::__construct(
 			'docupress_collections_widget',
-			esc_html__( 'DocuPress Collections', 'docupress' ),
+			esc_attr__( 'DocuPress Collections', 'docupress' ),
 			array(
-				'description' => esc_html__( 'Display a list of collections', 'docupress' ),
+				'description' => esc_attr__( 'Display a list of collections', 'docupress' ),
 				'classname'   => 'docupress-collections-widget',
 			)
 		);
@@ -318,7 +318,7 @@ class DocuPress_Collections_Widget extends WP_Widget {
 	 */
 	public function form( $instance ) {
 		$defaults = array(
-			'title' => 'Collections',
+			'title' => esc_attr__( 'Collections', 'docupress' ),
 			'limit' => '5',
 		);
 
@@ -351,9 +351,9 @@ class DocuPress_Related_Articles_Widget extends WP_Widget {
 
 		parent::__construct(
 			'docupress_related_articles_widget',
-			__( 'DocuPress Related Articles', 'docupress' ),
+			esc_attr__( 'DocuPress Related Articles', 'docupress' ),
 			array(
-				'description' => __( 'Display related articles', 'docupress' ),
+				'description' => esc_attr__( 'Display related articles', 'docupress' ),
 				'classname'   => 'docupress-widget',
 			)
 		);
@@ -434,7 +434,7 @@ class DocuPress_Related_Articles_Widget extends WP_Widget {
 
 			if ( 'all' !== $collections && 'on' === $instance['viewall'] ) {
 				$articles .= '<li>';
-				$articles .= '<a href="' . get_bloginfo( 'url' ) . '/collections/' . $collections . '">' . __( 'view all', 'docupress' ) . ' &rarr;</a>';
+				$articles .= '<a href="' . get_bloginfo( 'url' ) . '/collections/' . $collections . '">' . esc_attr__( 'view all', 'docupress' ) . ' &rarr;</a>';
 				$articles .= '</li>';
 			}
 
@@ -480,7 +480,7 @@ class DocuPress_Related_Articles_Widget extends WP_Widget {
 	 */
 	public function form( $instance ) {
 		$defaults = array(
-			'title'       => __( 'Related Articles', 'docupress' ),
+			'title'       => esc_attr__( 'Related Articles', 'docupress' ),
 			'limit'       => '5',
 			'order'       => '',
 			'viewall'     => '',

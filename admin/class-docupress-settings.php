@@ -30,7 +30,7 @@ class DocuPress_Permalink_Settings {
 	 */
 	public function register_fields() {
 		register_setting( 'permalink', 'docupress_article_slug', 'esc_attr' );
-		add_settings_field( 'docupress_article_slug_setting', '<label for="docupress_article_slug">' . __( 'DocuPress Base', 'docupress' ) . '</label>', array( &$this, 'fields_html' ), 'permalink', 'optional' );
+		add_settings_field( 'docupress_article_slug_setting', '<label for="docupress_article_slug">' . esc_attr__( 'DocuPress Base', 'docupress' ) . '</label>', array( &$this, 'fields_html' ), 'permalink', 'optional' );
 	}
 
 	/**
@@ -51,13 +51,14 @@ class DocuPress_Permalink_Settings {
 		}
 
 		// We need to save the options ourselves; settings api does not trigger save for the permalinks page.
-		if ( isset( $_POST['permalink_structure'] ) ||
-			 isset( $_POST['category_base'] ) &&
-			 isset( $_POST['docupress_article_slug'] ) &&
-			 wp_verify_nonce( wp_unslash( $_POST['docupress_article_slug_nonce'] ), 'docupress' ) ) {
-				$article_slug = sanitize_title( wp_unslash( $_POST['docupress_article_slug'] ) );
+		if ( isset( $_POST ) && null !== filter_input( INPUT_POST, 'permalink_structure' ) ||
+			filter_input( INPUT_POST, 'category_base' ) &&
+			filter_input( INPUT_POST, 'docupress_article_slug' ) &&
+			wp_verify_nonce( wp_unslash( filter_input( INPUT_POST, 'docupress_article_slug_nonce' ) ), 'docupress' ) ) {
+				$article_slug = sanitize_title( wp_unslash( filter_input( INPUT_POST, 'docupress_article_slug' ) ) );
 				update_option( 'docupress_article_slug', $article_slug );
 		}
 	}
 }
+
 $docupress_permalink_settings = new DocuPress_Permalink_Settings();

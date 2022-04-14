@@ -13,7 +13,7 @@
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
-	exit;
+	wp_die();
 }
 
 /**
@@ -37,11 +37,11 @@ function docupress_article_rating_display( $post_ID = '', $type_of_vote = '' ) {
 	$article_smile_count = '' != get_post_meta( $post_ID, 'docupress_article_smile', true ) ? get_post_meta( $post_ID, 'docupress_article_smile', true ) : '0';
 	$article_frown_count = '' != get_post_meta( $post_ID, 'docupress_article_frown', true ) ? get_post_meta( $post_ID, 'docupress_article_frown', true ) : '0';
 	// Create ratings links.
-	$face_smile = '<span class="article-rating-smile" onclick="DocuPress_Article_Rating_Vote(' . $post_ID . ', 1);" data-text="' . __( 'Vote Up', 'docupress' ) . ' +"><img src="' . plugin_dir_url( __FILE__ ) . '/images/mood-smile.svg" /></span>';
-	$face_frown = '<span class="article-rating-frown" onclick="DocuPress_Article_Rating_Vote(' . $post_ID . ', 2);" data-text="' . __( 'Vote Down', 'docupress' ) . ' -"><img src="' . plugin_dir_url( __FILE__ ) . '/images/mood-sad.svg" /></span>';
+	$face_smile = '<span class="article-rating-smile" onclick="DocuPress_Article_Rating_Vote(' . $post_ID . ', 1);" data-text="' . esc_attr__( 'Vote Up', 'docupress' ) . ' +"><img src="' . plugin_dir_url( __FILE__ ) . '/images/mood-smile.svg" /></span>';
+	$face_frown = '<span class="article-rating-frown" onclick="DocuPress_Article_Rating_Vote(' . $post_ID . ', 2);" data-text="' . esc_attr__( 'Vote Down', 'docupress' ) . ' -"><img src="' . plugin_dir_url( __FILE__ ) . '/images/mood-sad.svg" /></span>';
 	// Article ratings content.
 	$content  = '<div  class="article-rating-container" id="article-rating-' . $post_ID . '" data-content-id="' . $post_ID . '">';
-	$content .= '<p class="article-rating-title">' . __( 'Was this article helpful?', 'docupress' ) . '</p>';
+	$content .= '<p class="article-rating-title">' . esc_attr__( 'Was this article helpful?', 'docupress' ) . '</p>';
 	$content .= $face_smile . ' ' . $face_frown;
 	$content .= '</div>';
 
@@ -59,11 +59,11 @@ function docupress_article_rating_add_vote() {
 	// Check the nonce - security.
 	check_ajax_referer( 'docupress-article-rating-nonce', 'nonce' );
 
-	global $wpdb;
+	//global $wpdb;
 
 	// Get the POST values.
-	$post_ID      = intval( $_POST['postid'] );
-	$type_of_vote = intval( $_POST['type'] );
+	$post_ID      = intval( filter_input( INPUT_POST, 'postid' ) );
+	$type_of_vote = intval( filter_input( INPUT_POST, 'type' ) );
 
 	// Check the type and retrieve the meta values.
 	if ( 1 == $type_of_vote ) {
@@ -98,8 +98,8 @@ add_action( 'wp_ajax_nopriv_docupress_article_rating_add_vote', 'docupress_artic
  */
 function docupress_article_rating_columns( $columns ) {
 	return array_merge( $columns, array(
-		'article_smile_count' => __( 'Up Votes', 'docupress' ),
-		'article_frown_count' => __( 'Down Votes', 'docupress' )
+		'article_smile_count' => esc_attr__( 'Up Votes', 'docupress' ),
+		'article_frown_count' => esc_attr__( 'Down Votes', 'docupress' )
 	) );
 }
 add_filter( 'manage_docupress_posts_columns' , 'docupress_article_rating_columns' );
@@ -120,7 +120,7 @@ function docupress_article_rating_column_values( $column, $post_id ) {
 		$face_count = get_post_meta( $post_id, 'docupress_article_frown', true ) != '' ? '-' . get_post_meta( $post_id, 'docupress_article_frown', true ) : '0';
 		break;
 	}
-	echo $face_count;
+	esc_attr_e( $face_count );
 }
 add_action( 'manage_docupress_posts_custom_column' , 'docupress_article_rating_column_values', 10, 2 );
 
@@ -181,9 +181,8 @@ function docupress_article_rating_print( $content ) {
 	if ( is_singular( 'docupress' ) ) {
 		// Append ratings to the content.
 		return $content . docupress_article_rating_display();
-	} else {
-		// Do nothing.
-		return $content;
 	}
+	// Default content.	
+	return $content;
 }
 add_filter( 'the_content', 'docupress_article_rating_print' );

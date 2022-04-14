@@ -13,7 +13,7 @@
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
-	exit;
+	wp_die();
 }
 
 /**
@@ -74,17 +74,17 @@ function docupress_article_details_metabox() {
 
 	// Build the HTML output.
 	$details  = '<div class="docupress details">';
-	$details .= '<p>' . __( 'Path', 'docupress' ) . '<span>(ex: path/to/file.php)</span>:</p>';
+	$details .= '<p>' . esc_attr__( 'Path', 'docupress' ) . '<span>' . esc_attr__( '(ex: path/to/file.php)', 'docupress' ) . '</span>:</p>';
 	$details .= '<input type="text" name="docupress_path" value="' . esc_html( $docupress_path )  . '" class="widefat" />';
 	$details .= '</div>';
 	$details .= '<div class="docupress details">';
-	$details .= '<p>' . __( 'Link', 'docupress' ) . '<span>(ex: https://github.com/...)</span>:</p>';
+	$details .= '<p>' . esc_attr__( 'Link', 'docupress' ) . '<span>(ex: https://github.com/...)</span>:</p>';
 	$details .= '<input type="url" name="docupress_url" value="' . esc_url( $docupress_url ) . '" class="widefat" />';
 	$details .= '</div>';
 	$details .= '<div class="docupress details">';
 	$details .= '<p><input type="checkbox" name="docupress_article_estimated_reading_display" id="docupress_article_estimated_reading_display" value="hide_estimated_reading"' . $checkbox . '>
-				 <label for="docupress_article_estimated_reading_display">' . __( 'Remove estimated reading time?', 'docupress' ) . '</label>
-				 </p>';
+							<label for="docupress_article_estimated_reading_display">' . esc_attr__( 'Remove estimated reading time?', 'docupress' ) . '</label>
+							</p>';
 	$details .= '</div>';
 
 	// Display details.
@@ -96,15 +96,14 @@ function docupress_article_details_metabox() {
  * 
  * @return void
  */
-function docupress_save_article_details_meta( $post_id, $post ) {
-
+function docupress_save_article_details_meta( $post ) {
 	/**
 	 * Verify this came from the our screen and with proper authorization,
 	 * because save_post can be triggered at other times
 	 */
 	if (
 		! isset( $_POST['docupress_article_details_meta_noncename' ] ) ||
-		! wp_verify_nonce( $_POST['docupress_article_details_meta_noncename'], plugin_basename( __FILE__ ) )
+		! wp_verify_nonce( filter_input( INPUT_POST, 'docupress_article_details_meta_noncename' ), plugin_basename( __FILE__ ) )
 	) {
 		return $post->ID;
 	}
@@ -118,11 +117,11 @@ function docupress_save_article_details_meta( $post_id, $post ) {
 	 * OK, we're authenticated: we need to find and save the data
 	 * We'll put it into an array to make it easier to loop though.
 	 */
-	$article_details['docupress_path'] = esc_html( $_POST['docupress_path'] );
-	$article_details['docupress_url']  = esc_html( $_POST['docupress_url'] );
+	$article_details['docupress_path'] = esc_html( filter_input( INPUT_POST, 'docupress_path' ) );
+	$article_details['docupress_url']  = esc_html( filter_input( INPUT_POST, 'docupress_url' ) );
 
 	// Get estimated reading time display.
-	$article_details['docupress_article_estimated_reading_display'] = esc_html( $_POST['docupress_article_estimated_reading_display'] );
+	$article_details['docupress_article_estimated_reading_display'] = esc_html( filter_input( INPUT_POST, 'docupress_article_estimated_reading_display' ) );
 
 	// Add values of $documentdetails_meta as custom fields.
 	foreach ( $article_details as $key => $value ) {
@@ -143,6 +142,5 @@ function docupress_save_article_details_meta( $post_id, $post ) {
 			delete_post_meta( $post->ID, $key );
 		}
 	}
-
 }
-add_action( 'save_post', 'docupress_save_article_details_meta', 1, 2 );
+add_action( 'save_post', 'docupress_save_article_details_meta', 1, 1 );

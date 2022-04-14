@@ -13,7 +13,7 @@
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
-	exit;
+	wp_die();
 }
 
 /**
@@ -24,16 +24,16 @@ function docupress_collections_taxonomy() {
 	$labels = array(
 		'name'              => _x( 'Collections', 'taxonomy general name', 'docupress' ),
 		'singular_name'     => _x( 'Collection', 'taxonomy singular name', 'docupress' ),
-		'search_items'      => __( 'Search Collections', 'docupress' ),
-		'all_items'         => __( 'All Collections', 'docupress' ),
-		'parent_item'       => __( 'Parent Collection', 'docupress' ),
-		'parent_item_colon' => __( 'Parent Collection:', 'docupress' ),
-		'edit_item'         => __( 'Edit Collection', 'docupress' ),
-		'update_item'       => __( 'Update Collection', 'docupress' ),
-		'add_new_item'      => __( 'Add New Collection', 'docupress' ),
-		'new_item_name'     => __( 'New Collection Name', 'docupress' ),
-		'not_found'         => __( 'No categories found', 'docupress' ),
-		'menu_name'         => __( 'Collections', 'docupress' ),
+		'search_items'      => esc_attr__( 'Search Collections', 'docupress' ),
+		'all_items'         => esc_attr__( 'All Collections', 'docupress' ),
+		'parent_item'       => esc_attr__( 'Parent Collection', 'docupress' ),
+		'parent_item_colon' => esc_attr__( 'Parent Collection:', 'docupress' ),
+		'edit_item'         => esc_attr__( 'Edit Collection', 'docupress' ),
+		'update_item'       => esc_attr__( 'Update Collection', 'docupress' ),
+		'add_new_item'      => esc_attr__( 'Add New Collection', 'docupress' ),
+		'new_item_name'     => esc_attr__( 'New Collection Name', 'docupress' ),
+		'not_found'         => esc_attr__( 'No categories found', 'docupress' ),
+		'menu_name'         => esc_attr__( 'Collections', 'docupress' ),
 	);
 
 	register_taxonomy( 'docupress_collections','docupress', array(

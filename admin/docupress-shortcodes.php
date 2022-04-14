@@ -13,7 +13,7 @@
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
-	exit;
+	wp_die();
 }
 
 // Add Shortcode
@@ -63,8 +63,8 @@ function docupress_shortcode( $atts ) {
 
 	// Display message if no articles are found.
 	if ( ! $docupress_articles->have_posts() ) {
-		return '<p class="docupress-shortcode-empty">' . __( 'No articles found', 'docupress' ) . '</p>';
-		exit;
+		return '<p class="docupress-shortcode-empty">' . esc_attr__( 'No articles found', 'docupress' ) . '</p>';
+		wp_die();
 	}
 
 	// Check if articles exist.
@@ -86,7 +86,7 @@ function docupress_shortcode( $atts ) {
 				$collections_url = apply_filters( 'docupress_shortcode_view_all_collections_url', get_bloginfo( 'url' ) . '/collections/' . $collections, $collections );
 				// Create list item with link.
 				$docupress_list .= '<li>';
-				$docupress_list .= '<a href="' . esc_url( $collections_url ) . '">' . __( 'view all', 'docupress' ) . ' &rarr;</a>';
+				$docupress_list .= '<a href="' . esc_url( $collections_url ) . '">' . esc_attr__( 'view all', 'docupress' ) . ' &rarr;</a>';
 				$docupress_list .= '</li>';
 			}
 

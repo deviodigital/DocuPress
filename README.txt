@@ -4,7 +4,7 @@ Donate link: https://deviodigital.com
 Tags: documentation, document, knowledgebase, help, support, notes
 Requires at least: 3.0.1
 Tested up to: 5.9.2
-Stable tag: 2.2.1
+Stable tag: 2.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,11 @@ Please [let us know](https://www.deviodigital.com/contact/) if there's a languag
 4. DocuPress widget, available via `Appearance -> Widgets`
 
 == Changelog ==
+
+= 2.3.0 =
+*   Added new Hindi translation in `languages/docupress-hi_IN.pot`
+*   Updated various security related issues found with [Codacy](https://codacy.com) throughout multiple files in the plugin
+*   General code cleanup throughout multiple files in the plugin
 
 = 2.2.1 =
 *   Actually added the new French translation in `languages/docupress-fr_FR.pot`

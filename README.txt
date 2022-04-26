@@ -36,6 +36,7 @@ Currently, **DocuPress** comes prepackaged with the following translations:
 *   Spanish
 *   French
 *   Italian
+*   Hindi
 
 Please [let us know](https://www.deviodigital.com/contact/) if there's a language you'd like to see **DocuPress** translated to next.
 

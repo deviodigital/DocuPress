@@ -3,9 +3,11 @@
 /**
  * The plugin bootstrap file
  *
- * @link              https://deviodigital.com
- * @since             1.0.0
- * @package           DocuPress
+ * @package DocuPress
+ * @author  Robert DeVore <contact@deviodigital.com>
+ * @license GPL-2.0+ http://www.gnu.org/licenses/gpl-2.0.txt
+ * @link    https://deviodigital.com
+ * @since   1.0.0
  *
  * @wordpress-plugin
  * Plugin Name:       DocuPress
@@ -22,7 +24,7 @@
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
-	wp_die();
+    wp_die();
 }
 
 // Current plugin version.
@@ -31,19 +33,23 @@ define( 'DOCUPRESS_VERSION', '2.3.0' );
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-docupress-activator.php
+ * 
+ * @return void
  */
 function activate_docupress() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-docupress-activator.php';
-	DocuPress_Activator::activate();
+    require_once plugin_dir_path( __FILE__ ) . 'includes/class-docupress-activator.php';
+    DocuPress_Activator::activate();
 }
 
 /**
  * The code that runs during plugin deactivation.
  * This action is documented in includes/class-docupress-deactivator.php
+ * 
+ * @return void
  */
 function deactivate_docupress() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-docupress-deactivator.php';
-	DocuPress_Deactivator::deactivate();
+    require_once plugin_dir_path( __FILE__ ) . 'includes/class-docupress-deactivator.php';
+    DocuPress_Deactivator::deactivate();
 }
 
 register_activation_hook( __FILE__, 'activate_docupress' );
@@ -62,10 +68,11 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-docupress.php';
  * then kicking off the plugin from this point in the file does
  * not affect the page life cycle.
  *
- * @since    1.0.0
+ * @since  1.0.0
+ * @return void
  */
 function run_docupress() {
-	$plugin = new DocuPress();
-	$plugin->run();
+    $plugin = new DocuPress();
+    $plugin->run();
 }
 run_docupress();

@@ -1,0 +1,22 @@
+#!/bin/bash
+
+spinner() {
+    local i sp n
+    sp='/-\|'
+    n=${#sp}
+    printf ' '
+    while sleep 0.1; do
+        printf "%s\b${sp:i++%n:1}"
+    done
+}
+
+echo 'Running PHPCodeSniffer using WordPress-Core'
+spinner &
+
+tests/vendor/bin/phpcs --standard=WordPress-Core --severity=1 --extensions=php admin/docupress-article-ratings.php > tests/phpcs.txt
+code tests/phpcs.txt
+
+kill "$!" # kill the spinner
+printf '%s\b'
+
+echo 'Code sniffing completed!'

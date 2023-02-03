@@ -1,0 +1,22 @@
+#!/bin/bash
+
+spinner() {
+    local i sp n
+    sp='/-\|'
+    n=${#sp}
+    printf ' '
+    while sleep 0.1; do
+        printf "%s\b${sp:i++%n:1}"
+    done
+}
+
+echo 'Setting up PHPCodeSniffer using Wordpress-VIP-Go Standards'
+spinner &
+
+cd tests && composer install && cd ..
+tests/vendor/bin/phpcs --config-set installed_paths tests/wpcs,tests/vipcs
+
+kill "$!" # kill the spinner
+printf '%s\b'
+
+echo 'PHPCodeSniffer setup completed!'

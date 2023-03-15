@@ -432,7 +432,7 @@ class DocuPress_Related_Articles_Widget extends WP_Widget {
 
             wp_reset_postdata();
 
-            if ( 'all' !== $collections && 'on' === $instance['viewall'] ) {
+            if ( isset( $collections ) && 'all' !== $collections && 'on' === $instance['viewall'] ) {
                 $articles .= '<li>';
                 $articles .= '<a href="' . get_bloginfo( 'url' ) . '/collections/' . $collections . '">' . esc_attr__( 'view all', 'docupress' ) . ' &rarr;</a>';
                 $articles .= '</li>';

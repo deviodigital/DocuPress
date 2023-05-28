@@ -83,8 +83,8 @@ function docupress_article_details_metabox() {
     $details .= '</div>';
     $details .= '<div class="docupress details">';
     $details .= '<p><input type="checkbox" name="docupress_article_estimated_reading_display" id="docupress_article_estimated_reading_display" value="hide_estimated_reading"' . $checkbox . '>
-                            <label for="docupress_article_estimated_reading_display">' . esc_attr__( 'Remove estimated reading time?', 'docupress' ) . '</label>
-                            </p>';
+                <label for="docupress_article_estimated_reading_display">' . esc_attr__( 'Remove estimated reading time?', 'docupress' ) . '</label>
+                </p>';
     $details .= '</div>';
 
     // Display details.
@@ -106,7 +106,7 @@ function docupress_save_article_details_meta( $post ) {
         ! isset( $_POST['docupress_article_details_meta_noncename' ] ) ||
         ! wp_verify_nonce( filter_input( INPUT_POST, 'docupress_article_details_meta_noncename' ), plugin_basename( __FILE__ ) )
     ) {
-        return $post->ID;
+        return $post;
     }
 
     // Is the user allowed to edit the post or page?
@@ -118,11 +118,11 @@ function docupress_save_article_details_meta( $post ) {
      * OK, we're authenticated: we need to find and save the data
      * We'll put it into an array to make it easier to loop though.
      */
-    $article_details['docupress_path'] = esc_html( filter_input( INPUT_POST, 'docupress_path' ) );
-    $article_details['docupress_url']  = esc_html( filter_input( INPUT_POST, 'docupress_url' ) );
+    $article_details['docupress_path'] = filter_input( INPUT_POST, 'docupress_path' );
+    $article_details['docupress_url']  = filter_input( INPUT_POST, 'docupress_url' );
 
     // Get estimated reading time display.
-    $article_details['docupress_article_estimated_reading_display'] = esc_html( filter_input( INPUT_POST, 'docupress_article_estimated_reading_display' ) );
+    $article_details['docupress_article_estimated_reading_display'] = filter_input( INPUT_POST, 'docupress_article_estimated_reading_display' );
 
     // Add values of $documentdetails_meta as custom fields.
     foreach ( $article_details as $key => $value ) {

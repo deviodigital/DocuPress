@@ -188,7 +188,7 @@ class DocuPress_Articles_Widget extends WP_Widget {
             $terms = get_terms( 'docupress_collections' );
             if ( $terms ) {
                 printf( '<select name="%s" id="'. $this->get_field_id( 'collections' ) .'" name="'. $this->get_field_name( 'collections' ) .'" class="widefat">', esc_attr( $this->get_field_name( 'collections' ) ) );
-                    if ( esc_attr( $term->slug ) == $instance['collections'] ) {
+                    if ( 'all' !== $instance['collections'] ) {
                         $selected = '';
                     } else {
                         $selected = 'selected="selected"';

@@ -2,3 +2,69 @@
  * All of the CSS for your admin-specific functionality should be
  * included in this file.
  */
+
+.editor-styles-wrapper .docupress-block-grid {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.editor-styles-wrapper .docupress-block-grid > div {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 33.33%; /* Adjust the width of each grid item as needed */
+    padding: 10px;
+}
+
+.editor-styles-wrapper .docupress-block-grid h3 {
+    font-size: 24px;
+}
+
+.editor-styles-wrapper .docupress-block-grid img {
+    order: -1;
+}
+
+.editor-styles-wrapper .docupress-block-grid p {
+    font-size: 16px;
+}
+
+
+/** Block - List format */
+
+.editor-styles-wrapper .docupress-block-list {
+    padding: 0;
+    margin-left: 0;
+}
+
+.editor-styles-wrapper .docupress-block-list .docupress-block-post {
+    display: flex;
+    gap: 12px;
+    margin: 12px 0;
+    align-items: flex-start;
+}
+
+
+.editor-styles-wrapper .docupress-block-list .docupress-block-post .docupress-block-item {
+    list-style-type: none;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.editor-styles-wrapper .docupress-block-list .docupress-block-post h3 {
+    font-size: 18px;
+    margin-top: 0;
+}
+
+.editor-styles-wrapper .docupress-block-list .docupress-block-post img {
+    max-width: 120px;
+    align-items: flex-start;
+    flex-basis: 120px;
+}
+
+.editor-styles-wrapper .docupress-block-list .docupress-block-post p {
+    font-size: 15px;
+}
+
+.editor-styles-wrapper .docupress-block-list .docupress-block-post .list-content {
+    flex: 1;
+}

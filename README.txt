@@ -49,9 +49,11 @@ Please [let us know](https://www.deviodigital.com/contact/) if there's a languag
 == Screenshots ==
 
 1. DocuPress single article display
-2. DocuPress shortcode display
-3. DocuPress adds a `Documentation` tab to your admin dashboard
-4. DocuPress widget, available via `Appearance -> Widgets`
+2. DocuPress "Documentation" tab in the admin dashboard
+3. Gutenberg Block - Grid display (back-end)
+4. Gutenberg Block - Grid display (front-end)
+5. Gutenberg Block - List display (back-end)
+6. Gutenberg Block - List display (front-end)
 
 == Changelog ==
 

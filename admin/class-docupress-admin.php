@@ -73,6 +73,6 @@ class DocuPress_Admin {
      */
     public function enqueue_scripts() {
         wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/docupress-admin.js', array( 'wp-blocks', 'wp-components', 'wp-element', 'wp-i18n', 'wp-editor'), $this->version, false );
-    }    
+    }
 
 }

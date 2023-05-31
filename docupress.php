@@ -13,7 +13,7 @@
  * Plugin Name:       DocuPress
  * Plugin URI:        https://www.robertdevore.com/docupress
  * Description:       Documentation simplified.
- * Version:           2.3.0
+ * Version:           3.0.0
  * Author:            Devio Digital
  * Author URI:        https://deviodigital.com
  * License:           GPL-2.0+
@@ -28,7 +28,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 // Current plugin version.
-define( 'DOCUPRESS_VERSION', '2.3.0' );
+define( 'DOCUPRESS_VERSION', '3.0.0' );
 
 /**
  * The code that runs during plugin activation.

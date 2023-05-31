@@ -1,10 +1,10 @@
 === DocuPress ===
 Contributors: deviodigital
 Donate link: https://deviodigital.com
-Tags: documentation, document, knowledgebase, help, support, notes
+Tags: documentation, docs, kb, knowledgebase, help, support, documents, notes
 Requires at least: 3.0.1
-Tested up to: 5.9.2
-Stable tag: 2.3.0
+Tested up to: 6.2.2
+Stable tag: 3.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -16,9 +16,21 @@ Documentation Simplified.
 
 Separate your articles into collections, making it easy for users to browse only the content they're looking for.
 
-### Widgets & Shortcode
+### Includes new Gutenberg block, widgets, and a shortcode
 
-**DocuPress** includes the `[docupress]` shortcode, making it easy to include a list of articles anywhere on your site.
+**DocuPress** includes a Gutenberg block to display your articles within the new WordPress editor.
+
+Included block options:
+
+* Article Count
+* Display style (grid/list)
+* Display by Collection
+* Display or hide featured image
+* Display or hide excerpt
+
+See the screenshots for various examples of the block in action
+
+**DocuPress** also includes the `[docupress]` shortcode, making it easy to include a list of articles anywhere on your site.
 
 Full list of shortcode options: `[docupress limit="99" collections="" order="" viewall="on"]`
 

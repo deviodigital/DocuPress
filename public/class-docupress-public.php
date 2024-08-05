@@ -56,7 +56,7 @@ class DocuPress_Public {
      */
     public function enqueue_styles() {
         // General public CSS.
-        wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/docupress-public.min.css', array(), $this->version, 'all' );
+        wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/docupress-public.min.css', [], $this->version, 'all' );
     }
 
     /**
@@ -67,11 +67,11 @@ class DocuPress_Public {
      */
     public function enqueue_scripts() {
         // General public JS.
-        wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/docupress-public.js', array( 'jquery' ), $this->version, false );
+        wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/docupress-public.js', [ 'jquery' ], $this->version, false );
         // Localize the general JS script so we can pass data to it with PHP.
-        wp_localize_script( $this->plugin_name, 'DocuPressRatingAjax', array(
+        wp_localize_script( $this->plugin_name, 'DocuPressRatingAjax', [
             'ajax_url' => admin_url( 'admin-ajax.php' ),
-            'nonce'    => wp_create_nonce( 'docupress-article-rating-nonce' ) )
+            'nonce'    => wp_create_nonce( 'docupress-article-rating-nonce' ) ]
         );
     }
 

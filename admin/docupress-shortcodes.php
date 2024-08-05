@@ -21,39 +21,39 @@ function docupress_shortcode( $atts ) {
 
     // Attributes.
     extract( shortcode_atts(
-        array(
+        [
             'limit'       => '5',
             'collections' => 'all',
             'order'       => '',
             'viewall'     => 'on',
-        ),
+        ],
         $atts,
         'docupress'
     ) );
 
     if ( 'all' === $collections ) {
         // Args.
-        $args = array(
+        $args = [
             'post_type' => 'docupress',
             'showposts' => $limit,
             'orderby'   => $order,
-        );
+        ];
         // Filter args.
         $args = apply_filters( 'docupress_shortcode_query_args', $args );
     } else {
         // Args.
-        $args = array(
+        $args = [
             'post_type' => 'docupress',
             'showposts' => $limit,
             'orderby'   => $order,
-            'tax_query' => array(
-                array(
+            'tax_query' => [
+                [
                     'taxonomy' => 'docupress_collections',
                     'field'    => 'slug',
                     'terms'    => $collections
-                ),
-            ),
-        );
+                ],
+            ],
+        ];
         // Filter args.
         $args = apply_filters( 'docupress_shortcode_query_args_collections', $args );
     }

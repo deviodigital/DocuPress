@@ -22,7 +22,7 @@ class DocuPress_Permalink_Settings {
      * Call register fields.
      */
     public function init() {
-        add_filter( 'admin_init', array( &$this, 'register_fields' ) );
+        add_filter( 'admin_init', [ &$this, 'register_fields' ] );
     }
 
     /**
@@ -30,7 +30,7 @@ class DocuPress_Permalink_Settings {
      */
     public function register_fields() {
         register_setting( 'permalink', 'docupress_article_slug', 'esc_attr' );
-        add_settings_field( 'docupress_article_slug_setting', '<label for="docupress_article_slug">' . esc_attr__( 'DocuPress Base', 'docupress' ) . '</label>', array( &$this, 'fields_html' ), 'permalink', 'optional' );
+        add_settings_field( 'docupress_article_slug_setting', '<label for="docupress_article_slug">' . esc_attr__( 'DocuPress Base', 'docupress' ) . '</label>', [ &$this, 'fields_html' ], 'permalink', 'optional' );
     }
 
     /**

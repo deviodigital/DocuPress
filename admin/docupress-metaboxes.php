@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function docupress_add_article_details_metaboxes() {
     // Create array of CPT's to display the metabox on.
-    $screens = apply_filters( 'docupress_article_details_metabox_screens', array( 'docupress' ) );
+    $screens = apply_filters( 'docupress_article_details_metabox_screens', [ 'docupress' ] );
     // Loop through screens.
     foreach ( $screens as $screen ) {
         add_meta_box(

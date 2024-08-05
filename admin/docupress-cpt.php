@@ -32,7 +32,7 @@ function docupress_cpt() {
     // Capitalize first letter of new slug.
     $article_slug_cap = ucfirst( $article_slug );
 
-    $labels = array(
+    $labels = [
         'name'                  => sprintf( esc_html__( '%s', 'Post Type General Name', 'docupress' ), $article_slug_cap ),
         'singular_name'         => sprintf( esc_html__( '%s', 'Post Type Singular Name', 'docupress' ), $article_slug_cap ),
         'menu_name'             => esc_html__( 'Documentation', 'docupress' ),
@@ -58,20 +58,20 @@ function docupress_cpt() {
         'items_list'            => sprintf( esc_html__( '%s list', 'docupress' ), $article_slug_cap ),
         'items_list_navigation' => sprintf( esc_html__( '%s list navigation', 'docupress' ), $article_slug_cap ),
         'filter_items_list'     => sprintf( esc_html__( 'Filter %s list', 'docupress' ), $article_slug ),
-    );
+    ];
 
-    $rewrite = array(
+    $rewrite = [
         'slug'       => $article_slug,
         'with_front' => true,
         'pages'      => true,
         'feeds'      => true,
-    );
+    ];
 
-    $args = array(
+    $args = [
         'label'               => sprintf( esc_html__( '%s', 'docupress' ), $article_slug_cap ),
         'description'         => esc_html__( 'Documentation', 'docupress' ),
         'labels'              => $labels,
-        'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'revisions', 'page-attributes', 'post-formats', ),
+        'supports'            => [ 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'revisions', 'page-attributes', 'post-formats' ],
         'hierarchical'        => false,
         'public'              => true,
         'show_ui'             => true,
@@ -87,7 +87,7 @@ function docupress_cpt() {
         'rewrite'             => $rewrite,
         'capability_type'     => 'post',
         'show_in_rest'        => true,
-    );
+    ];
     register_post_type( 'docupress', $args );
 }
 add_action( 'init', 'docupress_cpt', 0 );

@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function docupress_collections_taxonomy() {
 
-    $labels = array(
+    $labels = [
         'name'              => _x( 'Collections', 'taxonomy general name', 'docupress' ),
         'singular_name'     => _x( 'Collection', 'taxonomy singular name', 'docupress' ),
         'search_items'      => esc_attr__( 'Search Collections', 'docupress' ),
@@ -34,9 +34,9 @@ function docupress_collections_taxonomy() {
         'new_item_name'     => esc_attr__( 'New Collection Name', 'docupress' ),
         'not_found'         => esc_attr__( 'No categories found', 'docupress' ),
         'menu_name'         => esc_attr__( 'Collections', 'docupress' ),
-    );
+    ];
 
-    register_taxonomy( 'docupress_collections','docupress', array(
+    register_taxonomy( 'docupress_collections','docupress', [
         'hierarchical'      => true,
         'labels'            => $labels,
         'show_ui'           => true,
@@ -44,11 +44,11 @@ function docupress_collections_taxonomy() {
         'show_admin_column' => true,
         'show_in_nav_menus' => true,
         'query_var'         => true,
-        'rewrite'           => array(
+        'rewrite'           => [
             'slug'       => 'collections',
             'with_front' => false,
-        ),
-    ));
+        ],
+    ]);
 
 }
 add_action( 'init', 'docupress_collections_taxonomy', 0 );

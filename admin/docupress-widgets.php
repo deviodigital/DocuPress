@@ -35,10 +35,10 @@ class DocuPress_Articles_Widget extends WP_Widget {
         parent::__construct(
             'docupress_articles_widget',
             __( 'DocuPress Articles', 'docupress' ),
-            array(
+            [
                 'description' => esc_attr__( 'Display documentation articles', 'docupress' ),
                 'classname'   => 'docupress-widget',
-            )
+            ]
         );
 
     }
@@ -80,26 +80,26 @@ class DocuPress_Articles_Widget extends WP_Widget {
         // Setup the WP_Query.
         if ( 'all' === $collections ) {
             $articles_widget = new WP_Query(
-                array(
+                [
                     'post_type' => 'docupress',
                     'showposts' => $instance['limit'],
                     'orderby'   => $randorder,
-                )
+                ]
             );
         } else {
             $articles_widget = new WP_Query(
-                array(
+                [
                     'post_type' => 'docupress',
                     'showposts' => $instance['limit'],
                     'orderby'   => $randorder,
-                    'tax_query' => array(
-                        array(
+                    'tax_query' => [
+                        [
                             'taxonomy' => 'docupress_collections',
                             'field'    => 'slug',
                             'terms'    => $collections
-                        ),
-                    ),
-                )
+                        ],
+                    ],
+                ]
             );
         }
 
@@ -162,13 +162,13 @@ class DocuPress_Articles_Widget extends WP_Widget {
      * @return      void
      */
     public function form( $instance ) {
-        $defaults = array(
+        $defaults = [
             'title'       => 'Documentation',
             'limit'       => '5',
             'collections' => '',
             'order'       => '',
             'viewall'     => '',
-        );
+        ];
 
         $instance = wp_parse_args( (array) $instance, $defaults );
     ?>
@@ -240,10 +240,10 @@ class DocuPress_Collections_Widget extends WP_Widget {
         parent::__construct(
             'docupress_collections_widget',
             esc_attr__( 'DocuPress Collections', 'docupress' ),
-            array(
+            [
                 'description' => esc_attr__( 'Display a list of collections', 'docupress' ),
                 'classname'   => 'docupress-collections-widget',
-            )
+            ]
         );
 
     }
@@ -317,10 +317,10 @@ class DocuPress_Collections_Widget extends WP_Widget {
      * @return      void
      */
     public function form( $instance ) {
-        $defaults = array(
+        $defaults = [
             'title' => esc_attr__( 'Collections', 'docupress' ),
             'limit' => '5',
-        );
+        ];
 
         $instance = wp_parse_args( (array) $instance, $defaults );
     ?>
@@ -352,10 +352,10 @@ class DocuPress_Related_Articles_Widget extends WP_Widget {
         parent::__construct(
             'docupress_related_articles_widget',
             esc_attr__( 'DocuPress Related Articles', 'docupress' ),
-            array(
+            [
                 'description' => esc_attr__( 'Display related articles', 'docupress' ),
                 'classname'   => 'docupress-widget',
-            )
+            ]
         );
 
     }
@@ -393,20 +393,20 @@ class DocuPress_Related_Articles_Widget extends WP_Widget {
 
         // Setup WP_Query.
         $related_articles = new WP_Query(
-            array(
+            [
                 'post_type'    => 'docupress',
                 'showposts'    => $instance['limit'],
                 'orderby'      => $randorder,
-                'post__not_in' => array( get_the_ID() ),
-                'tax_query'    => array(
-                    array(
+                'post__not_in' => [ get_the_ID() ],
+                'tax_query'    => [
+                    [
                         'taxonomy' => 'docupress_collections',
                         'field'    => 'id',
                         'terms'    => $term_ids,
                         'operator' => 'IN'
-                    ),
-                ),
-            )
+                    ],
+                ],
+            ]
         );
 
         // Are related articles found?
@@ -479,12 +479,12 @@ class DocuPress_Related_Articles_Widget extends WP_Widget {
      * @return      void
      */
     public function form( $instance ) {
-        $defaults = array(
+        $defaults = [
             'title'       => esc_attr__( 'Related Articles', 'docupress' ),
             'limit'       => '5',
             'order'       => '',
             'viewall'     => '',
-        );
+        ];
 
         $instance = wp_parse_args( (array) $instance, $defaults );
     ?>

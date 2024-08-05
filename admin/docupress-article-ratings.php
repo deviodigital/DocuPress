@@ -97,10 +97,10 @@ add_action( 'wp_ajax_nopriv_docupress_article_rating_add_vote', 'docupress_artic
  * @since 1.4.0
  */
 function docupress_article_rating_columns( $columns ) {
-    return array_merge( $columns, array(
+    return array_merge( $columns, [
         'article_smile_count' => esc_attr__( 'Up Votes', 'docupress' ),
         'article_frown_count' => esc_attr__( 'Down Votes', 'docupress' )
-    ) );
+    ] );
 }
 add_filter( 'manage_docupress_posts_columns' , 'docupress_article_rating_columns' );
 
@@ -146,17 +146,17 @@ function docupress_article_rating_sortable_columns( $columns ) {
 function docupress_article_rating_column_sort_orderby( $vars ) {
     // Smile count.
     if ( isset( $vars['orderby'] ) && 'docupress_article_smile_count' == $vars['orderby'] ) {
-        $vars = array_merge( $vars, array(
+        $vars = array_merge( $vars, [
             'meta_key' => 'docupress_article_smile',
             'orderby'  => 'meta_value_num'
-        ) );
+        ] );
     }
     // Frown count.
     if ( isset( $vars['orderby'] ) && 'docupress_article_frown_count' == $vars['orderby'] ) {
-        $vars = array_merge( $vars, array(
+        $vars = array_merge( $vars, [
             'meta_key' => 'docupress_article_frown',
             'orderby'  => 'meta_value_num'
-        ) );
+        ] );
     }
     return $vars;
 }

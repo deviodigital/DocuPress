@@ -177,8 +177,8 @@ add_action( 'admin_init', 'docupress_article_rating_sort_articles' );
  * @since 1.4.0
  */
 function docupress_article_rating_print( $content ) {
-    // Check if this is a DocuPress article.
-    if ( is_singular( 'docupress' ) ) {
+    // Check if this is a singular 'docupress' post type and if we're in the main loop.
+    if ( is_singular( 'docupress' ) && in_the_loop() && is_main_query() ) {
         // Append ratings to the content.
         return $content . docupress_article_rating_display();
     }

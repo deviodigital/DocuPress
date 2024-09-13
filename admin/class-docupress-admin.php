@@ -62,7 +62,12 @@ class DocuPress_Admin {
      * @return void
      */
     public function enqueue_styles() {
-        wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/docupress-admin.css', [ 'wp-edit-blocks' ], $this->version, 'all' );
+        $screen = get_current_screen();
+        
+        // Enqueue styles only if on the block editor screen.
+        if ( $screen && $screen->is_block_editor ) {
+            wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/docupress-admin.css', [ 'wp-edit-blocks' ], $this->version, 'all' );
+        }
     }
 
     /**
@@ -72,7 +77,12 @@ class DocuPress_Admin {
      * @return void
      */
     public function enqueue_scripts() {
-        wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/docupress-admin.js', [ 'wp-blocks', 'wp-components', 'wp-element', 'wp-i18n', 'wp-editor'], $this->version, false );
+        $screen = get_current_screen();
+        
+        // Enqueue scripts only if on the block editor screen.
+        if ( $screen && $screen->is_block_editor ) {
+            wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/docupress-admin.js', [ 'wp-blocks', 'wp-components', 'wp-element', 'wp-i18n', 'wp-editor'], $this->version, false );
+        }
     }
 
 }

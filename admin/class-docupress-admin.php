@@ -27,31 +27,31 @@ class DocuPress_Admin {
      *
      * @since  1.0.0
      * @access private
-     * @var    string    $_plugin_name    The ID of this plugin.
+     * @var    string    $plugin_name    The ID of this plugin.
      */
-    private $_plugin_name;
+    private $plugin_name;
 
     /**
      * The version of this plugin.
      *
      * @since  1.0.0
      * @access private
-     * @var    string    $_version    The current version of this plugin.
+     * @var    string    $version    The current version of this plugin.
      */
-    private $_version;
+    private $version;
 
     /**
      * Initialize the class and set its properties.
      *
-     * @param string $_plugin_name - The name of this plugin.
-     * @param string $_version     - The version of this plugin.
+     * @param string $plugin_name - The name of this plugin.
+     * @param string $version     - The version of this plugin.
      * 
      * @since 1.0.0
      */
-    public function __construct( $_plugin_name, $_version ) {
+    public function __construct( $plugin_name, $version ) {
 
-        $this->plugin_name = $_plugin_name;
-        $this->version     = $_version;
+        $this->plugin_name = $plugin_name;
+        $this->version     = $version;
 
     }
 

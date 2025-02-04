@@ -82,7 +82,7 @@ function docupress_article_rating_add_vote() {
     update_post_meta( $post_ID, $meta_name, $article_rating_count );
 
     // Get results.
-    $results = article_rating_display( $post_ID, $type_of_vote );
+    $results = docupress_article_rating_display( $post_ID, $type_of_vote );
 
     die( $results );
 }

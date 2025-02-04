@@ -16,8 +16,32 @@ if ( ! defined( 'ABSPATH' ) ) {
     wp_die();
 }
 
-// Add Shortcode
-function docupress_shortcode( $atts ) {
+/**
+ * Generates a shortcode to display a list of DocuPress articles.
+ *
+ * This shortcode allows users to output a customizable list of articles from 
+ * the DocuPress custom post type. Users can filter articles by collections, 
+ * set a limit on the number of posts displayed, and control the order.
+ *
+ * Attributes:
+ * - `limit` (int)          : Number of articles to display (default: 5).
+ * - `collections` (string) : Filter by taxonomy slug ('all' for all articles, default: all).
+ * - `order` (string)       : Sorting order (e.g., 'ASC', 'DESC').
+ * - `viewall` (string)     : Whether to display a "View All" link for collections (default: on).
+ *
+ * Hooks Applied:
+ * - `docupress_shortcode_query_args` : Filters the WP_Query arguments for all articles.
+ * - `docupress_shortcode_query_args_collections` : Filters the WP_Query arguments for collection-based queries.
+ * - `docupress_shortcode_view_all_collections_url` : Filters the URL for the "View All" link.
+ *
+ * Output:
+ * - Returns an unordered list (`<ul>`) of articles with links.
+ * - Displays a message if no articles are found.
+ *
+ * @param array $atts Shortcode attributes.
+ * @return string HTML output of the article list or a message if no articles are found.
+ */
+ function docupress_shortcode( $atts ) {
 
     // Attributes.
     extract( shortcode_atts(
@@ -64,7 +88,6 @@ function docupress_shortcode( $atts ) {
     // Display message if no articles are found.
     if ( ! $docupress_articles->have_posts() ) {
         return '<p class="docupress-shortcode-empty">' . esc_attr__( 'No articles found', 'docupress' ) . '</p>';
-        wp_die();
     }
 
     // Check if articles exist.

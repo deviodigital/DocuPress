@@ -17,7 +17,25 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * DocuPress Collections
+ * Registers the 'Collections' taxonomy for the DocuPress custom post type.
+ *
+ * This function creates a hierarchical taxonomy named 'Collections' 
+ * to categorize DocuPress articles. It includes various labels for the 
+ * WordPress admin UI and enables REST API support.
+ *
+ * Features:
+ * - Hierarchical structure (similar to categories).
+ * - Supports custom permalinks with the slug 'collections'.
+ * - Displays in the WordPress admin menu and post editor.
+ * - Enables REST API access for integration with external applications.
+ *
+ * Labels:
+ * - Includes labels for managing collections in the WordPress admin.
+ *
+ * Hooks Registered:
+ * - `init` (Action): Registers the taxonomy on WordPress initialization.
+ *
+ * @return void
  */
 function docupress_collections_taxonomy() {
 
@@ -48,7 +66,7 @@ function docupress_collections_taxonomy() {
             'slug'       => 'collections',
             'with_front' => false,
         ],
-    ]);
+    ] );
 
 }
 add_action( 'init', 'docupress_collections_taxonomy', 0 );

@@ -28,7 +28,7 @@ function docupress_add_article_details_metaboxes() {
     foreach ( $screens as $screen ) {
         add_meta_box(
             'docupress_articles',
-            __( 'DocuPress Details', 'docupress' ),
+            esc_html__( 'DocuPress Details', 'docupress' ),
             'docupress_article_details_metabox',
             $screen,
             'side',
@@ -58,7 +58,7 @@ function docupress_article_details_meta( $value ) {
 /**
  * Building the metabox
  * 
- * @return string $details 
+ * @return void 
  */
 function docupress_article_details_metabox() {
     global $post;
@@ -94,7 +94,7 @@ function docupress_article_details_metabox() {
 /**
  * Save the Metabox Data
  * 
- * @return void
+ * @return mixed
  */
 function docupress_save_article_details_meta( $post ) {
     global $post;

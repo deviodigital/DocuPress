@@ -19,16 +19,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * DocuPress Articles Widget
  *
- * @since       1.0.0
+ * @since 1.0.0
  */
 class DocuPress_Articles_Widget extends WP_Widget {
 
     /**
      * Constructor
      *
-     * @access      public
-     * @since       1.0.0
-     * @return      void
+     * @access public
+     * @since  1.0.0
+     * @return void
      */
     public function __construct() {
 
@@ -224,7 +224,7 @@ class DocuPress_Articles_Widget extends WP_Widget {
 /**
  * DocuPress Collections Widget
  *
- * @since       1.0.0
+ * @since 1.0.0
  */
 class DocuPress_Collections_Widget extends WP_Widget {
 
@@ -336,7 +336,7 @@ class DocuPress_Collections_Widget extends WP_Widget {
 /**
  * DocuPress Related Articles Widget
  *
- * @since       1.4.0
+ * @since 1.4.0
  */
 class DocuPress_Related_Articles_Widget extends WP_Widget {
 
@@ -446,7 +446,6 @@ class DocuPress_Related_Articles_Widget extends WP_Widget {
         }
     }
 
-
     /**
      * Update widget options
      *
@@ -467,7 +466,6 @@ class DocuPress_Related_Articles_Widget extends WP_Widget {
 
         return $instance;
     }
-
 
     /**
      * Display widget form on dashboard
@@ -515,8 +513,8 @@ class DocuPress_Related_Articles_Widget extends WP_Widget {
 /**
  * Register the new widgets
  *
- * @since       1.0.0
- * @return      void
+ * @since  1.0.0
+ * @return void
  */
 function docupress_register_widgets() {
     register_widget( 'docupress_articles_widget' );

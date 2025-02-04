@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Add estimated reading time to the content.
  * 
- * @return string
+ * @return mixed
  */
 function docupress_the_content_estimated_reading_time( $content ) {
     global $post;

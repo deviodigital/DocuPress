@@ -23,8 +23,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  * 
  * @param  int $post_id - the post ID we're getting the estimated reading time for
  * 
- * @return string
  * @since  1.4.0
+ * @return mixed
  */
 function docupress_estimated_reading_time( $post_id   = '' ) {
     // Verify ID is present.

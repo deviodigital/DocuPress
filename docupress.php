@@ -27,6 +27,18 @@ if ( ! defined( 'WPINC' ) ) {
     wp_die();
 }
 
+require 'vendor/plugin-update-checker/plugin-update-checker.php';
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+
+$myUpdateChecker = PucFactory::buildUpdateChecker(
+	'https://github.com/deviodigital/DocuPress/',
+	__FILE__,
+	'DocuPress'
+);
+
+// Set the branch that contains the stable release.
+$myUpdateChecker->setBranch( 'main' );
+
 // Current plugin version.
 define( 'DOCUPRESS_VERSION', '3.0.0' );
 

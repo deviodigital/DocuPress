@@ -28,7 +28,7 @@ function docupress_add_article_details_metaboxes() {
     foreach ( $screens as $screen ) {
         add_meta_box(
             'docupress_articles',
-            esc_html__( 'DocuPress Details', 'docupress' ),
+            esc_html__( 'DocuPress', 'docupress' ),
             'docupress_article_details_metabox',
             $screen,
             'side',
@@ -74,14 +74,14 @@ function docupress_article_details_metabox() {
 
     // Build the HTML output.
     $details  = '<div class="docupress details">';
-    $details .= '<p>' . esc_attr__( 'Path', 'docupress' ) . '<span>' . esc_attr__( '(ex: path/to/file.php)', 'docupress' ) . '</span>:</p>';
+    $details .= '<p>' . esc_attr__( 'Path', 'docupress' ) . ' <span>' . esc_attr__( '(ex: path/to/file.php)', 'docupress' ) . '</span>:</p>';
     $details .= '<input type="text" name="docupress_path" value="' . esc_html( $docupress_path )  . '" class="widefat" />';
     $details .= '</div>';
     $details .= '<div class="docupress details">';
-    $details .= '<p>' . esc_attr__( 'Link', 'docupress' ) . '<span>(ex: https://github.com/...)</span>:</p>';
+    $details .= '<p>' . esc_attr__( 'Link', 'docupress' ) . ' <span>(ex: https://github.com/...)</span>:</p>';
     $details .= '<input type="url" name="docupress_url" value="' . esc_url( $docupress_url ) . '" class="widefat" />';
     $details .= '</div>';
-    $details .= '<div class="docupress details">';
+    $details .= '<div class="docupress details checkbox">';
     $details .= '<p><input type="checkbox" name="docupress_article_estimated_reading_display" id="docupress_article_estimated_reading_display" value="hide_estimated_reading"' . $checkbox . '>
                 <label for="docupress_article_estimated_reading_display">' . esc_attr__( 'Remove estimated reading time?', 'docupress' ) . '</label>
                 </p>';

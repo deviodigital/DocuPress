@@ -55,10 +55,19 @@ class DocuPress_Public {
      * @return void
      */
     public function enqueue_styles() {
-        // Check if we're on a singular DocuPress post or if the 'docupress' shortcode is used on the page.
-        if ( is_singular( 'docupress' ) || has_shortcode( get_post()->post_content, 'docupress' ) ) {
-            // General public CSS.
-            wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/docupress-public.min.css', [], $this->version, 'all' );
+        $post = get_post();
+        if ( 
+            is_singular( 'docupress' ) || 
+            ( $post && has_shortcode( $post->post_content, 'docupress' ) ) || 
+            ( $post && has_block( 'docupress/articles', $post ) ) 
+        ) {
+            wp_enqueue_style(
+                $this->plugin_name,
+                plugin_dir_url( __FILE__ ) . 'css/docupress-public.min.css',
+                [],
+                $this->version,
+                'all'
+            );
         }
     }
 

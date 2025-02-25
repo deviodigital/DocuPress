@@ -1,266 +1,271 @@
-(function (blocks, element, components, editor) {
-    var el = wp.element.createElement;
-    var InnerBlocks = editor.InnerBlocks;
-    var PanelBody = components.PanelBody;
-    var SelectControl = components.SelectControl;
-    var RangeControl = components.RangeControl;
-    var CheckboxControl = components.CheckboxControl;
-    var useState = wp.element.useState;
-    var useEffect = wp.element.useEffect;
-    var { useSelect, dispatch } = wp.data;
+( function( blocks, element, components, blockEditor, data, i18n ) {
+	'use strict';
 
-    function fetchPosts(postCount, setPreviewContent, showFeaturedImage, showExcerpt, collection, setAttributes) {
-        var apiUrl = '/wp-json/wp/v2/docupress?per_page=' + postCount;
+	const el = element.createElement;
+	const { useState, useEffect } = element;
+	const { InspectorControls } = blockEditor;
+	const { PanelBody, SelectControl, RangeControl, CheckboxControl } = components;
+	const __ = i18n.__;
 
-        if (collection) {
-            fetch('/wp-json/wp/v2/docupress_collections?slug=' + collection)
-                .then(function(response) {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(function(collections) {
-                    var termId = collections.length > 0 ? '&docupress_collections=' + collections[0].id : '';
+	/**
+	 * Fetch posts and update preview state.
+	 *
+	 * @param {number} postCount Number of posts to fetch.
+	 * @param {Function} setPreviewContent Callback to set preview content.
+	 * @param {boolean} showFeaturedImage Whether to display featured images.
+	 * @param {boolean} showExcerpt Whether to display excerpts.
+	 * @param {string} collection The collection slug.
+	 * @param {string} displayStyle Display style ('grid' or 'list').
+	 */
+	function fetchPosts( postCount, setPreviewContent, showFeaturedImage, showExcerpt, collection, displayStyle ) {
+		let apiUrl = '/wp-json/wp/v2/docupress?per_page=' + postCount;
 
-                    apiUrl += termId;
+		if ( collection ) {
+			fetch( '/wp-json/wp/v2/docupress_collections?slug=' + collection )
+				.then( ( response ) => {
+					if ( ! response.ok ) {
+						throw new Error( 'Network response was not ok' );
+					}
+					return response.json();
+				} )
+				.then( ( collections ) => {
+					const termId = collections.length > 0 ? '&docupress_collections=' + collections[0].id : '';
+					apiUrl += termId;
+					fetchPostsFromApi( apiUrl );
+				} )
+				.catch( ( error ) => {
+					console.error( 'Error fetching collections:', error );
+				} );
+		} else {
+			fetchPostsFromApi( apiUrl );
+		}
 
-                    // Proceed with fetching posts using the updated apiUrl
-                    fetchPostsFromApi(apiUrl);
-                })
-                .catch(function(error) {
-                    console.error('Error fetching collections:', error);
-                });
-        } else {
-            // Fetch posts without specifying the collection
-            fetchPostsFromApi(apiUrl);
-        }
+		function fetchPostsFromApi( apiUrl ) {
+			fetch( apiUrl )
+				.then( ( response ) => {
+					if ( ! response.ok ) {
+						throw new Error( 'Network response was not ok' );
+					}
+					return response.json();
+				} )
+				.then( ( posts ) => {
+					const postPromises = posts.map( ( post ) => {
+						if ( showFeaturedImage && post.featured_media ) {
+							return fetch( '/wp-json/wp/v2/media/' + post.featured_media )
+								.then( ( response ) => {
+									if ( ! response.ok ) {
+										throw new Error( 'Network response was not ok' );
+									}
+									return response.json();
+								} )
+								.then( ( media ) => {
+									let imageSrc = media.source_url;
+									// Use our custom size for grid format if available.
+									if (
+										displayStyle === 'grid' &&
+										media.media_details &&
+										media.media_details.sizes &&
+										media.media_details.sizes['docupress-grid']
+									) {
+										imageSrc = media.media_details.sizes['docupress-grid'].source_url;
+									} else if (
+										media.media_details &&
+										media.media_details.sizes &&
+										media.media_details.sizes.thumbnail
+									) {
+										imageSrc = media.media_details.sizes.thumbnail.source_url;
+									}
+									return el( 'img', { src: imageSrc, alt: post.title.rendered } );
+								} )
+								.catch( ( error ) => {
+									console.error( 'Error fetching media item:', error );
+									return null;
+								} );
+						}
+						return Promise.resolve( null );
+					} );
 
-        function fetchPostsFromApi(apiUrl) {
-            fetch(apiUrl)
-                .then(function (response) {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(function (posts) {
-                    var postPromises = posts.map(function (post) {
-                        var strippedExcerpt = post.excerpt.rendered.replace(/<\/?[^>]+(>|$)/g, '');
+					Promise.all( postPromises ).then( ( images ) => {
+						const postsContent = posts.map( ( post, index ) => {
+							const parser = new DOMParser();
+							let decodedExcerpt = parser
+								.parseFromString( post.excerpt.rendered, 'text/html' )
+								.body.textContent;
+							decodedExcerpt = decodedExcerpt.replace( '[&hellip;]', ' - ' );
+							return el(
+								'div',
+								{ className: 'docupress-post-wrapper' },
+								images[ index ] ? images[ index ] : null,
+								el(
+									'div',
+									{ className: 'list-content' },
+									el(
+										'h3',
+										{},
+										el(
+											'a',
+											{ href: post.link },
+											post.title.rendered
+										)
+									),
+									showExcerpt && el( 'p', {}, decodedExcerpt )
+								)
+							);
+						} );
+						setPreviewContent( postsContent );
+					} );
+				} )
+				.catch( ( error ) => {
+					console.error( 'Error fetching posts:', error );
+					setPreviewContent( [] );
+				} );
+		}
+	}
 
-                        if (showFeaturedImage && post.featured_media) {
-                            // Retrieve the media item by ID
-                            return fetch('/wp-json/wp/v2/media/' + post.featured_media)
-                                .then(function(response) {
-                                    if (!response.ok) {
-                                        throw new Error('Network response was not ok');
-                                    }
-                                    return response.json();
-                                })
-                                .then(function(media) {
-                                    var imageSrc = media.source_url; // Get the source URL of the media item
+	/**
+	 * The edit component for the DocuPress Articles block.
+	 *
+	 * @param {Object} props Block properties.
+	 */
+	function DocuPressArticlesEdit( props ) {
+		const { attributes, setAttributes, className } = props;
+		const { postCount, displayStyle, showFeaturedImage, showExcerpt, collection } = attributes;
+		const [ previewContent, setPreviewContent ] = useState( [] );
+		const [ currentCollection, setCurrentCollection ] = useState( collection );
+		const [ collectionOptions, setCollectionOptions ] = useState( [] );
 
-                                    return el('img', { src: imageSrc, alt: post.title.rendered });
-                                })
-                                .catch(function(error) {
-                                    console.error('Error fetching media item:', error);
-                                    return null;
-                                });
-                        }
+		useEffect( () => {
+			fetchPosts( postCount, setPreviewContent, showFeaturedImage, showExcerpt, currentCollection, displayStyle );
+		}, [ currentCollection, postCount, showFeaturedImage, showExcerpt, displayStyle ] );
 
-                        return null;
-                    });
+		useEffect( () => {
+			fetch( '/wp-json/wp/v2/docupress_collections' )
+				.then( ( response ) => {
+					if ( ! response.ok ) {
+						throw new Error( 'Network response was not ok' );
+					}
+					return response.json();
+				} )
+				.then( ( collections ) => {
+					const options = collections.map( ( coll ) => {
+						return { value: coll.slug, label: coll.name };
+					} );
+					setCollectionOptions( options );
+				} )
+				.catch( ( error ) => {
+					console.error( 'Error fetching collections:', error );
+					setCollectionOptions( [] );
+				} );
+		}, [] );
 
-                    Promise.all(postPromises).then(function(images) {
-                        var previewContent = posts.map(function (post, index) {
-                            var content = [];
-                            var parser = new DOMParser();
-                            var decodedExcerpt = parser.parseFromString(post.excerpt.rendered, 'text/html').body.textContent;
-                            decodedExcerpt = decodedExcerpt.replace('[&hellip;]', ' - ');
-                            
-                            if (images[index]) {
-                                content.push(images[index]);
-                            }
+		function onChangePostCount( value ) {
+			setAttributes( { postCount: value } );
+		}
 
-                            content.push(
-                                el('div', { className: 'list-content' },
-                                  el('h3', {},
-                                    el('a', { href: post.link }, post.title.rendered)
-                                  ),
-                                  showExcerpt && el('p', {}, decodedExcerpt)
-                                )
-                            );      
-                            
-                            console.log(content);
+		function onChangeDisplayStyle( value ) {
+			setAttributes( { displayStyle: value } );
+		}
 
-                            return content;
-                        });
+		function onChangeShowFeaturedImage( value ) {
+			setAttributes( { showFeaturedImage: value } );
+		}
 
-                        setPreviewContent(previewContent);
-                        setAttributes({ previewContent: previewContent });
-                    });
-                })
-                .catch(function (error) {
-                    console.error('Error fetching posts:', error);
-                    setPreviewContent([]);
-                });
-        }
-    }
+		function onChangeShowExcerpt( value ) {
+			setAttributes( { showExcerpt: value } );
+		}
 
-    blocks.registerBlockType('docupress/articles', {
-        title: 'DocuPress Articles',
-        icon: 'format-aside',
-        category: 'common',
-        attributes: {
-            postCount: {
-                type: 'number',
-                default: 6
-            },
-            displayStyle: {
-                type: 'string',
-                default: 'grid'
-            },
-            showFeaturedImage: {
-                type: 'boolean',
-                default: true
-            },
-            showExcerpt: {
-                type: 'boolean',
-                default: true
-            },
-            collection: {
-                type: 'string',
-                default: ''
-            },
-            previewContent: {
-                type: 'array',
-                default: []
-            }
-        },
-        edit: function (props) {
-            var attributes = props.attributes;
-            var setAttributes = props.setAttributes;
+		function onChangeCollection( value ) {
+			setAttributes( { collection: value } );
+			setCurrentCollection( value );
+		}
 
-            var [previewContent, setPreviewContent] = useState(attributes.previewContent);
-            var [collection, setCollection] = useState('');
+		const blockClassName = 'docupress-block-' + displayStyle;
 
-            useEffect(() => {
-                fetchPosts(attributes.postCount, setPreviewContent, attributes.showFeaturedImage, attributes.showExcerpt, collection, setAttributes);
-            }, [collection, attributes.postCount, attributes.showFeaturedImage, attributes.showExcerpt]);
+		return el(
+			'div',
+			{ className },
+			el(
+				InspectorControls,
+				null,
+				el(
+					PanelBody,
+					{ title: __( 'DocuPress Block Settings', 'docupress' ), initialOpen: true },
+					el( RangeControl, {
+						label: __( 'Post Count', 'docupress' ),
+						value: postCount,
+						onChange: onChangePostCount,
+						min: 1,
+						max: 24,
+					} ),
+					el( SelectControl, {
+						label: __( 'Display Style', 'docupress' ),
+						value: displayStyle,
+						onChange: onChangeDisplayStyle,
+						options: [
+							{ value: 'list', label: __( 'List', 'docupress' ) },
+							{ value: 'grid', label: __( 'Grid', 'docupress' ) },
+						],
+					} ),
+					el( SelectControl, {
+						label: __( 'Collection', 'docupress' ),
+						value: collection,
+						onChange: onChangeCollection,
+						options: [
+							{ value: '', label: __( 'All', 'docupress' ) },
+							...collectionOptions,
+						],
+					} ),
+					el( CheckboxControl, {
+						label: __( 'Show Featured Image', 'docupress' ),
+						checked: showFeaturedImage,
+						onChange: onChangeShowFeaturedImage,
+					} ),
+					el( CheckboxControl, {
+						label: __( 'Show Excerpt', 'docupress' ),
+						checked: showExcerpt,
+						onChange: onChangeShowExcerpt,
+					} )
+				)
+			),
+			el(
+				'div',
+				{ className: blockClassName },
+				previewContent.map( ( content, index ) =>
+					el( 'div', { className: 'docupress-block-post', key: index }, content )
+				)
+			)
+		);
+	}
 
-            function fetchCollections() {
-                var apiUrl = '/wp-json/wp/v2/docupress_collections';
-
-                fetch(apiUrl)
-                    .then(function (response) {
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok');
-                        }
-                        return response.json();
-                    })
-                    .then(function (collections) {
-                        var collectionOptions = collections.map(function (collection) {
-                            return { value: collection.slug, label: collection.name };
-                        });
-
-                        setCollectionOptions(collectionOptions);
-                    })
-                    .catch(function (error) {
-                        console.error('Error fetching collections:', error);
-                        setCollectionOptions([]);
-                    });
-            }
-
-            var [collectionOptions, setCollectionOptions] = useState([]);
-            useEffect(fetchCollections, []);
-
-            function onChangePostCount(value) {
-                setAttributes({ postCount: value });
-                fetchPosts(value, setPreviewContent, attributes.showFeaturedImage, attributes.showExcerpt, collection);
-            }
-
-            function onChangeDisplayStyle(value) {
-                setAttributes({ displayStyle: value });
-            }
-
-            function onChangeShowFeaturedImage(value) {
-                setAttributes({ showFeaturedImage: value });
-                fetchPosts(attributes.postCount, setPreviewContent, value, attributes.showExcerpt, collection);
-            }
-
-            function onChangeShowExcerpt(value) {
-                setAttributes({ showExcerpt: value });
-                fetchPosts(attributes.postCount, setPreviewContent, attributes.showFeaturedImage, value, collection);
-            }
-
-            function onChangeCollection(value) {
-                setAttributes({ collection: value });
-                setCollection(value);
-            }
-
-            var blockClassName = 'docupress-block-' + attributes.displayStyle;
-
-            return el('div', { className: props.className },
-                el(wp.blockEditor.InspectorControls, null,
-                    el(PanelBody, { title: 'DocuPress Block Settings', initialOpen: true },
-                        el(RangeControl, {
-                            label: 'Post Count',
-                            value: attributes.postCount,
-                            onChange: onChangePostCount,
-                            min: 1,
-                            max: 24
-                        }),
-                        el(SelectControl, {
-                            label: 'Display Style',
-                            value: attributes.displayStyle,
-                            onChange: onChangeDisplayStyle,
-                            options: [
-                                { value: 'list', label: 'List' },
-                                { value: 'grid', label: 'Grid' }
-                            ]
-                        }),
-                        el(SelectControl, {
-                            label: 'Collection',
-                            value: attributes.collection,
-                            onChange: onChangeCollection,
-                            options: [
-                                { value: '', label: 'All' }, // Option to fetch all posts without specifying a collection
-                                ...collectionOptions
-                            ]
-                        }),
-                        el(CheckboxControl, {
-                            label: 'Show Featured Image',
-                            checked: attributes.showFeaturedImage,
-                            onChange: onChangeShowFeaturedImage
-                        }),
-                        el(CheckboxControl, {
-                            label: 'Show Excerpt',
-                            checked: attributes.showExcerpt,
-                            onChange: onChangeShowExcerpt
-                        })
-                    )
-                ),
-                el('div', { className: blockClassName },
-                    previewContent.map(function (content, index) {
-                        return el('div', { className: 'docupress-block-post' }, content);
-                    })
-                )
-
-            );
-        },
-        save: function (props) {
-            var attributes = props.attributes;
-            var blockClassName = 'docupress-block-' + attributes.displayStyle;
-            console.log(attributes);
-
-            return el('div', { className: props.className },
-                el('div', { className: blockClassName },
-                    attributes.previewContent.map(function (content, index) {
-                        console.log(attributes.previewContent);
-                        return el('div', { className: 'docupress-block-post', key: index }, content);
-                    })
-                )
-            );
-        }        
-    });
-})(window.wp.blocks, window.wp.element, window.wp.components, window.wp.editor);
+	blocks.registerBlockType( 'docupress/articles', {
+		title: __( 'DocuPress Articles', 'docupress' ),
+		icon: 'format-aside',
+		category: 'common',
+		attributes: {
+			postCount: {
+				type: 'number',
+				default: 6,
+			},
+			displayStyle: {
+				type: 'string',
+				default: 'grid',
+			},
+			showFeaturedImage: {
+				type: 'boolean',
+				default: true,
+			},
+			showExcerpt: {
+				type: 'boolean',
+				default: true,
+			},
+			collection: {
+				type: 'string',
+				default: '',
+			},
+		},
+		edit: DocuPressArticlesEdit,
+		save: function() {
+			return null;
+		},
+	} );
+} )( window.wp.blocks, window.wp.element, window.wp.components, window.wp.blockEditor, window.wp.data, window.wp.i18n );

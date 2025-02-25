@@ -139,7 +139,7 @@ p.docupress-est-reading {
 .docupress-block-grid > div {
     display: flex;
     flex-direction: column;
-    flex: 0 0 33.33%; /* Adjust the width of each grid item as needed */
+    flex: 0 0 33.33%;
     padding: 10px;
     align-items: flex-start;
 }
@@ -157,6 +157,7 @@ p.docupress-est-reading {
     max-width: 100%;
     width: 100%;
     align-items: flex-start;
+    margin-bottom: 6px !important;
 }
 
 .docupress-block-grid p {
@@ -183,6 +184,7 @@ p.docupress-est-reading {
     margin: 0;
     display: flex;
     flex-direction: column;
+    flex: 1;
 }
 
 .docupress-block-list .docupress-block-post h3 {

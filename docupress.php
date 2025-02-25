@@ -13,7 +13,7 @@
  * Plugin Name:       DocuPress
  * Plugin URI:        https://www.robertdevore.com/docupress
  * Description:       Documentation simplified.
- * Version:           3.0.0
+ * Version:           3.1.0
  * Author:            Devio Digital
  * Author URI:        https://deviodigital.com
  * License:           GPL-2.0+
@@ -40,7 +40,7 @@ $myUpdateChecker = PucFactory::buildUpdateChecker(
 $myUpdateChecker->setBranch( 'main' );
 
 // Current plugin version.
-define( 'DOCUPRESS_VERSION', '3.0.0' );
+define( 'DOCUPRESS_VERSION', '3.1.0' );
 
 // Check if Composer's autoloader is already registered globally.
 if ( ! class_exists( 'RobertDevore\WPComCheck\WPComPluginHandler' ) ) {

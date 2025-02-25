@@ -3,8 +3,8 @@ Contributors: deviodigital
 Donate link: https://deviodigital.com
 Tags: documentation, docs, kb, knowledgebase, help, support, documents, notes
 Requires at least: 3.0.1
-Tested up to: 6.2.2
-Stable tag: 3.0.0
+Tested up to: 6.7.2
+Stable tag: 3.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -68,6 +68,32 @@ Please [let us know](https://www.deviodigital.com/contact/) if there's a languag
 6. Gutenberg Block - List display (front-end)
 
 == Changelog ==
+
+= 3.1.0 =
+
+* [🐛 BUG: Fixed docupress_article_rating_display function name usage in the add_vote ajax](https://github.com/deviodigital/DocuPress/commit/759badbeb443bbac6f9538fec998ef789667856e)
+* [🐛 BUG: Fixed fatal error in block when viewing editor after saving the content](https://github.com/deviodigital/DocuPress/commit/c0df2e34f7b5132a24c7e36af0ad958fecf1567d)
+* [📦 NEW: Added WPCom Check to restrict plugin usage on wordpress.com](https://github.com/deviodigital/DocuPress/commit/bed961023dd760711c7ea451c7005c794c918cfa)
+* [📦 NEW: Added PluginUpdateChecker to serve plugin updates from GitHub](https://github.com/deviodigital/DocuPress/commit/cf8c99efbd30f65c3596ce525fae31ce8d1d0e8e)
+* [👌 IMPROVE: Updated array to shorthand syntax](https://github.com/deviodigital/DocuPress/commit/6654c1fe948f565b8ab45a34065848c2942936fa)
+* [👌 IMPROVE: Updated content being added to the_content](https://github.com/deviodigital/DocuPress/commit/8f31f691373613cf84e85c1901a1e5a6baa21517)
+* [👌 IMPROVE: Updated JS enqueues to only run when DocuPress elements are present](https://github.com/deviodigital/DocuPress/commit/cc865a1dea1dfac97f033906d2733619ab762acf)
+* [👌 IMPROVE: Updated variable names to fix warnings](https://github.com/deviodigital/DocuPress/commit/c428c81a22ed2511e2ea7b4d41d76868a97a65f2)
+* [👌 IMPROVE: Updated details metabox for better visual display](https://github.com/deviodigital/DocuPress/commit/d6e3bb8c6bd7c57fff702676dca9d7673f1fb50f)
+* [👌 IMPROVE: Updated text strings for localization](https://github.com/deviodigital/DocuPress/commit/59e82de19fdeb83c73d8b236a4cd687f218b66e3)
+* [👌 IMPROVE: General code cleanup](https://github.com/deviodigital/DocuPress/commit/a4b4182e3723e05d10fc0992ce4c6460b59d151b)
+
+= 3.0.0 =
+
+* [📦 NEW: Articles block for Gutenberg](https://github.com/deviodigital/DocuPress/commit/6400cb4cffde724787eaafd71c38fa7b3b5094b5)
+* [📖 DOC: Added 'Hindi' to language list](https://github.com/deviodigital/DocuPress/commit/2665ca7128b5b8a0c5dcd185ed07f6453e1c3e08)
+* [👌 IMPROVE: Updated screenshots](https://github.com/deviodigital/DocuPress/commit/697f3e4b8eaa9a427ef5a280fac78365389c15ea)
+* [👌 IMPROVE: Updated metabox with global](https://github.com/deviodigital/DocuPress/commit/5dbdec7b35472338fe879c404ae6f24534d6e2cd)
+* [👌 IMPROVE: Updated for PHP 8 compatibility](https://github.com/deviodigital/DocuPress/commit/2dfd0a6b5321bdd1016cbd52924ac2f16f2a8e4f)
+* [👌 IMPROVE: Updated to remove escaping redundancy](https://github.com/deviodigital/DocuPress/commit/fd1fdf16fc0a5fe3bc72459e96dd7fd7fdcacf08)
+* [👌 IMPROVE: General code cleanup](https://github.com/deviodigital/DocuPress/commit/345757647bb6e3db1fafea0fe1b1c633fe32ad23)
+*  [👌 IMPROVE: General code cleanup](https://github.com/deviodigital/DocuPress/commit/50deaf7a3a4109be0b60bb6d711b2f9df20a0274)
+* [👌 IMPROVE: Updated languages for translation](https://github.com/deviodigital/DocuPress/commit/6fbf3b47401fe60eb78b35638c04a001992bcd8d)
 
 = 2.3.0 =
 *   Added new Hindi translation in `languages/docupress-hi_IN.pot`
